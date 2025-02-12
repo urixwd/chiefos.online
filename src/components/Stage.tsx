@@ -40,19 +40,17 @@ export const Stage = ({ section, isReversed = false }: StageProps) => {
           </motion.div>
 
           {/* Image Column */}
-          <motion.div
-            initial={{ opacity: 0, x: isReversed ? -20 : 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="lg:pl-8"
-          >
-            <img
+          <div className="lg:pl-8">
+            <motion.img
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              viewport={{ once: true, margin: "-100px" }}
               src={section.imageUrl}
               alt="Stage Screenshot"
               className="w-[85%] lg:w-[65%] mx-auto"
             />
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

@@ -9,7 +9,7 @@ interface StageProps {
 
 export const Stage = ({ section, isReversed = false }: StageProps) => {
   return (
-    <section className="py-16 px-6 bg-white">
+    <section className={`py-16 px-6 ${isReversed ? 'bg-[#F1F0FB]' : 'bg-white'}`}>
       <div className="max-w-7xl mx-auto">
         <div className={`grid lg:grid-cols-2 gap-12 items-start ${isReversed ? 'lg:grid-flow-dense' : ''}`}>
           {/* Text Column */}

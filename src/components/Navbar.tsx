@@ -28,7 +28,7 @@ export const Navbar = () => {
           </a>
         </motion.div>
         
-        <div className="flex flex-col sm:flex-row items-center gap-4">
+        <div className="flex flex-col-reverse sm:flex-row items-center gap-4">
           <motion.a
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}

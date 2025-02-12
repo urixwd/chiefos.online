@@ -9,7 +9,7 @@ export const Hero = () => {
       transition={{ duration: 0.8 }}
       className="min-h-screen flex items-center justify-center bg-[url('https://chiefos-website.s3.eu-central-003.backblazeb2.com/background.jpg')] bg-cover bg-center bg-no-repeat relative text-white px-4"
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-chiefpurple/80 to-black/80" />
+      <div className="absolute inset-0 bg-gradient-to-br from-chiefpurple/20 to-black/20" />
       <div className="text-center space-y-8 relative z-10">
         <motion.h1 
           initial={{ opacity: 0, y: 20 }}
@@ -39,7 +39,7 @@ export const Hero = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
-            className="font-montserrat bg-[#0B044B] text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-opacity-90 transition-all duration-200 shadow-lg"
+            className="font-montserrat bg-[#0B044B] text-white px-8 py-4 rounded-lg text-xl md:text-2xl font-semibold hover:bg-opacity-90 transition-all duration-200 shadow-lg"
           >
             Get ChiefOS for Free!
           </motion.button>

@@ -14,8 +14,12 @@ export const Navbar = () => {
           whileHover={{ scale: 1.05 }}
           transition={{ type: "spring", stiffness: 400, damping: 10 }}
         >
-          <a href="/" className="font-montserrat font-bold text-2xl text-white">
-            Chief.OS
+          <a href="/" className="block">
+            <img 
+              src="https://chiefos-website.s3.eu-central-003.backblazeb2.com/logo-white.jpg" 
+              alt="Chief.OS Logo" 
+              className="h-8 md:h-10"
+            />
           </a>
         </motion.div>
         

@@ -1,9 +1,15 @@
-
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "./ui/form";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "./ui/form";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { Button } from "./ui/button";
@@ -38,7 +44,7 @@ export const ContactForm = () => {
       const response = await fetch("https://formspree.io/f/myzkdnbn", {
         method: "POST",
         headers: {
-          "Accept": "application/json",
+          Accept: "application/json",
           "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
@@ -47,7 +53,8 @@ export const ContactForm = () => {
       if (response.ok) {
         toast({
           title: "Message sent!",
-          description: "Thank you for contacting us. We'll get back to you soon.",
+          description:
+            "Thank you for contacting us. We'll get back to you soon.",
         });
         form.reset();
       } else {
@@ -56,7 +63,9 @@ export const ContactForm = () => {
           toast({
             variant: "destructive",
             title: "Error",
-            description: errorData.errors.map((error: any) => error.message).join(", "),
+            description: errorData.errors
+              .map((error: any) => error.message)
+              .join(", "),
           });
         } else {
           toast({
@@ -79,7 +88,9 @@ export const ContactForm = () => {
 
   return (
     <div className="max-w-md mx-auto">
-      <h2 className="text-2xl font-montserrat font-semibold text-[#31356E] mb-6">Contact Us</h2>
+      <h2 className="text-2xl font-montserrat font-semibold text-[#31356E] mb-6">
+        Contact Us
+      </h2>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           <FormField
@@ -115,9 +126,13 @@ export const ContactForm = () => {
             name="phone"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-chiefpurple">Phone (Optional)</FormLabel>
+                <FormLabel className="text-chiefpurple">Phone</FormLabel>
                 <FormControl>
-                  <Input type="tel" placeholder="Your phone number" {...field} />
+                  <Input
+                    type="tel"
+                    placeholder="Your phone number"
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage className="text-gray-500" />
               </FormItem>
@@ -129,12 +144,12 @@ export const ContactForm = () => {
             name="message"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-chiefpurple">Message (Optional)</FormLabel>
+                <FormLabel className="text-chiefpurple">Message</FormLabel>
                 <FormControl>
-                  <Textarea 
-                    placeholder="Your message here..." 
-                    className="min-h-[100px]" 
-                    {...field} 
+                  <Textarea
+                    placeholder="Your message here..."
+                    className="min-h-[100px]"
+                    {...field}
                   />
                 </FormControl>
                 <FormMessage className="text-gray-500" />
@@ -142,8 +157,8 @@ export const ContactForm = () => {
             )}
           />
 
-          <Button 
-            type="submit" 
+          <Button
+            type="submit"
             className="w-full bg-chiefpurple hover:bg-chiefpurple/90"
             disabled={isSubmitting}
           >

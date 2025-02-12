@@ -105,8 +105,8 @@ export const Testimonials = () => {
             </CarouselContent>
             {testimonials.length > 1 && (
               <>
-                <CarouselPrevious className="absolute left-0 md:-left-12 -top-20 md:top-1/2 md:-translate-y-1/2" />
-                <CarouselNext className="absolute right-0 md:-right-12 -top-20 md:top-1/2 md:-translate-y-1/2" />
+                <CarouselPrevious className="absolute left-0 md:-left-12 -top-4 md:top-1/2 md:-translate-y-1/2" />
+                <CarouselNext className="absolute right-0 md:-right-12 -top-4 md:top-1/2 md:-translate-y-1/2" />
               </>
             )}
           </Carousel>

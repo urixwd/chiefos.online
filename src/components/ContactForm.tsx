@@ -54,7 +54,7 @@ export const ContactForm = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-lg">
+    <div className="max-w-md mx-auto">
       <h2 className="text-2xl font-montserrat font-semibold text-chiefpurple mb-6">Contact Us</h2>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -63,11 +63,11 @@ export const ContactForm = () => {
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Name *</FormLabel>
+                <FormLabel className="text-chiefpurple">Name *</FormLabel>
                 <FormControl>
                   <Input placeholder="Your name" {...field} />
                 </FormControl>
-                <FormMessage />
+                <FormMessage className="text-gray-500" />
               </FormItem>
             )}
           />
@@ -77,11 +77,11 @@ export const ContactForm = () => {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email *</FormLabel>
+                <FormLabel className="text-chiefpurple">Email *</FormLabel>
                 <FormControl>
                   <Input type="email" placeholder="your@email.com" {...field} />
                 </FormControl>
-                <FormMessage />
+                <FormMessage className="text-gray-500" />
               </FormItem>
             )}
           />
@@ -91,11 +91,11 @@ export const ContactForm = () => {
             name="phone"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Phone (Optional)</FormLabel>
+                <FormLabel className="text-chiefpurple">Phone (Optional)</FormLabel>
                 <FormControl>
                   <Input type="tel" placeholder="Your phone number" {...field} />
                 </FormControl>
-                <FormMessage />
+                <FormMessage className="text-gray-500" />
               </FormItem>
             )}
           />
@@ -105,7 +105,7 @@ export const ContactForm = () => {
             name="message"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Message (Optional)</FormLabel>
+                <FormLabel className="text-chiefpurple">Message (Optional)</FormLabel>
                 <FormControl>
                   <Textarea 
                     placeholder="Your message here..." 
@@ -113,7 +113,7 @@ export const ContactForm = () => {
                     {...field} 
                   />
                 </FormControl>
-                <FormMessage />
+                <FormMessage className="text-gray-500" />
               </FormItem>
             )}
           />

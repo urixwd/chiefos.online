@@ -73,7 +73,7 @@ export const Features = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="lg:pl-8 mt-8 lg:mt-16"
+            className="lg:pl-8 mt-4 lg:mt-8"
           >
             <img
               src="https://f003.backblazeb2.com/file/chiefos-website/screenshots/screenshot-1.png"

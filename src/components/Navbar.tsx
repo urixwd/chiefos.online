@@ -14,7 +14,7 @@ export const Navbar = () => {
       transition={{ duration: 0.6 }}
       className="absolute top-0 left-0 right-0 z-50 px-6 py-8"
     >
-      <div className="max-w-7xl mx-auto flex justify-between items-center">
+      <div className="max-w-7xl mx-auto flex justify-between items-start sm:items-center">
         <motion.div 
           whileHover={{ scale: 1.05 }}
           transition={{ type: "spring", stiffness: 400, damping: 10 }}

@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -34,13 +35,37 @@ export const ContactForm = () => {
   const onSubmit = async (data: FormValues) => {
     setIsSubmitting(true);
     try {
-      // Here you would typically send the data to your backend
-      console.log("Form data:", data);
-      toast({
-        title: "Message sent!",
-        description: "Thank you for contacting us. We'll get back to you soon.",
+      const response = await fetch("https://formspree.io/f/myzkdnbn", {
+        method: "POST",
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
       });
-      form.reset();
+
+      if (response.ok) {
+        toast({
+          title: "Message sent!",
+          description: "Thank you for contacting us. We'll get back to you soon.",
+        });
+        form.reset();
+      } else {
+        const errorData = await response.json();
+        if (errorData.errors) {
+          toast({
+            variant: "destructive",
+            title: "Error",
+            description: errorData.errors.map((error: any) => error.message).join(", "),
+          });
+        } else {
+          toast({
+            variant: "destructive",
+            title: "Error",
+            description: "Something went wrong. Please try again.",
+          });
+        }
+      }
     } catch (error) {
       toast({
         variant: "destructive",

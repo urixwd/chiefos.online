@@ -78,7 +78,7 @@ export const Features = () => {
             <img
               src="https://f003.backblazeb2.com/file/chiefos-website/screenshots/screenshot-1.png"
               alt="Chief.OS Screenshot"
-              className="w-[85%] mx-auto"
+              className="w-[85%] lg:w-[65%] mx-auto"
             />
           </motion.div>
         </div>

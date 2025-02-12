@@ -28,24 +28,24 @@ export const Navbar = () => {
           </a>
         </motion.div>
         
-        <div className="flex flex-col sm:flex-row items-center sm:items-center sm:space-x-8 space-y-2 sm:space-y-0">
+        <div className="flex flex-col sm:flex-row items-center gap-4">
           <motion.a
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
             href="#contact-form"
             onClick={scrollToForm}
-            className="font-montserrat px-4 sm:px-6 py-2 bg-chiefblue text-white rounded-lg hover:bg-opacity-90 transition-all duration-200 whitespace-nowrap order-1 sm:order-2"
+            className="font-montserrat text-white hover:text-gray-200 transition-colors duration-200"
           >
-            Try ChiefOS
+            Login
           </motion.a>
           <motion.a
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
             href="#contact-form"
             onClick={scrollToForm}
-            className="font-montserrat text-white hover:text-gray-200 transition-colors duration-200 order-2 sm:order-1"
+            className="font-montserrat px-4 sm:px-6 py-2 bg-chiefblue text-white rounded-lg hover:bg-opacity-90 transition-all duration-200 whitespace-nowrap"
           >
-            Login
+            Try ChiefOS
           </motion.a>
         </div>
       </div>

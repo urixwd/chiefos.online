@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 
 export const Features = () => {
@@ -7,7 +6,7 @@ export const Features = () => {
       <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Left Column */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
@@ -15,55 +14,108 @@ export const Features = () => {
             className="space-y-8"
           >
             <h2 className="font-montserrat text-3xl md:text-4xl font-light leading-tight text-[#31356E]">
-              Chief.OS is the only AI mate<br />
-              that navigates with you every<br />
-              step of the way
+              Chief.OS is the only AI mate that navigates with you every step of
+              the way
             </h2>
-            
+
             {/* SVG diagram */}
-            <svg 
-              xmlns="http://www.w3.org/2000/svg" 
-              viewBox="0 0 570 380" 
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 570 380"
               className="w-full max-w-lg md:max-w-xl lg:max-w-2xl mx-auto"
             >
               {/* Curved path connecting all points */}
-              <path 
+              <path
                 d="M 40 150
                    C 40 250, 90 320, 140 250
                    S 200 50, 250 80
                    C 300 120, 340 180, 370 150
                    C 400 120, 440 80, 470 100
-                   S 540 150, 530 140" 
-                stroke="#31356E" 
-                strokeWidth="3" 
+                   S 540 150, 530 140"
+                stroke="#31356E"
+                strokeWidth="3"
                 fill="none"
                 strokeDasharray="8,8"
               />
-              
+
               {/* Points and labels */}
               {/* Check-In */}
-              <circle cx="40" cy="150" r="6" fill="#31356E"/>
-              <text x="40" y="130" textAnchor="middle" fontFamily="Arial" fontSize="14" fill="#31356E">Check-In</text>
-              
+              <circle cx="40" cy="150" r="6" fill="#31356E" />
+              <text
+                x="40"
+                y="130"
+                textAnchor="middle"
+                fontFamily="Arial"
+                fontSize="14"
+                fill="#31356E"
+              >
+                Check-In
+              </text>
+
               {/* Briefing */}
-              <circle cx="140" cy="250" r="6" fill="#31356E"/>
-              <text x="140" y="280" textAnchor="middle" fontFamily="Arial" fontSize="14" fill="#31356E">Briefing</text>
-              
+              <circle cx="140" cy="250" r="6" fill="#31356E" />
+              <text
+                x="140"
+                y="280"
+                textAnchor="middle"
+                fontFamily="Arial"
+                fontSize="14"
+                fill="#31356E"
+              >
+                Briefing
+              </text>
+
               {/* Safety */}
-              <circle cx="250" cy="80" r="6" fill="#31356E"/>
-              <text x="250" y="60" textAnchor="middle" fontFamily="Arial" fontSize="14" fill="#31356E">Safety</text>
-              
+              <circle cx="250" cy="80" r="6" fill="#31356E" />
+              <text
+                x="250"
+                y="60"
+                textAnchor="middle"
+                fontFamily="Arial"
+                fontSize="14"
+                fill="#31356E"
+              >
+                Safety
+              </text>
+
               {/* Boat Operation */}
-              <circle cx="370" cy="150" r="6" fill="#31356E"/>
-              <text x="370" y="180" textAnchor="middle" fontFamily="Arial" fontSize="14" fill="#31356E">Boat Operation</text>
-              
+              <circle cx="370" cy="150" r="6" fill="#31356E" />
+              <text
+                x="370"
+                y="180"
+                textAnchor="middle"
+                fontFamily="Arial"
+                fontSize="14"
+                fill="#31356E"
+              >
+                Boat Operation
+              </text>
+
               {/* Troubleshooting */}
-              <circle cx="470" cy="100" r="6" fill="#31356E"/>
-              <text x="470" y="80" textAnchor="middle" fontFamily="Arial" fontSize="14" fill="#31356E">Troubleshooting</text>
-              
+              <circle cx="470" cy="100" r="6" fill="#31356E" />
+              <text
+                x="470"
+                y="80"
+                textAnchor="middle"
+                fontFamily="Arial"
+                fontSize="14"
+                fill="#31356E"
+              >
+                Troubleshooting
+              </text>
+
               {/* Check-Out */}
-              <circle cx="530" cy="140" r="6" fill="#31356E"/>
-              <text x="530" y="170" textAnchor="middle" fontFamily="Arial" fontSize="14" fill="#31356E">Check-Out</text>
+              <circle cx="530" cy="140" r="6" fill="#31356E" />
+              <text
+                x="530"
+                y="170"
+                textAnchor="middle"
+                fontFamily="Arial"
+                fontSize="14"
+                fill="#31356E"
+              >
+                Check-Out
+              </text>
             </svg>
           </motion.div>
 

@@ -22,16 +22,48 @@ export const Features = () => {
             
             {/* SVG diagram */}
             <svg 
-              viewBox="0 0 200 100" 
-              className="w-full max-w-md"
-              fill="none" 
-              xmlns="http://www.w3.org/2000/svg"
+              xmlns="http://www.w3.org/2000/svg" 
+              viewBox="0 0 570 380" 
+              className="w-full max-w-lg"
             >
-              <circle cx="30" cy="50" r="20" fill="#3F5B6B" opacity="0.2"/>
-              <circle cx="100" cy="50" r="20" fill="#3F5B6B" opacity="0.4"/>
-              <circle cx="170" cy="50" r="20" fill="#3F5B6B" opacity="0.6"/>
-              <line x1="50" y1="50" x2="80" y2="50" stroke="#3F5B6B" strokeWidth="2"/>
-              <line x1="120" y1="50" x2="150" y2="50" stroke="#3F5B6B" strokeWidth="2"/>
+              {/* Curved path connecting all points */}
+              <path 
+                d="M 100 150
+                   C 100 250, 150 300, 200 200
+                   S 250 80, 300 100
+                   C 350 120, 380 180, 400 150
+                   C 420 120, 450 80, 480 100
+                   S 520 150, 500 140" 
+                stroke="#31356E" 
+                strokeWidth="3" 
+                fill="none"
+                strokeDasharray="8,8"
+              />
+              
+              {/* Points and labels */}
+              {/* Check-In */}
+              <circle cx="100" cy="150" r="6" fill="#31356E"/>
+              <text x="100" y="130" textAnchor="middle" fontFamily="Arial" fontSize="14" fill="#31356E">Check-In</text>
+              
+              {/* Briefing */}
+              <circle cx="200" cy="200" r="6" fill="#31356E"/>
+              <text x="200" y="230" textAnchor="middle" fontFamily="Arial" fontSize="14" fill="#31356E">Briefing</text>
+              
+              {/* Safety */}
+              <circle cx="300" cy="100" r="6" fill="#31356E"/>
+              <text x="300" y="80" textAnchor="middle" fontFamily="Arial" fontSize="14" fill="#31356E">Safety</text>
+              
+              {/* Boat Operation */}
+              <circle cx="400" cy="150" r="6" fill="#31356E"/>
+              <text x="400" y="180" textAnchor="middle" fontFamily="Arial" fontSize="14" fill="#31356E">Boat Operation</text>
+              
+              {/* Troubleshooting */}
+              <circle cx="480" cy="100" r="6" fill="#31356E"/>
+              <text x="480" y="80" textAnchor="middle" fontFamily="Arial" fontSize="14" fill="#31356E">Troubleshooting</text>
+              
+              {/* Check-Out */}
+              <circle cx="500" cy="140" r="6" fill="#31356E"/>
+              <text x="500" y="170" textAnchor="middle" fontFamily="Arial" fontSize="14" fill="#31356E">Check-Out</text>
             </svg>
           </motion.div>
 
@@ -46,7 +78,7 @@ export const Features = () => {
             <img
               src="https://f003.backblazeb2.com/file/chiefos-website/screenshots/screenshot-1.png"
               alt="Chief.OS Screenshot"
-              className="rounded-lg shadow-xl w-full"
+              className="w-[85%] mx-auto"
             />
           </motion.div>
         </div>

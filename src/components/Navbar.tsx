@@ -28,7 +28,7 @@ export const Navbar = () => {
           </a>
         </motion.div>
         
-        <div className="flex flex-col sm:flex-row items-end sm:items-center sm:space-x-6 space-y-2 sm:space-y-0">
+        <div className="flex flex-col sm:flex-row items-center sm:items-center sm:space-x-6 space-y-2 sm:space-y-0">
           <motion.a
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}

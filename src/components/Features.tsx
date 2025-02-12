@@ -14,7 +14,7 @@ export const Features = () => {
             viewport={{ once: true }}
             className="space-y-8"
           >
-            <h2 className="font-montserrat text-3xl md:text-4xl font-light leading-tight text-chiefpurple">
+            <h2 className="font-montserrat text-3xl md:text-4xl font-light leading-tight text-[#31356E]">
               Chief.OS is the only AI mate<br />
               that navigates with you every<br />
               step of the way
@@ -24,7 +24,7 @@ export const Features = () => {
             <svg 
               xmlns="http://www.w3.org/2000/svg" 
               viewBox="0 0 570 380" 
-              className="w-full max-w-lg"
+              className="w-full max-w-lg md:max-w-xl lg:max-w-2xl mx-auto"
             >
               {/* Curved path connecting all points */}
               <path 

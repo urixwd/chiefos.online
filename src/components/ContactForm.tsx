@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -55,7 +54,7 @@ export const ContactForm = () => {
 
   return (
     <div className="max-w-md mx-auto">
-      <h2 className="text-2xl font-montserrat font-semibold text-chiefpurple mb-6">Contact Us</h2>
+      <h2 className="text-2xl font-montserrat font-semibold text-[#31356E] mb-6">Contact Us</h2>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           <FormField

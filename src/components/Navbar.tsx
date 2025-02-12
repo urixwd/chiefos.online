@@ -2,6 +2,11 @@
 import { motion } from "framer-motion";
 
 export const Navbar = () => {
+  const scrollToForm = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <motion.nav 
       initial={{ opacity: 0, y: -20 }}
@@ -27,7 +32,8 @@ export const Navbar = () => {
           <motion.a
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
-            href="/login"
+            href="#contact-form"
+            onClick={scrollToForm}
             className="font-montserrat text-white hover:text-gray-200 transition-colors duration-200"
           >
             Login
@@ -35,7 +41,8 @@ export const Navbar = () => {
           <motion.a
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
-            href="/try"
+            href="#contact-form"
+            onClick={scrollToForm}
             className="font-montserrat px-4 sm:px-6 py-2 bg-chiefblue text-white rounded-lg hover:bg-opacity-90 transition-all duration-200 whitespace-nowrap"
           >
             Try ChiefOS

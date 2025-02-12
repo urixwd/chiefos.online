@@ -9,7 +9,7 @@ const Index = () => {
     <main className="relative">
       <Navbar />
       <Hero />
-      <section className="py-16 bg-gray-50">
+      <section id="contact-form" className="py-16 bg-gray-50">
         <ContactForm />
       </section>
       <Footer />

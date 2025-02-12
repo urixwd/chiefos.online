@@ -2,6 +2,11 @@
 import { motion } from "framer-motion";
 
 export const Hero = () => {
+  const scrollToForm = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <motion.div 
       initial={{ opacity: 0 }}
@@ -39,6 +44,7 @@ export const Hero = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            onClick={scrollToForm}
             className="font-montserrat bg-[#0B044B] text-white px-8 py-4 rounded-lg text-xl md:text-2xl font-semibold hover:bg-opacity-90 transition-all duration-200 shadow-lg"
           >
             Get ChiefOS for Free!

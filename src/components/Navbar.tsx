@@ -1,4 +1,3 @@
-
 import { motion, useScroll, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
@@ -22,12 +21,7 @@ export const Navbar = () => {
     const element = document.getElementById('contact-form');
     console.log('Contact form element:', element);
     if (element) {
-      const offset = element.getBoundingClientRect().top + window.pageYOffset;
-      console.log('Scrolling to offset:', offset);
-      window.scrollTo({
-        top: offset,
-        behavior: 'smooth'
-      });
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
     setIsMenuOpen(false);
   };
@@ -67,7 +61,6 @@ export const Navbar = () => {
           </motion.div>
           
           <div className="flex items-center gap-4">
-            {/* Desktop Menu */}
             <div className="hidden md:flex items-center gap-6">
               {menuItems.map((item) => (
                 <motion.a
@@ -93,7 +86,6 @@ export const Navbar = () => {
               Try ChiefOS
             </motion.a>
 
-            {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="md:hidden"
@@ -107,7 +99,6 @@ export const Navbar = () => {
           </div>
         </div>
 
-        {/* Mobile Menu */}
         <AnimatePresence>
           {isMenuOpen && (
             <motion.div

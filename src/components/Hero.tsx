@@ -4,7 +4,10 @@ import { motion } from "framer-motion";
 export const Hero = () => {
   const scrollToForm = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' });
+    const element = document.getElementById('contact-form');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   };
 
   return (
@@ -34,23 +37,24 @@ export const Hero = () => {
         >
           AI powered chief mate that lets you <span className="font-semibold">focus on creating value</span> for your guests, <span className="font-semibold">and nothing else!</span>
         </motion.p>
-        
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.6 }}
-        >
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ type: "spring", stiffness: 400, damping: 10 }}
-            onClick={scrollToForm}
-            className="font-montserrat bg-[#0B044B] text-white px-8 py-4 rounded-lg text-xl md:text-2xl font-semibold hover:bg-opacity-90 transition-all duration-200 shadow-lg"
-          >
-            Get ChiefOS for Free!
-          </motion.button>
-        </motion.div>
       </div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.6, duration: 0.6 }}
+        className="fixed bottom-4 left-4 z-50 w-full md:w-auto px-4 md:px-0"
+      >
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          transition={{ type: "spring", stiffness: 400, damping: 10 }}
+          onClick={scrollToForm}
+          className="w-full md:w-auto font-montserrat bg-[#0B044B] text-white px-8 py-4 rounded-lg text-xl md:text-2xl font-semibold hover:bg-opacity-90 transition-all duration-200 shadow-lg"
+        >
+          Get ChiefOS for Free!
+        </motion.button>
+      </motion.div>
     </motion.div>
   );
 };

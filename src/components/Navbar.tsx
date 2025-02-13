@@ -79,7 +79,7 @@ export const Navbar = () => {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isHeroVisible
           ? "bg-transparent"
-          : "bg-[url('https://chiefos-website.s3.eu-central-003.backblazeb2.com/background.jpg')] bg-cover shadow-lg"
+          : "bg-[url('https://chiefos-website.s3.eu-central-003.backblazeb2.com/background.jpg')] bg-auto shadow-lg"
       }`}
     >
       <div

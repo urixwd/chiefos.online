@@ -88,7 +88,7 @@ export const ContactForm = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-md">
+    <div className="max-w-md mx-auto p-6">
       <h2 className="text-2xl font-semibold text-[#31356E] mb-6">
         See ChiefOS in action
       </h2>

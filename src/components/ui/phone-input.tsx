@@ -41,6 +41,7 @@ const PhoneInput = React.forwardRef<any, PhoneInputProps>(
               margin-left: 8px !important;
               border: 1px solid #E2E8F0 !important;
               padding: 8px 12px !important;
+              font-size: 14px !important;
             }
           `}
           </style>

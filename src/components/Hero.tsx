@@ -70,7 +70,7 @@ export const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.6 }}
-          className="absolute bottom-20 left-0 right-0 z-10 flex justify-center"
+          className="absolute bottom-20 left-0 right-0 z-10 px-6 md:px-0 flex justify-center"
         >
           <motion.button
             whileHover={{ scale: 1.05 }}

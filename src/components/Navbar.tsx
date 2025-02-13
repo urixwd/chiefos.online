@@ -18,9 +18,12 @@ export const Navbar = () => {
   
   const scrollToForm = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
+    console.log('Scroll to form clicked');
     const element = document.getElementById('contact-form');
+    console.log('Contact form element:', element);
     if (element) {
-      const offset = element.offsetTop;
+      const offset = element.getBoundingClientRect().top + window.pageYOffset;
+      console.log('Scrolling to offset:', offset);
       window.scrollTo({
         top: offset,
         behavior: 'smooth'
@@ -52,7 +55,7 @@ export const Navbar = () => {
           <motion.div 
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
-            className="w-[200px] md:w-[30%]"
+            className="w-[30%] max-w-[200px]"
           >
             <a href="/" className="block">
               <img 

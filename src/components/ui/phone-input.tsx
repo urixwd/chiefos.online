@@ -5,6 +5,7 @@ import * as React from "react";
 import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons";
 import PhoneInput2, { Country } from "react-phone-number-input";
 import flags from "react-phone-number-input/flags";
+import "react-phone-number-input/style.css";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -28,16 +29,19 @@ type PhoneInputProps = Omit<React.ComponentProps<typeof PhoneInput2>, 'ref'>;
 const PhoneInput = React.forwardRef<any, PhoneInputProps>(
   ({ value, onChange, ...props }, ref) => {
     return (
-      <PhoneInput2
-        ref={ref}
-        value={value}
-        onChange={onChange}
-        className="flex gap-2 flex-1"
-        flagComponent={FlagComponent}
-        countrySelectComponent={CountrySelect}
-        numberInputComponent={NumberInput}
-        {...props}
-      />
+      <div className="flex flex-1 gap-2">
+        <PhoneInput2
+          ref={ref}
+          value={value}
+          onChange={onChange}
+          className="flex-1"
+          style={{ fontSize: '16px' }}
+          flagComponent={FlagComponent}
+          countrySelectComponent={CountrySelect}
+          numberInputComponent={NumberInput}
+          {...props}
+        />
+      </div>
     );
   }
 );
@@ -121,10 +125,8 @@ const NumberInput = React.forwardRef<
   <Input
     {...props}
     ref={ref}
-    className={cn(
-      "rounded-s-none rounded-e-md px-3 py-2 w-full text-[rgb(2,8,23)] placeholder:text-[#64758B] focus:outline-[#020817] focus:outline-offset-4",
-      props.className
-    )}
+    style={{ fontSize: '16px' }}
+    className="!rounded-s-none !rounded-e-md !px-3 !py-2 flex-1 !text-[rgb(2,8,23)] !placeholder-[#64758B] focus:!outline-[#020817] focus:!outline-offset-4 !border-input"
   />
 ));
 NumberInput.displayName = "NumberInput";

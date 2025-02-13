@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -21,7 +20,7 @@ import { PhoneInput } from "./ui/phone-input";
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
   email: z.string().email().optional(),
-  whatsapp: z.string().refine(value => !value || isValidPhoneNumber(value), {
+  whatsapp: z.string().refine((value) => !value || isValidPhoneNumber(value), {
     message: "Invalid phone number",
   }),
 });
@@ -56,7 +55,8 @@ export const ContactForm = () => {
       if (response.ok) {
         toast({
           title: "Message sent!",
-          description: "Thank you for contacting us. We'll get back to you soon.",
+          description:
+            "Thank you for contacting us. We'll get back to you soon.",
         });
         form.reset();
       } else {
@@ -74,14 +74,16 @@ export const ContactForm = () => {
   };
 
   const openWhatsApp = () => {
-    const message = encodeURIComponent("Hi! I'm interested in learning more about Chief.OS");
-    window.open(`https://wa.me/972545854406?text=${message}`, '_blank');
+    const message = encodeURIComponent(
+      "Hi! I'm interested in learning more about Chief.OS"
+    );
+    window.open(`https://wa.me/972545854406?text=${message}`, "_blank");
   };
 
   return (
     <div className="max-w-md mx-auto">
       <h2 className="text-2xl font-montserrat font-semibold text-[#31356E] mb-6">
-        Contact Us
+        See ChiefOS in action
       </h2>
 
       <div className="mb-8">
@@ -99,7 +101,9 @@ export const ContactForm = () => {
           <div className="w-full border-t border-gray-300"></div>
         </div>
         <div className="relative flex justify-center text-sm">
-          <span className="px-2 bg-gray-50 text-gray-500">Or fill the form</span>
+          <span className="px-2 bg-gray-50 text-gray-500">
+            Or fill the form
+          </span>
         </div>
       </div>
 
@@ -124,7 +128,9 @@ export const ContactForm = () => {
             name="whatsapp"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-chiefpurple">WhatsApp Number *</FormLabel>
+                <FormLabel className="text-chiefpurple">
+                  WhatsApp Number *
+                </FormLabel>
                 <FormControl>
                   <PhoneInput
                     defaultCountry="GR"

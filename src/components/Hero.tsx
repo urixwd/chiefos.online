@@ -107,7 +107,7 @@ export const Hero = () => {
         className={`fixed bottom-6 z-50 transition-opacity duration-300 ${
           isMobile 
             ? 'left-0 right-0 px-6' 
-            : 'left-6'
+            : 'right-6'
         } ${(!isHeroVisible && !isFormVisible) ? 'pointer-events-auto' : 'pointer-events-none'}`}
       >
         <motion.button

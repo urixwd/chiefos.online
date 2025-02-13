@@ -10,39 +10,69 @@ import {
 interface Testimonial {
   id: number;
   name: string;
-  role: string;
-  image: string;
+  role?: string;
+  image?: string;
   quote: string;
 }
 
 const testimonials: Testimonial[] = [
+  /*
+  Ariel L.	"First time I ended my week and discussed my next holiday, rather than the damages I accidentally made or bits I wasn't even aware of."
+Alex B.	""My family and I enjoyed our first day together, without me having to disappear for hours and leave them at the café."
+Ethan R. 	“This service gives you tons of confidence, like you're sitting with me on the boat.
+Anna M.	"It's like having a co-skipper right next to you, making sure no costly mistakes take place during your holiday."
+  */
   {
     id: 1,
-    name: "Alex B",
-    role: "Israeli Navy officer\n~20 years skipper",
-    image:
-      "https://chiefos-website.s3.eu-central-003.backblazeb2.com/testimonials/1.webp",
+    name: "Ariel L.",
     quote:
-      "This service gives you tons of confidence, like you're sitting with me on the yacht. There's no doubt that any skipper who charters a yacht would love to have you by his side.",
+      "First time I ended my week and discussed my next holiday, rather than the damages I accidentally made or bits I wasn't even aware of.",
   },
   {
     id: 2,
     name: "Alex B",
-    role: "Israeli Navy officer\n~20 years skipper",
-    image:
-      "https://chiefos-website.s3.eu-central-003.backblazeb2.com/testimonials/1.webp",
     quote:
       "This service gives you tons of confidence, like you're sitting with me on the yacht. There's no doubt that any skipper who charters a yacht would love to have you by his side.",
   },
   {
     id: 3,
-    name: "Alex B",
-    role: "Israeli Navy officer\n~20 years skipper",
-    image:
-      "https://chiefos-website.s3.eu-central-003.backblazeb2.com/testimonials/1.webp",
+    name: "Ethan R.",
     quote:
       "This service gives you tons of confidence, like you're sitting with me on the yacht. There's no doubt that any skipper who charters a yacht would love to have you by his side.",
   },
+  {
+    id: 4,
+    name: "Anna M.",
+    quote:
+      "It's like having a co-skipper right next to you, making sure no costly mistakes take place during your holiday.",
+  },
+  // {
+  //   id: 1,
+  //   name: "Alex B",
+  //   role: "Israeli Navy officer\n~20 years skipper",
+  //   image:
+  //     "https://chiefos-website.s3.eu-central-003.backblazeb2.com/testimonials/1.webp",
+  //   quote:
+  //     "This service gives you tons of confidence, like you're sitting with me on the yacht. There's no doubt that any skipper who charters a yacht would love to have you by his side.",
+  // },
+  // {
+  //   id: 2,
+  //   name: "Alex B",
+  //   role: "Israeli Navy officer\n~20 years skipper",
+  //   image:
+  //     "https://chiefos-website.s3.eu-central-003.backblazeb2.com/testimonials/1.webp",
+  //   quote:
+  //     "This service gives you tons of confidence, like you're sitting with me on the yacht. There's no doubt that any skipper who charters a yacht would love to have you by his side.",
+  // },
+  // {
+  //   id: 3,
+  //   name: "Alex B",
+  //   role: "Israeli Navy officer\n~20 years skipper",
+  //   image:
+  //     "https://chiefos-website.s3.eu-central-003.backblazeb2.com/testimonials/1.webp",
+  //   quote:
+  //     "This service gives you tons of confidence, like you're sitting with me on the yacht. There's no doubt that any skipper who charters a yacht would love to have you by his side.",
+  // },
 ];
 
 export const Testimonials = () => {
@@ -77,15 +107,17 @@ export const Testimonials = () => {
                     viewport={{ once: true }}
                     className="flex flex-col md:flex-row items-center gap-8 md:gap-12"
                   >
-                    <div className="flex-shrink-0">
-                      <div className="w-48 h-48 rounded-full overflow-hidden border-4 border-white shadow-lg">
-                        <img
-                          src={testimonial.image}
-                          alt={testimonial.name}
-                          className="w-full h-full object-cover"
-                        />
+                    {testimonial.image && (
+                      <div className="flex-shrink-0">
+                        <div className="w-48 h-48 rounded-full overflow-hidden border-4 border-white shadow-lg">
+                          <img
+                            src={testimonial.image}
+                            alt={testimonial.name}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
                       </div>
-                    </div>
+                    )}
 
                     <div className="flex-1 text-center md:text-left">
                       <p className="text-lg md:text-xl text-[#31356E] font-light mb-6 leading-relaxed">
@@ -96,16 +128,19 @@ export const Testimonials = () => {
                         <h3 className="font-montserrat font-semibold text-[#31356E] text-lg">
                           {testimonial.name}
                         </h3>
-                        <p className="text-[#31356E]/80">
-                          {testimonial.role.split("\n").map((line, i) => (
-                            <span key={i}>
-                              {line}
-                              {i < testimonial.role.split("\n").length - 1 && (
-                                <br />
-                              )}
-                            </span>
-                          ))}
-                        </p>
+                        {testimonial.role && (
+                          <p className="text-[#31356E]/80">
+                            {testimonial.role.split("\n").map((line, i) => (
+                              <span key={i}>
+                                {line}
+                                {i <
+                                  testimonial.role.split("\n").length - 1 && (
+                                  <br />
+                                )}
+                              </span>
+                            ))}
+                          </p>
+                        )}
                       </div>
                     </div>
                   </motion.div>

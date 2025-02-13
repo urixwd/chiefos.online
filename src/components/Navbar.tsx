@@ -1,3 +1,4 @@
+
 import { motion, useScroll, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
@@ -18,12 +19,25 @@ export const Navbar = () => {
   const scrollToForm = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     console.log('Scroll to form clicked');
-    const element = document.getElementById('contact-form');
-    console.log('Contact form element:', element);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    
+    // Close menu first to avoid any interference
     setIsMenuOpen(false);
+    
+    // Small delay to ensure menu is closed
+    setTimeout(() => {
+      const element = document.getElementById('contact-form');
+      console.log('Contact form element:', element);
+      if (element) {
+        const headerOffset = 100;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }, 100);
   };
 
   useEffect(() => {

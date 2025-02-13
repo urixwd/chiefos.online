@@ -1,7 +1,20 @@
 
-import { motion } from "framer-motion";
+import { motion, useScroll } from "framer-motion";
+import { useState, useEffect } from "react";
 
 export const Hero = () => {
+  const { scrollY } = useScroll();
+  const [hasScrolled, setHasScrolled] = useState(false);
+
+  useEffect(() => {
+    const updateScroll = () => {
+      setHasScrolled(window.scrollY > 100);
+    };
+
+    window.addEventListener('scroll', updateScroll);
+    return () => window.removeEventListener('scroll', updateScroll);
+  }, []);
+
   const scrollToForm = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     const element = document.getElementById('contact-form');
@@ -43,14 +56,14 @@ export const Hero = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.6, duration: 0.6 }}
-        className="fixed bottom-4 left-4 z-50 w-full md:w-auto px-4 md:px-0"
+        className={`${hasScrolled ? 'fixed bottom-6 left-0 right-0 md:left-6' : 'absolute -bottom-24 left-0 right-0'} z-50 px-6 md:px-0 transition-all duration-300`}
       >
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           transition={{ type: "spring", stiffness: 400, damping: 10 }}
           onClick={scrollToForm}
-          className="w-full md:w-auto font-montserrat bg-[#0B044B] text-white px-8 py-4 rounded-lg text-xl md:text-2xl font-semibold hover:bg-opacity-90 transition-all duration-200 shadow-lg"
+          className={`w-full md:w-auto font-montserrat bg-[#0B044B] text-white px-8 py-4 rounded-lg text-xl md:text-2xl font-semibold hover:bg-opacity-90 transition-all duration-200 ${hasScrolled ? 'shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07)]' : ''}`}
         >
           Get ChiefOS for Free!
         </motion.button>

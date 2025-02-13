@@ -1,6 +1,7 @@
 import { motion, useScroll, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import { useIsMobile } from "../hooks/use-mobile";
 
 const menuItems = [
   { label: "Login", href: "#contact-form" },
@@ -14,6 +15,8 @@ export const Navbar = () => {
   const { scrollY } = useScroll();
   const [hasScrolled, setHasScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isHeroVisible, setIsHeroVisible] = useState(true);
+  const isMobile = useIsMobile();
 
   const scrollToForm = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -47,13 +50,36 @@ export const Navbar = () => {
     return () => window.removeEventListener("scroll", updateScroll);
   }, []);
 
+  useEffect(() => {
+    const heroObserver = new IntersectionObserver(
+      ([entry]) => {
+        setIsHeroVisible(entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
+
+    const heroElement = document.getElementById("hero-section");
+
+    if (heroElement) {
+      heroObserver.observe(heroElement);
+    }
+
+    return () => {
+      if (heroElement) {
+        heroObserver.unobserve(heroElement);
+      }
+    };
+  }, []);
+
   return (
     <motion.nav
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        hasScrolled || isMenuOpen ? "bg-[#869CB3] shadow-md" : ""
+        isHeroVisible
+          ? "bg-transparent"
+          : "bg-[url('https://chiefos-website.s3.eu-central-003.backblazeb2.com/background.jpg')] shadow-lg"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 py-4">

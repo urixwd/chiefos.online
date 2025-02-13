@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { MessageSquare } from "lucide-react";
+import { isValidPhoneNumber } from "react-phone-number-input";
 import {
   Form,
   FormControl,
@@ -15,12 +16,14 @@ import {
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { useToast } from "@/hooks/use-toast";
-import PhoneInput from 'react-phone-number-input';
-import 'react-phone-number-input/style.css';
+import { PhoneInput } from "./ui/phone-input";
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
-  whatsapp: z.string().min(1, "WhatsApp number is required"),
+  email: z.string().email().optional(),
+  whatsapp: z.string().refine(value => !value || isValidPhoneNumber(value), {
+    message: "Invalid phone number",
+  }),
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -33,6 +36,7 @@ export const ContactForm = () => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
+      email: "",
       whatsapp: "",
     },
   });
@@ -116,18 +120,29 @@ export const ContactForm = () => {
 
           <FormField
             control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="text-chiefpurple">Work Email</FormLabel>
+                <FormControl>
+                  <Input type="email" placeholder="your@email.com" {...field} />
+                </FormControl>
+                <FormMessage className="text-gray-500" />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
             name="whatsapp"
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="text-chiefpurple">WhatsApp Number *</FormLabel>
                 <FormControl>
                   <PhoneInput
-                    international
-                    countryCallingCodeEditable={false}
-                    defaultCountry="IL"
-                    value={field.value}
-                    onChange={(value) => field.onChange(value || "")}
-                    className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2"
+                    defaultCountry="GR"
+                    placeholder="Enter your phone number"
+                    {...field}
                   />
                 </FormControl>
                 <FormMessage className="text-gray-500" />

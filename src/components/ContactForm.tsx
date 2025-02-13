@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -16,6 +16,7 @@ import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { PhoneInput } from "./ui/phone-input";
+import { motion } from "framer-motion";
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -30,6 +31,8 @@ type FormValues = z.infer<typeof formSchema>;
 export const ContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
+  const [whatsappNumber, setWhatsappNumber] = useState("");
+  const [showEmail, setShowEmail] = useState(false);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -73,6 +76,10 @@ export const ContactForm = () => {
     }
   };
 
+  useEffect(() => {
+    setShowEmail(whatsappNumber.length > 0);
+  }, [whatsappNumber]);
+
   const openWhatsApp = () => {
     const message = encodeURIComponent(
       "Hi! I'm interested in learning more about Chief.OS"
@@ -81,8 +88,8 @@ export const ContactForm = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto">
-      <h2 className="text-2xl font-montserrat font-semibold text-[#31356E] mb-6">
+    <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-md">
+      <h2 className="text-2xl font-semibold text-[#31356E] mb-6">
         See ChiefOS in action
       </h2>
 
@@ -136,6 +143,10 @@ export const ContactForm = () => {
                     defaultCountry="GR"
                     placeholder="Enter your phone number"
                     {...field}
+                    onChange={(value) => {
+                      field.onChange(value);
+                      setWhatsappNumber(value || "");
+                    }}
                   />
                 </FormControl>
                 <FormMessage className="text-gray-500" />
@@ -143,19 +154,34 @@ export const ContactForm = () => {
             )}
           />
 
-          <FormField
-            control={form.control}
-            name="email"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="text-chiefpurple">Work Email</FormLabel>
-                <FormControl>
-                  <Input type="email" placeholder="your@email.com" {...field} />
-                </FormControl>
-                <FormMessage className="text-gray-500" />
-              </FormItem>
-            )}
-          />
+          {showEmail && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 20 }}
+              transition={{ duration: 0.3 }}
+            >
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-chiefpurple">
+                      Work Email
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        type="email"
+                        placeholder="your@email.com"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage className="text-gray-500" />
+                  </FormItem>
+                )}
+              />
+            </motion.div>
+          )}
 
           <Button
             type="submit"

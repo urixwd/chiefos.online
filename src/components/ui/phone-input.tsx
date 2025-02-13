@@ -23,9 +23,9 @@ import {
 import { cn } from "@/lib/utils";
 import { Input } from "./input";
 
-type PhoneInputProps = React.ComponentProps<typeof PhoneInput2>;
+type PhoneInputProps = Omit<React.ComponentProps<typeof PhoneInput2>, 'ref'>;
 
-const PhoneInput = React.forwardRef<HTMLInputElement, PhoneInputProps>(
+const PhoneInput = React.forwardRef<any, PhoneInputProps>(
   (props, ref) => {
     return (
       <PhoneInput2

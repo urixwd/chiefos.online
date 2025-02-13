@@ -1,10 +1,11 @@
-
 import { Mail, MessageSquare } from "lucide-react";
 import { motion } from "framer-motion";
 
 export const Footer = () => {
   const openWhatsApp = () => {
-    const message = encodeURIComponent("Hi! I'm interested in learning more about Chief.OS");
+    const message = encodeURIComponent(
+      "Hi! I'm interested in learning more about Chief.OS"
+    );
     window.open(`https://wa.me/972545854406?text=${message}`, "_blank");
   };
 
@@ -59,11 +60,11 @@ export const Footer = () => {
           </h3>
           <div className="space-y-2">
             <a
-              href="mailto:uri@chiefos.online"
+              href="mailto:info@chiefos.online"
               className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors duration-200"
             >
               <Mail size={18} />
-              <span>uri@chiefos.online</span>
+              <span>info@chiefos.online</span>
             </a>
             <button
               onClick={openWhatsApp}

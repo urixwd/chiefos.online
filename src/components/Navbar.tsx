@@ -1,3 +1,4 @@
+
 import { motion, useScroll, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
@@ -17,7 +18,14 @@ export const Navbar = () => {
   
   const scrollToForm = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' });
+    const element = document.getElementById('contact-form');
+    if (element) {
+      const offset = element.offsetTop;
+      window.scrollTo({
+        top: offset,
+        behavior: 'smooth'
+      });
+    }
     setIsMenuOpen(false);
   };
 
@@ -44,13 +52,13 @@ export const Navbar = () => {
           <motion.div 
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
-            className="w-[30%]"
+            className="w-[200px] md:w-[30%]"
           >
             <a href="/" className="block">
               <img 
                 src="https://chiefos-website.s3.eu-central-003.backblazeb2.com/logo-light.png" 
                 alt="Chief.OS Logo" 
-                className="h-8 md:h-10 max-w-full"
+                className="w-full h-auto"
               />
             </a>
           </motion.div>
@@ -77,10 +85,7 @@ export const Navbar = () => {
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
               href="#contact-form"
               onClick={scrollToForm}
-              className="w-[20%] md:w-auto font-montserrat px-2 md:px-6 py-2 bg-chiefblue text-white rounded-lg hover:bg-opacity-90 transition-all duration-200 whitespace-nowrap text-ellipsis overflow-hidden"
-              style={{
-                fontSize: 'min(4vw, 16px)'
-              }}
+              className="min-w-[120px] md:w-auto font-montserrat px-4 md:px-6 py-2 bg-chiefblue text-white rounded-lg hover:bg-opacity-90 transition-all duration-200 text-center"
             >
               Try ChiefOS
             </motion.a>
@@ -88,7 +93,7 @@ export const Navbar = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden ml-2"
+              className="md:hidden"
             >
               {isMenuOpen ? (
                 <X className="h-6 w-6 text-white" />

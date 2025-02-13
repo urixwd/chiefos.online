@@ -32,7 +32,7 @@ const PhoneInput = React.forwardRef<any, PhoneInputProps>(
         ref={ref}
         value={value}
         onChange={onChange}
-        className="flex gap-2"
+        className="flex gap-2 flex-1"
         flagComponent={FlagComponent}
         countrySelectComponent={CountrySelect}
         numberInputComponent={NumberInput}
@@ -122,7 +122,7 @@ const NumberInput = React.forwardRef<
     {...props}
     ref={ref}
     className={cn(
-      "rounded-s-none shadow-none px-3",
+      "rounded-s-none rounded-e-md px-3 py-2 w-full text-[rgb(2,8,23)] placeholder:text-[#64758B] focus:outline-[#020817] focus:outline-offset-4",
       props.className
     )}
   />

@@ -1,8 +1,12 @@
 
-import { Mail } from "lucide-react";
+import { Mail, WhatsApp } from "lucide-react";
 import { motion } from "framer-motion";
 
 export const Footer = () => {
+  const openWhatsApp = () => {
+    window.open('https://wa.me/972545854406', '_blank');
+  };
+
   return (
     <footer className="bg-chiefpurple text-white py-12 px-6">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -45,13 +49,22 @@ export const Footer = () => {
           className="space-y-4"
         >
           <h3 className="font-montserrat font-semibold text-lg">Contact Us</h3>
-          <a 
-            href="mailto:uri@chiefos.online"
-            className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors duration-200"
-          >
-            <Mail size={18} />
-            <span>uri@chiefos.online</span>
-          </a>
+          <div className="space-y-2">
+            <a 
+              href="mailto:uri@chiefos.online"
+              className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors duration-200"
+            >
+              <Mail size={18} />
+              <span>uri@chiefos.online</span>
+            </a>
+            <button
+              onClick={openWhatsApp}
+              className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors duration-200"
+            >
+              <WhatsApp size={18} />
+              <span>+972 54-585-4406</span>
+            </button>
+          </div>
           <p className="text-sm text-gray-300 mt-4">
             Start your free trial today and experience how Chief.OS can transform your charter base operations.
           </p>

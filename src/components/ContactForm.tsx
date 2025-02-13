@@ -1,7 +1,9 @@
+
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { MessageSquare, WhatsApp } from "lucide-react";
 import {
   Form,
   FormControl,
@@ -11,15 +13,14 @@ import {
   FormMessage,
 } from "./ui/form";
 import { Input } from "./ui/input";
-import { Textarea } from "./ui/textarea";
 import { Button } from "./ui/button";
 import { useToast } from "@/hooks/use-toast";
+import PhoneInput from 'react-phone-number-input';
+import 'react-phone-number-input/style.css';
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
-  email: z.string().email("Please enter a valid email address"),
-  phone: z.string().optional(),
-  message: z.string().optional(),
+  whatsapp: z.string().min(1, "WhatsApp number is required"),
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -32,9 +33,7 @@ export const ContactForm = () => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
-      email: "",
-      phone: "",
-      message: "",
+      whatsapp: "",
     },
   });
 
@@ -53,27 +52,11 @@ export const ContactForm = () => {
       if (response.ok) {
         toast({
           title: "Message sent!",
-          description:
-            "Thank you for contacting us. We'll get back to you soon.",
+          description: "Thank you for contacting us. We'll get back to you soon.",
         });
         form.reset();
       } else {
-        const errorData = await response.json();
-        if (errorData.errors) {
-          toast({
-            variant: "destructive",
-            title: "Error",
-            description: errorData.errors
-              .map((error: any) => error.message)
-              .join(", "),
-          });
-        } else {
-          toast({
-            variant: "destructive",
-            title: "Error",
-            description: "Something went wrong. Please try again.",
-          });
-        }
+        throw new Error("Something went wrong");
       }
     } catch (error) {
       toast({
@@ -86,11 +69,35 @@ export const ContactForm = () => {
     }
   };
 
+  const openWhatsApp = () => {
+    window.open('https://wa.me/972545854406', '_blank');
+  };
+
   return (
     <div className="max-w-md mx-auto">
       <h2 className="text-2xl font-montserrat font-semibold text-[#31356E] mb-6">
         Contact Us
       </h2>
+
+      <div className="mb-8">
+        <Button
+          onClick={openWhatsApp}
+          className="w-full flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700"
+        >
+          <WhatsApp className="w-5 h-5" />
+          Contact via WhatsApp
+        </Button>
+      </div>
+
+      <div className="relative mb-8">
+        <div className="absolute inset-0 flex items-center">
+          <div className="w-full border-t border-gray-300"></div>
+        </div>
+        <div className="relative flex justify-center text-sm">
+          <span className="px-2 bg-gray-50 text-gray-500">Or fill the form</span>
+        </div>
+      </div>
+
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           <FormField
@@ -109,47 +116,18 @@ export const ContactForm = () => {
 
           <FormField
             control={form.control}
-            name="email"
+            name="whatsapp"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-chiefpurple">Email *</FormLabel>
+                <FormLabel className="text-chiefpurple">WhatsApp Number *</FormLabel>
                 <FormControl>
-                  <Input type="email" placeholder="your@email.com" {...field} />
-                </FormControl>
-                <FormMessage className="text-gray-500" />
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            control={form.control}
-            name="phone"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="text-chiefpurple">Phone</FormLabel>
-                <FormControl>
-                  <Input
-                    type="tel"
-                    placeholder="Your phone number"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage className="text-gray-500" />
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            control={form.control}
-            name="message"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="text-chiefpurple">Message</FormLabel>
-                <FormControl>
-                  <Textarea
-                    placeholder="Your message here..."
-                    className="min-h-[100px]"
-                    {...field}
+                  <PhoneInput
+                    international
+                    countryCallingCodeEditable={false}
+                    defaultCountry="IL"
+                    value={field.value}
+                    onChange={(value) => field.onChange(value || "")}
+                    className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2"
                   />
                 </FormControl>
                 <FormMessage className="text-gray-500" />

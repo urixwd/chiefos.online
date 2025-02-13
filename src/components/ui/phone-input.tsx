@@ -1,4 +1,3 @@
-
 "use client";
 
 import * as React from "react";
@@ -24,24 +23,40 @@ import {
 import { cn } from "@/lib/utils";
 import { Input } from "./input";
 
-type PhoneInputProps = Omit<React.ComponentProps<typeof PhoneInput2>, 'ref'>;
+type PhoneInputProps = Omit<React.ComponentProps<typeof PhoneInput2>, "ref">;
 
 const PhoneInput = React.forwardRef<any, PhoneInputProps>(
   ({ value, onChange, ...props }, ref) => {
     return (
-      <div className="flex flex-1 gap-2">
-        <PhoneInput2
-          ref={ref}
-          value={value}
-          onChange={onChange}
-          className="flex-1"
-          style={{ fontSize: '16px' }}
-          flagComponent={FlagComponent}
-          countrySelectComponent={CountrySelect}
-          numberInputComponent={NumberInput}
-          {...props}
-        />
-      </div>
+      <>
+        <div className="flex flex-1 gap-2" id="phone-input-container">
+          <style>
+            {`
+            #phone-input-container input[type="tel"] {
+              outline-color: #020817 !important;
+              outline-offset: 4px !important;
+              border-top-right-radius: 6px !important;
+              border-bottom-right-radius: 6px !important;
+              height: 100% !important;
+              margin-left: 8px !important;
+              border: 1px solid #E2E8F0 !important;
+              padding: 8px 12px !important;
+            }
+          `}
+          </style>
+          <PhoneInput2
+            ref={ref}
+            value={value}
+            onChange={onChange}
+            className="flex-1 phone-input"
+            style={{ fontSize: "16px" }}
+            flagComponent={FlagComponent}
+            countrySelectComponent={CountrySelect}
+            numberInputComponent={NumberInput}
+            {...props}
+          />
+        </div>
+      </>
     );
   }
 );
@@ -125,7 +140,7 @@ const NumberInput = React.forwardRef<
   <Input
     {...props}
     ref={ref}
-    style={{ fontSize: '16px' }}
+    style={{ fontSize: "16px" }}
     className="!rounded-s-none !rounded-e-md !px-3 !py-2 flex-1 !text-[rgb(2,8,23)] !placeholder-[#64758B] focus:!outline-[#020817] focus:!outline-offset-4 !border-input"
   />
 ));

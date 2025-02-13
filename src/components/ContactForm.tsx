@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -73,7 +74,8 @@ export const ContactForm = () => {
   };
 
   const openWhatsApp = () => {
-    window.open('https://wa.me/972545854406', '_blank');
+    const message = encodeURIComponent("Hi! I'm interested in learning more about Chief.OS");
+    window.open(`https://wa.me/972545854406?text=${message}`, '_blank');
   };
 
   return (

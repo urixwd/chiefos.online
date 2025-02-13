@@ -1,9 +1,11 @@
+
 import { Mail, MessageSquare } from "lucide-react";
 import { motion } from "framer-motion";
 
 export const Footer = () => {
   const openWhatsApp = () => {
-    window.open("https://wa.me/972545854406", "_blank");
+    const message = encodeURIComponent("Hi! I'm interested in learning more about Chief.OS");
+    window.open(`https://wa.me/972545854406?text=${message}`, "_blank");
   };
 
   return (

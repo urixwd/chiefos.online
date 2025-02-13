@@ -79,10 +79,17 @@ export const Navbar = () => {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isHeroVisible
           ? "bg-transparent"
-          : "bg-[url('https://chiefos-website.s3.eu-central-003.backblazeb2.com/background.jpg')] shadow-lg"
+          : "bg-[url('https://chiefos-website.s3.eu-central-003.backblazeb2.com/background.jpg')] bg-cover shadow-lg"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 py-4">
+      <div
+        className={`absolute inset-0 ${
+          !isHeroVisible
+            ? "bg-gradient-to-br from-chiefpurple/20 to-black/20"
+            : ""
+        } z-10`}
+      />
+      <div className="max-w-7xl mx-auto px-6 py-4 relative z-20">
         <div className="flex justify-between items-center">
           <motion.div
             whileHover={{ scale: 1.05 }}

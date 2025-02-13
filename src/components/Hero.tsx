@@ -67,7 +67,7 @@ export const Hero = () => {
             transition={{ delay: 0.2, duration: 0.6 }}
             className="font-montserrat font-bold text-4xl md:text-6xl leading-tight"
           >
-            Your Fleet Base Operations,
+            Your Yacht Base Operations,
             <br />
             On AutoPilot
           </motion.h1>

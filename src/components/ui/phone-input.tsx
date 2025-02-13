@@ -3,8 +3,7 @@
 
 import * as React from "react";
 import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons";
-import * as RPNInput from "react-phone-number-input";
-import type { Country, FlagComponent } from "react-phone-number-input";
+import PhoneInput2, { Country } from "react-phone-number-input";
 import flags from "react-phone-number-input/flags";
 
 import { Button } from "@/components/ui/button";
@@ -24,26 +23,30 @@ import {
 import { cn } from "@/lib/utils";
 import { Input } from "./input";
 
-type PhoneInputProps = RPNInput.Props;
+type PhoneInputProps = React.ComponentProps<typeof PhoneInput2>;
 
-const PhoneInput: React.ForwardRefExoticComponent<PhoneInputProps> = React.forwardRef<
-  RPNInput.PhoneInputType,
-  PhoneInputProps
->((props, ref) => {
-  return (
-    <RPNInput.default
-      ref={ref}
-      className="flex gap-2"
-      flagComponent={FlagComponent}
-      countrySelectComponent={CountrySelect}
-      numberInputComponent={NumberInput}
-      {...props}
-    />
-  );
-});
+const PhoneInput = React.forwardRef<HTMLInputElement, PhoneInputProps>(
+  (props, ref) => {
+    return (
+      <PhoneInput2
+        ref={ref}
+        className="flex gap-2"
+        flagComponent={FlagComponent}
+        countrySelectComponent={CountrySelect}
+        numberInputComponent={NumberInput}
+        {...props}
+      />
+    );
+  }
+);
 PhoneInput.displayName = "PhoneInput";
 
-const FlagComponent: FlagComponent = ({ country, countryName }) => (
+interface FlagProps {
+  country: Country;
+  countryName: string;
+}
+
+const FlagComponent = ({ country, countryName }: FlagProps) => (
   <span className="flex h-4 w-6 overflow-hidden rounded-sm">
     {country && flags[country]?.({ title: countryName })}
   </span>
@@ -111,7 +114,7 @@ const CountrySelect = ({
 
 const NumberInput = React.forwardRef<
   HTMLInputElement,
-  RPNInput.InputProps
+  React.InputHTMLAttributes<HTMLInputElement>
 >((props, ref) => (
   <Input
     {...props}

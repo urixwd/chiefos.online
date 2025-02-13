@@ -1,4 +1,3 @@
-
 import { motion, useScroll, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
@@ -45,12 +44,13 @@ export const Navbar = () => {
           <motion.div 
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            className="w-[30%]"
           >
             <a href="/" className="block">
               <img 
                 src="https://chiefos-website.s3.eu-central-003.backblazeb2.com/logo-light.png" 
                 alt="Chief.OS Logo" 
-                className="h-8 md:h-10"
+                className="h-8 md:h-10 max-w-full"
               />
             </a>
           </motion.div>
@@ -77,7 +77,10 @@ export const Navbar = () => {
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
               href="#contact-form"
               onClick={scrollToForm}
-              className="font-montserrat px-4 sm:px-6 py-2 bg-chiefblue text-white rounded-lg hover:bg-opacity-90 transition-all duration-200 whitespace-nowrap"
+              className="w-[20%] md:w-auto font-montserrat px-2 md:px-6 py-2 bg-chiefblue text-white rounded-lg hover:bg-opacity-90 transition-all duration-200 whitespace-nowrap text-ellipsis overflow-hidden"
+              style={{
+                fontSize: 'min(4vw, 16px)'
+              }}
             >
               Try ChiefOS
             </motion.a>
@@ -85,7 +88,7 @@ export const Navbar = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden"
+              className="md:hidden ml-2"
             >
               {isMenuOpen ? (
                 <X className="h-6 w-6 text-white" />

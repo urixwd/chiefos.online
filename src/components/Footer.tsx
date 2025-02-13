@@ -68,7 +68,7 @@ export const Footer = () => {
               className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors duration-200"
             >
               <MessageSquare size={18} />
-              <span>+972 54-585-4406</span>
+              <span>Contact via WhatsApp</span>
             </button>
           </div>
           <p className="text-sm text-gray-300 mt-4">

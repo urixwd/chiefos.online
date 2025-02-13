@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -120,20 +119,6 @@ export const ContactForm = () => {
 
           <FormField
             control={form.control}
-            name="email"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="text-chiefpurple">Work Email</FormLabel>
-                <FormControl>
-                  <Input type="email" placeholder="your@email.com" {...field} />
-                </FormControl>
-                <FormMessage className="text-gray-500" />
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            control={form.control}
             name="whatsapp"
             render={({ field }) => (
               <FormItem>
@@ -144,6 +129,20 @@ export const ContactForm = () => {
                     placeholder="Enter your phone number"
                     {...field}
                   />
+                </FormControl>
+                <FormMessage className="text-gray-500" />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="text-chiefpurple">Work Email</FormLabel>
+                <FormControl>
+                  <Input type="email" placeholder="your@email.com" {...field} />
                 </FormControl>
                 <FormMessage className="text-gray-500" />
               </FormItem>

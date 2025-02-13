@@ -4,6 +4,7 @@
 import * as React from "react";
 import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons";
 import * as RPNInput from "react-phone-number-input";
+import type { Country, FlagComponent } from "react-phone-number-input";
 import flags from "react-phone-number-input/flags";
 
 import { Button } from "@/components/ui/button";
@@ -23,23 +24,17 @@ import {
 import { cn } from "@/lib/utils";
 import { Input } from "./input";
 
-type PhoneInputProps = React.ComponentProps<typeof RPNInput.default>;
+type PhoneInputProps = RPNInput.Props;
 
 const PhoneInput: React.ForwardRefExoticComponent<PhoneInputProps> = React.forwardRef<
-  React.ElementRef<typeof RPNInput.default>,
+  RPNInput.PhoneInputType,
   PhoneInputProps
 >((props, ref) => {
   return (
     <RPNInput.default
       ref={ref}
-      className="flex"
-      flagComponent={({ country, countryName }) => (
-        <span className="flex h-4 w-6 overflow-hidden rounded-sm">
-          {flags[country as keyof typeof flags]?.({
-            title: countryName,
-          })}
-        </span>
-      )}
+      className="flex gap-2"
+      flagComponent={FlagComponent}
       countrySelectComponent={CountrySelect}
       numberInputComponent={NumberInput}
       {...props}
@@ -48,11 +43,21 @@ const PhoneInput: React.ForwardRefExoticComponent<PhoneInputProps> = React.forwa
 });
 PhoneInput.displayName = "PhoneInput";
 
+const FlagComponent: FlagComponent = ({ country, countryName }) => (
+  <span className="flex h-4 w-6 overflow-hidden rounded-sm">
+    {country && flags[country]?.({ title: countryName })}
+  </span>
+);
+
 const CountrySelect = ({
   value,
   onChange,
   options,
-}: RPNInput.CountrySelectComponentProps) => {
+}: {
+  value: Country;
+  onChange: (value: Country) => void;
+  options: { value: Country; label: string }[];
+}) => {
   const [open, setOpen] = React.useState(false);
 
   return (
@@ -67,7 +72,7 @@ const CountrySelect = ({
           )}
         >
           <span className="flex h-4 w-6 overflow-hidden rounded-sm">
-            {value && flags[value as keyof typeof flags]?.({}) }
+            {value && flags[value]?.({ title: value })}
           </span>
           <CaretSortIcon className="h-4 w-4 opacity-50" />
         </Button>
@@ -88,9 +93,7 @@ const CountrySelect = ({
                   }}
                 >
                   <span className="flex h-4 w-6 overflow-hidden rounded-sm">
-                    {flags[option.value as keyof typeof flags]?.({
-                      title: option.label,
-                    })}
+                    {flags[option.value]?.({ title: option.label })}
                   </span>
                   <span className="ml-2">{option.label}</span>
                   {value === option.value && (
@@ -108,13 +111,13 @@ const CountrySelect = ({
 
 const NumberInput = React.forwardRef<
   HTMLInputElement,
-  RPNInput.NumberInputComponentProps
+  RPNInput.InputProps
 >((props, ref) => (
   <Input
     {...props}
     ref={ref}
     className={cn(
-      "rounded-s-none shadow-none",
+      "rounded-s-none shadow-none px-3",
       props.className
     )}
   />

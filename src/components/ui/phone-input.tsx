@@ -26,10 +26,12 @@ import { Input } from "./input";
 type PhoneInputProps = Omit<React.ComponentProps<typeof PhoneInput2>, 'ref'>;
 
 const PhoneInput = React.forwardRef<any, PhoneInputProps>(
-  (props, ref) => {
+  ({ value, onChange, ...props }, ref) => {
     return (
       <PhoneInput2
         ref={ref}
+        value={value}
+        onChange={onChange}
         className="flex gap-2"
         flagComponent={FlagComponent}
         countrySelectComponent={CountrySelect}

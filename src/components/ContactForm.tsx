@@ -86,7 +86,7 @@ export const ContactForm = () => {
         See ChiefOS in action
       </h2>
 
-      <div className="mb-8">
+      <div className="mb-8 hidden">
         <Button
           onClick={openWhatsApp}
           className="w-full flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700"
@@ -96,7 +96,7 @@ export const ContactForm = () => {
         </Button>
       </div>
 
-      <div className="relative mb-8">
+      <div className="relative mb-8 hidden">
         <div className="absolute inset-0 flex items-center">
           <div className="w-full border-t border-gray-300"></div>
         </div>

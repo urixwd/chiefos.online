@@ -68,7 +68,7 @@ export const Footer = () => {
             </a>
             <button
               onClick={openWhatsApp}
-              className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors duration-200"
+              className="hidden flex items-center space-x-2 text-gray-300 hover:text-white transition-colors duration-200"
             >
               <MessageSquare size={18} />
               <span>Contact via WhatsApp</span>

@@ -1,5 +1,5 @@
 
-import { Mail, WhatsApp } from "lucide-react";
+import { Mail, MessageSquare } from "lucide-react";
 import { motion } from "framer-motion";
 
 export const Footer = () => {
@@ -61,7 +61,7 @@ export const Footer = () => {
               onClick={openWhatsApp}
               className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors duration-200"
             >
-              <WhatsApp size={18} />
+              <MessageSquare size={18} />
               <span>+972 54-585-4406</span>
             </button>
           </div>

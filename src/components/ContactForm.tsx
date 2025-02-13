@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { MessageSquare, WhatsApp } from "lucide-react";
+import { MessageSquare } from "lucide-react";
 import {
   Form,
   FormControl,
@@ -84,7 +84,7 @@ export const ContactForm = () => {
           onClick={openWhatsApp}
           className="w-full flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700"
         >
-          <WhatsApp className="w-5 h-5" />
+          <MessageSquare className="w-5 h-5" />
           Contact via WhatsApp
         </Button>
       </div>

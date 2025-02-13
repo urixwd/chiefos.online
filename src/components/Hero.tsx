@@ -5,24 +5,40 @@ import { useIsMobile } from "../hooks/use-mobile";
 
 export const Hero = () => {
   const [isHeroVisible, setIsHeroVisible] = useState(true);
+  const [isFormVisible, setIsFormVisible] = useState(false);
   const isMobile = useIsMobile();
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
+    const heroObserver = new IntersectionObserver(
       ([entry]) => {
         setIsHeroVisible(entry.isIntersecting);
       },
       { threshold: 0.1 }
     );
 
+    const formObserver = new IntersectionObserver(
+      ([entry]) => {
+        setIsFormVisible(entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
+
     const heroElement = document.getElementById('hero-section');
+    const formElement = document.getElementById('contact-form');
+
     if (heroElement) {
-      observer.observe(heroElement);
+      heroObserver.observe(heroElement);
+    }
+    if (formElement) {
+      formObserver.observe(formElement);
     }
 
     return () => {
       if (heroElement) {
-        observer.unobserve(heroElement);
+        heroObserver.unobserve(heroElement);
+      }
+      if (formElement) {
+        formObserver.unobserve(formElement);
       }
     };
   }, []);
@@ -87,12 +103,12 @@ export const Hero = () => {
       {/* Sticky Button */}
       <motion.div
         initial={{ opacity: 0 }}
-        animate={{ opacity: isHeroVisible ? 0 : 1 }}
+        animate={{ opacity: (!isHeroVisible && !isFormVisible) ? 1 : 0 }}
         className={`fixed bottom-6 z-50 transition-opacity duration-300 ${
           isMobile 
             ? 'left-0 right-0 px-6' 
             : 'left-6'
-        } ${isHeroVisible ? 'pointer-events-none' : 'pointer-events-auto'}`}
+        } ${(!isHeroVisible && !isFormVisible) ? 'pointer-events-auto' : 'pointer-events-none'}`}
       >
         <motion.button
           whileHover={{ scale: 1.05 }}

@@ -10,7 +10,7 @@ export const Footer = () => {
   };
 
   return (
-    <footer className="bg-chiefpurple text-white py-12 px-6">
+    <footer className="bg-chiefblue text-white py-12 px-6">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

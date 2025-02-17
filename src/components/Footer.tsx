@@ -41,11 +41,11 @@ export const Footer = () => {
             Key Features
           </h3>
           <ul className="space-y-2 text-gray-300 text-sm">
-            <li>Pre-embarkation Documentation</li>
-            <li>Digital Check-ins & Check-outs</li>
+            <li>Proactive Damage Prevention</li>
             <li>Real-time Troubleshooting</li>
             <li>24/7 AI-powered Support</li>
-            <li>Proactive Damage Prevention</li>
+            <li>Digital Check-ins & Check-outs</li>
+            <li>Pre-embarkation Documentation</li>
           </ul>
         </motion.div>
 

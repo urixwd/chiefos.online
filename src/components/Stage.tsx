@@ -9,7 +9,7 @@ interface StageProps {
 
 export const Stage = ({ section, isReversed = false }: StageProps) => {
   return (
-    <section className="h-screen py-8 px-4 flex items-center">
+    <section className="h-screen py-4 sm:py-6 px-4 flex items-center">
       <div className="max-w-7xl mx-auto w-full">
         <div className={`grid grid-cols-2 gap-4 items-center ${isReversed ? 'lg:grid-flow-dense' : ''}`}>
           {/* Text Column */}

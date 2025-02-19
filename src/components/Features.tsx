@@ -3,10 +3,10 @@ import { motion } from "framer-motion";
 
 export const Features = () => {
   return (
-    <section className="h-screen py-8 px-4 bg-white flex items-center">
+    <section className="h-screen py-4 sm:py-6 px-4 bg-white flex items-center">
       <div className="max-w-7xl mx-auto w-full">
         <div className="grid grid-cols-2 gap-4 items-center">
-          {/* Left Column */}
+          {/* Text Column */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}

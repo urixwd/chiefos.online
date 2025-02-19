@@ -65,7 +65,6 @@ export const Navbar = () => {
 
     const stickyButtonObserver = new IntersectionObserver(
       ([entry]) => {
-        // Check if the sticky button should be visible (when hero is not visible and form is not visible)
         setIsStickyButtonVisible(!entry.isIntersecting);
       },
       { threshold: 0.1 }
@@ -99,34 +98,35 @@ export const Navbar = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isHeroVisible
+        isHeroVisible && !isMenuOpen
           ? "bg-transparent"
           : "bg-[url('https://chiefos-website.s3.eu-central-003.backblazeb2.com/background.jpg')] bg-auto shadow-lg"
       }`}
     >
       <div
         className={`absolute inset-0 ${
-          !isHeroVisible
+          !isHeroVisible || isMenuOpen
             ? "bg-gradient-to-br from-chiefpurple/20 to-black/20"
             : ""
         } z-10`}
       />
       <div className="max-w-7xl mx-auto px-6 py-4 relative z-20">
         <div className="flex justify-between items-center">
-          <div className="flex items-center gap-8">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 400, damping: 10 }}
-              className="w-[30%] max-w-[200px]"
-            >
-              <a href="/" className="block">
-                <img
-                  src="https://chiefos-website.s3.eu-central-003.backblazeb2.com/logo-light.png"
-                  alt="Chief.OS Logo"
-                  className="w-full h-auto"
-                />
-              </a>
-            </motion.div>
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            className="w-[30%] max-w-[200px]"
+          >
+            <a href="/" className="block">
+              <img
+                src="https://chiefos-website.s3.eu-central-003.backblazeb2.com/logo-light.png"
+                alt="Chief.OS Logo"
+                className="w-full h-auto"
+              />
+            </a>
+          </motion.div>
+
+          <div className="flex items-center gap-4 ml-auto">
             <div className="hidden md:flex items-center gap-6">
               {menuItems.map((item) => (
                 <motion.a
@@ -141,24 +141,7 @@ export const Navbar = () => {
                 </motion.a>
               ))}
             </div>
-          </div>
 
-          <div className="flex items-center gap-4">
-            <div className="hidden md:flex items-center gap-6">
-              {/* { label: "Login", href: "#contact-form" }, */}
-
-              <motion.a
-                key={"Login"}
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                href={"#contact-form"}
-                onClick={scrollToForm}
-                className="font-montserrat text-white hover:text-gray-200 transition-colors duration-200"
-              >
-                Login
-              </motion.a>
-            </div>
-            {/* Only show Try ChiefOS button when sticky button is not visible */}
             {!isStickyButtonVisible && !isFormVisible && (
               <motion.a
                 whileHover={{ scale: 1.05 }}
@@ -191,10 +174,10 @@ export const Navbar = () => {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.2 }}
-              className="md:hidden"
+              className="md:hidden bg-chiefblue mt-4 rounded-lg"
             >
-              <div className="py-4 space-y-4">
-                {[...loginItem, ...menuItems].map((item) => (
+              <div className="py-4 space-y-4 px-4">
+                {menuItems.map((item) => (
                   <motion.a
                     key={item.label}
                     initial={{ opacity: 0, x: -20 }}

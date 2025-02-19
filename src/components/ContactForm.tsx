@@ -1,9 +1,7 @@
-
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { MessageSquare } from "lucide-react";
 import { isValidPhoneNumber } from "react-phone-number-input";
 import {
   Form,
@@ -18,6 +16,7 @@ import { Button } from "./ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { PhoneInput } from "./ui/phone-input";
 import { motion } from "framer-motion";
+import { WhatsAppIcon } from "./icons/WhatsAppIcon";
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -190,7 +189,7 @@ export const ContactForm = () => {
             onClick={openWhatsApp}
             className="w-full bg-[#25D366] hover:bg-[#25D366]/90 text-white gap-2"
           >
-            <MessageSquare className="w-5 h-5" />
+            <WhatsAppIcon className="w-5 h-5" />
             WhatsApp ChiefOS
           </Button>
         </div>

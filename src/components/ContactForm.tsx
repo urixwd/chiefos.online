@@ -20,7 +20,13 @@ import { motion } from "framer-motion";
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
-  email: z.string().email().optional(),
+  email: z
+    .string()
+    .transform((str) => str.trim())
+    .refine((str) => str === "" || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(str), {
+      message: "Invalid email format",
+    })
+    .optional(),
   whatsapp: z.string().refine((value) => !value || isValidPhoneNumber(value), {
     message: "Invalid phone number",
   }),

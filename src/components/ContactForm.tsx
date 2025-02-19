@@ -188,7 +188,7 @@ export const ContactForm = () => {
             className="w-full bg-chiefpurple hover:bg-chiefpurple/90"
             disabled={isSubmitting}
           >
-            {isSubmitting ? "Sending..." : "Send Message"}
+            {isSubmitting ? "Sending..." : "See ChiefOS in action"}
           </Button>
         </form>
       </Form>

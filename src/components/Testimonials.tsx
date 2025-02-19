@@ -54,10 +54,9 @@ export const Testimonials = () => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
-    align: 'center',
-    skipSnaps: false,
-    containScroll: 'trimSnaps',
-    startIndex: 0
+    align: 'start',
+    containScroll: false,
+    dragFree: false,
   });
 
   useEffect(() => {
@@ -88,60 +87,59 @@ export const Testimonials = () => {
         </motion.h2>
 
         <div className="max-w-5xl mx-auto">
-          <Carousel className="relative w-full">
-            <CarouselContent ref={emblaRef} className="-ml-4">
-              {testimonials.map((testimonial) => (
-                <CarouselItem 
-                  key={testimonial.id} 
-                  className="pl-4 md:basis-[70%] lg:basis-[60%]"
-                >
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                    viewport={{ once: true }}
-                    className="flex flex-col items-center gap-8 md:gap-12 px-4"
+          <div className="relative w-full overflow-hidden">
+            <div ref={emblaRef} className="overflow-hidden">
+              <div className="flex -ml-4 touch-pan-y">
+                {testimonials.map((testimonial) => (
+                  <div 
+                    key={testimonial.id} 
+                    className="pl-4 min-w-0 flex-[0_0_90%] md:flex-[0_0_70%] lg:flex-[0_0_60%]"
                   >
-                    {testimonial.image && (
-                      <div className="flex-shrink-0">
-                        <div className="w-48 h-48 rounded-full overflow-hidden border-4 border-white shadow-lg">
-                          <img
-                            src={testimonial.image}
-                            alt={testimonial.name}
-                            className="w-full h-full object-cover"
-                          />
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6 }}
+                      viewport={{ once: true }}
+                      className="flex flex-col items-center gap-8 md:gap-12 px-4"
+                    >
+                      {testimonial.image && (
+                        <div className="flex-shrink-0">
+                          <div className="w-48 h-48 rounded-full overflow-hidden border-4 border-white shadow-lg">
+                            <img
+                              src={testimonial.image}
+                              alt={testimonial.name}
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                        </div>
+                      )}
+
+                      <div className="flex-1 text-center">
+                        <p className="text-lg md:text-xl text-[#31356E] font-light mb-6 leading-relaxed">
+                          "{testimonial.quote}"
+                        </p>
+
+                        <div>
+                          <h3 className="font-montserrat font-semibold text-[#31356E] text-lg">
+                            {testimonial.name}
+                          </h3>
+                          {testimonial.role && (
+                            <p className="text-[#31356E]/80">
+                              {testimonial.role.split("\n").map((line, i) => (
+                                <span key={i}>
+                                  {line}
+                                  {i < testimonial.role.split("\n").length - 1 && <br />}
+                                </span>
+                              ))}
+                            </p>
+                          )}
                         </div>
                       </div>
-                    )}
-
-                    <div className="flex-1 text-center">
-                      <p className="text-lg md:text-xl text-[#31356E] font-light mb-6 leading-relaxed">
-                        "{testimonial.quote}"
-                      </p>
-
-                      <div>
-                        <h3 className="font-montserrat font-semibold text-[#31356E] text-lg">
-                          {testimonial.name}
-                        </h3>
-                        {testimonial.role && (
-                          <p className="text-[#31356E]/80">
-                            {testimonial.role.split("\n").map((line, i) => (
-                              <span key={i}>
-                                {line}
-                                {i <
-                                  testimonial.role.split("\n").length - 1 && (
-                                  <br />
-                                )}
-                              </span>
-                            ))}
-                          </p>
-                        )}
-                      </div>
-                    </div>
-                  </motion.div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
+                    </motion.div>
+                  </div>
+                ))}
+              </div>
+            </div>
             
             {/* Dot Navigation */}
             <div className="flex justify-center gap-2 mt-8">
@@ -159,7 +157,7 @@ export const Testimonials = () => {
                 />
               ))}
             </div>
-          </Carousel>
+          </div>
         </div>
       </div>
     </section>

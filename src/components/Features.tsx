@@ -1,28 +1,29 @@
+
 import { motion } from "framer-motion";
 
 export const Features = () => {
   return (
-    <section className="py-16 px-6 bg-white">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
+    <section className="h-screen py-8 px-4 bg-white flex items-center">
+      <div className="max-w-7xl mx-auto w-full">
+        <div className="grid grid-cols-2 gap-4 items-center">
           {/* Left Column */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="space-y-8"
+            className="space-y-4"
           >
-            <h2 className="font-montserrat text-3xl md:text-4xl font-light leading-tight text-[#31356E]">
+            <h2 className="font-montserrat text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light leading-tight text-[#31356E]">
               Chief.OS is the only AI mate that navigates with you every step of
               the way
             </h2>
 
-            {/* SVG diagram */}
+            {/* SVG diagram - adjusted size for mobile */}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 570 380"
-              className="w-full max-w-lg md:max-w-xl lg:max-w-2xl mx-auto"
+              className="w-full max-w-[200px] sm:max-w-lg md:max-w-xl lg:max-w-2xl mx-auto"
             >
               {/* Curved path connecting all points */}
               <path
@@ -125,12 +126,12 @@ export const Features = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="lg:pl-8 mt-4 lg:mt-8"
+            className="pl-2 md:pl-8"
           >
             <img
               src="https://f003.backblazeb2.com/file/chiefos-website/screenshots/screenshot-1.png"
               alt="Chief.OS Screenshot"
-              className="w-[85%] lg:w-[65%] mx-auto"
+              className="w-full h-auto object-contain max-h-[60vh]"
             />
           </motion.div>
         </div>

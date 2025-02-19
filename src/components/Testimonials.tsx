@@ -57,6 +57,7 @@ export const Testimonials = () => {
     align: 'center',
     skipSnaps: false,
     containScroll: 'trimSnaps',
+    startIndex: 0
   });
 
   useEffect(() => {
@@ -67,7 +68,11 @@ export const Testimonials = () => {
     }
   }, [emblaApi]);
 
-  const scrollTo = (index: number) => emblaApi?.scrollTo(index);
+  const scrollTo = (index: number) => {
+    if (emblaApi) {
+      emblaApi.scrollTo(index);
+    }
+  };
 
   return (
     <section className="py-16 px-6 bg-[#F1F0FB]">

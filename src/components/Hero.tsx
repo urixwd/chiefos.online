@@ -67,7 +67,7 @@ export const Hero = () => {
             transition={{ delay: 0.2, duration: 0.6 }}
             className="font-montserrat font-bold text-4xl md:text-6xl leading-tight"
           >
-            Your Yacht Base Operations,
+            Your Yacht Charter Operations,
             <br />
             On AutoPilot
           </motion.h1>
@@ -78,17 +78,17 @@ export const Hero = () => {
             transition={{ delay: 0.4, duration: 0.6 }}
             className="font-montserrat text-lg md:text-xl text-gray-300 max-w-2xl mx-auto"
           >
-            {/* The AI powered chief mate that lets you{" "}
+            {/* 
+            The AI powered chief mate that lets you focus
+ on creating value for your guests,
+and nothing else!*/}
+            The AI powered chief mate that lets you{" "}
             <span className="font-semibold">
-              focus <br />
-              on creating value{" "}
+              focus
+              <br /> on creating value{" "}
             </span>
             for your guests,
             <br />
-            <span className="font-semibold">and nothing else!</span> */}
-            The AI powered chief mate that lets you{" "}
-            <span className="font-semibold">focus on creating value </span>for
-            your guests,{" "}
             <span className="font-semibold">and nothing else!</span>
           </motion.p>
         </div>

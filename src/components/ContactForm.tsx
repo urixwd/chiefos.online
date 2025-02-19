@@ -89,9 +89,13 @@ export const ContactForm = () => {
 
   const openWhatsApp = () => {
     const formData = form.getValues();
-    const message = encodeURIComponent(
-      `Hi! I'm interested in learning more about Chief.OS\n\nName: ${formData.name || "Not provided"}\nEmail: ${formData.email || "Not provided"}\nWhatsApp: ${formData.whatsapp || "Not provided"}`
-    );
+    const messageLines = ["Hi! I'm interested in learning more about Chief.OS\n"];
+    
+    if (formData.name) messageLines.push(`Name: ${formData.name}`);
+    if (formData.email) messageLines.push(`Email: ${formData.email}`);
+    if (formData.whatsapp) messageLines.push(`WhatsApp: ${formData.whatsapp}`);
+    
+    const message = encodeURIComponent(messageLines.join('\n'));
     window.open(`https://wa.me/972545854406?text=${message}`, "_blank");
   };
 
@@ -184,7 +188,7 @@ export const ContactForm = () => {
           <p className="text-sm text-gray-600 mb-2">Prefer via WhatsApp?</p>
           <Button
             onClick={openWhatsApp}
-            className="bg-[#25D366] hover:bg-[#25D366]/90 text-white gap-2"
+            className="w-full bg-[#25D366] hover:bg-[#25D366]/90 text-white gap-2"
           >
             <MessageSquare className="w-5 h-5" />
             WhatsApp ChiefOS

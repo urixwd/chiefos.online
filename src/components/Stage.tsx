@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { StageSection } from "../types/stage";
 
@@ -9,11 +8,15 @@ interface StageProps {
 
 export const Stage = ({ section, isReversed = false }: StageProps) => {
   return (
-    <section className="h-screen py-4 sm:py-6 px-4 flex items-center">
+    <section className="py-8 sm:py-12 px-4 flex items-center">
       <div className="max-w-7xl mx-auto w-full">
-        <div className={`grid grid-cols-2 gap-4 items-center ${isReversed ? 'lg:grid-flow-dense' : ''}`}>
+        <div
+          className={`grid grid-cols-2 gap-4 items-center ${
+            isReversed ? "lg:grid-flow-dense" : ""
+          }`}
+        >
           {/* Text Column */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: isReversed ? 20 : -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
@@ -21,17 +24,17 @@ export const Stage = ({ section, isReversed = false }: StageProps) => {
             className="space-y-4"
           >
             <h2 className="font-montserrat text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light leading-tight text-[#31356E]">
-              {section.title.split('\n').map((line, i) => (
+              {section.title.split("\n").map((line, i) => (
                 <span key={i}>
                   {line}
-                  {i < section.title.split('\n').length - 1 && <br />}
+                  {i < section.title.split("\n").length - 1 && <br />}
                 </span>
               ))}
               {section.boldText && (
                 <span className="font-bold block mt-2">{section.boldText}</span>
               )}
             </h2>
-            
+
             {section.paragraph && (
               <p className="text-base sm:text-lg text-[#31356E]/80 leading-relaxed">
                 {section.paragraph}
@@ -40,7 +43,7 @@ export const Stage = ({ section, isReversed = false }: StageProps) => {
           </motion.div>
 
           {/* Image Column */}
-          <div className={`${isReversed ? 'order-first lg:order-last' : ''}`}>
+          <div className={`${isReversed ? "order-first lg:order-last" : ""}`}>
             <motion.img
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}

@@ -1,9 +1,8 @@
-
 import { motion } from "framer-motion";
 
 export const Features = () => {
   return (
-    <section className="h-screen py-4 sm:py-6 px-4 bg-white flex items-center">
+    <section className="py-8 sm:py-12 px-4 bg-white flex items-center">
       <div className="max-w-7xl mx-auto w-full">
         <div className="grid grid-cols-2 gap-4 items-center">
           {/* Text Column */}

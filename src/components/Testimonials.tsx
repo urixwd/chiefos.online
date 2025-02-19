@@ -1,11 +1,13 @@
+
 import { motion } from "framer-motion";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/components/ui/carousel";
+import { useEffect, useState } from "react";
+import useEmblaCarousel from "embla-carousel-react";
+import { cn } from "@/lib/utils";
 
 interface Testimonial {
   id: number;
@@ -46,36 +48,27 @@ const testimonials: Testimonial[] = [
     quote:
       "My family and I enjoyed our first day together, without me having to disappear for hours and leave them at the café.",
   },
-  // {
-  //   id: 1,
-  //   name: "Alex B",
-  //   role: "Israeli Navy officer\n~20 years skipper",
-  //   image:
-  //     "https://chiefos-website.s3.eu-central-003.backblazeb2.com/testimonials/1.webp",
-  //   quote:
-  //     "This service gives you tons of confidence, like you're sitting with me on the yacht. There's no doubt that any skipper who charters a yacht would love to have you by his side.",
-  // },
-  // {
-  //   id: 2,
-  //   name: "Alex B",
-  //   role: "Israeli Navy officer\n~20 years skipper",
-  //   image:
-  //     "https://chiefos-website.s3.eu-central-003.backblazeb2.com/testimonials/1.webp",
-  //   quote:
-  //     "This service gives you tons of confidence, like you're sitting with me on the yacht. There's no doubt that any skipper who charters a yacht would love to have you by his side.",
-  // },
-  // {
-  //   id: 3,
-  //   name: "Alex B",
-  //   role: "Israeli Navy officer\n~20 years skipper",
-  //   image:
-  //     "https://chiefos-website.s3.eu-central-003.backblazeb2.com/testimonials/1.webp",
-  //   quote:
-  //     "This service gives you tons of confidence, like you're sitting with me on the yacht. There's no doubt that any skipper who charters a yacht would love to have you by his side.",
-  // },
 ];
 
 export const Testimonials = () => {
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop: true,
+    align: 'center',
+    skipSnaps: false,
+    containScroll: 'trimSnaps',
+  });
+
+  useEffect(() => {
+    if (emblaApi) {
+      emblaApi.on('select', () => {
+        setSelectedIndex(emblaApi.selectedScrollSnap());
+      });
+    }
+  }, [emblaApi]);
+
+  const scrollTo = (index: number) => emblaApi?.scrollTo(index);
+
   return (
     <section className="py-16 px-6 bg-[#F1F0FB]">
       <div className="max-w-7xl mx-auto">
@@ -89,23 +82,20 @@ export const Testimonials = () => {
           And the guests who already used it?
         </motion.h2>
 
-        <div className="max-w-3xl mx-auto">
-          <Carousel
-            opts={{
-              align: "center",
-              loop: true,
-            }}
-            className="relative w-full"
-          >
-            <CarouselContent>
+        <div className="max-w-5xl mx-auto">
+          <Carousel className="relative w-full">
+            <CarouselContent ref={emblaRef} className="-ml-4">
               {testimonials.map((testimonial) => (
-                <CarouselItem key={testimonial.id}>
+                <CarouselItem 
+                  key={testimonial.id} 
+                  className="pl-4 md:basis-[70%] lg:basis-[60%]"
+                >
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
                     viewport={{ once: true }}
-                    className="flex flex-col md:flex-row items-center gap-8 md:gap-12"
+                    className="flex flex-col items-center gap-8 md:gap-12 px-4"
                   >
                     {testimonial.image && (
                       <div className="flex-shrink-0">
@@ -119,7 +109,7 @@ export const Testimonials = () => {
                       </div>
                     )}
 
-                    <div className="flex-1 text-center md:text-left">
+                    <div className="flex-1 text-center">
                       <p className="text-lg md:text-xl text-[#31356E] font-light mb-6 leading-relaxed">
                         "{testimonial.quote}"
                       </p>
@@ -147,12 +137,23 @@ export const Testimonials = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            {testimonials.length > 1 && (
-              <>
-                <CarouselPrevious className="absolute left-[-12px] md:-left-12 top-24 md:top-1/2 md:-translate-y-1/2" />
-                <CarouselNext className="absolute right-[-12px] md:-right-12 top-24 md:top-1/2 md:-translate-y-1/2" />
-              </>
-            )}
+            
+            {/* Dot Navigation */}
+            <div className="flex justify-center gap-2 mt-8">
+              {testimonials.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => scrollTo(index)}
+                  className={cn(
+                    "w-2.5 h-2.5 rounded-full transition-all duration-300",
+                    index === selectedIndex
+                      ? "bg-[#31356E] scale-125"
+                      : "bg-[#31356E]/30 hover:bg-[#31356E]/50"
+                  )}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
+            </div>
           </Carousel>
         </div>
       </div>

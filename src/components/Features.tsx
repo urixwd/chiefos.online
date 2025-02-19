@@ -49,11 +49,11 @@ export const Features = () => {
               {/* Check-In */}
               <circle cx="40" cy="150" r="6" fill="#31356E" />
               <text
-                x="40"
+                x="50"
                 y="130"
                 textAnchor="middle"
                 fontFamily="Arial"
-                fontSize="14"
+                fontSize="24"
                 fill="#31356E"
               >
                 Check-In
@@ -66,7 +66,7 @@ export const Features = () => {
                 y="280"
                 textAnchor="middle"
                 fontFamily="Arial"
-                fontSize="14"
+                fontSize="24"
                 fill="#31356E"
               >
                 Briefing
@@ -79,7 +79,7 @@ export const Features = () => {
                 y="60"
                 textAnchor="middle"
                 fontFamily="Arial"
-                fontSize="14"
+                fontSize="24"
                 fill="#31356E"
               >
                 Safety
@@ -92,7 +92,7 @@ export const Features = () => {
                 y="180"
                 textAnchor="middle"
                 fontFamily="Arial"
-                fontSize="14"
+                fontSize="24"
                 fill="#31356E"
               >
                 Boat Operation
@@ -105,7 +105,7 @@ export const Features = () => {
                 y="80"
                 textAnchor="middle"
                 fontFamily="Arial"
-                fontSize="14"
+                fontSize="24"
                 fill="#31356E"
               >
                 Troubleshooting
@@ -118,7 +118,7 @@ export const Features = () => {
                 y="170"
                 textAnchor="middle"
                 fontFamily="Arial"
-                fontSize="14"
+                fontSize="24"
                 fill="#31356E"
               >
                 Check-Out

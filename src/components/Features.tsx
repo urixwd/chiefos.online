@@ -143,13 +143,13 @@ export const Features = () => {
                 />
               </DialogTrigger>
               <DialogContent className="max-w-[90vw] max-h-[90vh] p-0 bg-transparent border-none">
-                <div className="relative">
+                <div className="flex flex-col items-center gap-4">
                   <img
                     src="https://f003.backblazeb2.com/file/chiefos-website/screenshots/screenshot-1.png"
                     alt="Chief.OS Screenshot"
                     className="w-full h-auto object-contain max-h-[85vh]"
                   />
-                  <button className="absolute top-4 right-4 p-2 rounded-full bg-white/90 hover:bg-white transition-colors">
+                  <button className="p-2 rounded-full bg-white/90 hover:bg-white transition-colors">
                     <X className="w-6 h-6" />
                   </button>
                 </div>

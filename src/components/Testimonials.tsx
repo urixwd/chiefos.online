@@ -85,7 +85,10 @@ export const Testimonials = () => {
           And the guests who already used it?
         </motion.h2>
 
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-5xl mx-auto relative">
+          {/* Left Gradient Overlay */}
+          <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-[#F1F0FB] to-transparent pointer-events-none z-10"></div>
+
           <div className="relative w-full overflow-hidden">
             <div ref={emblaRef} className="overflow-hidden px-4 md:px-12">
               <div className="flex touch-pan-y">
@@ -142,6 +145,9 @@ export const Testimonials = () => {
                 ))}
               </div>
             </div>
+
+            {/* Right Gradient Overlay */}
+            <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-[#F1F0FB] to-transparent pointer-events-none z-10"></div>
 
             {/* Dot Navigation */}
             <div className="flex justify-center gap-2 mt-8 py-2">

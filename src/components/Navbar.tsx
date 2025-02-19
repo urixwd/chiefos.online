@@ -100,12 +100,14 @@ export const Navbar = () => {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isHeroVisible && !isMenuOpen
           ? "bg-transparent"
+          : isMobile
+          ? "bg-chiefblue shadow-lg"
           : "bg-[url('https://chiefos-website.s3.eu-central-003.backblazeb2.com/background.jpg')] bg-auto shadow-lg"
       }`}
     >
       <div
         className={`absolute inset-0 ${
-          !isHeroVisible || isMenuOpen
+          (!isHeroVisible || isMenuOpen) && !isMobile
             ? "bg-gradient-to-br from-chiefpurple/20 to-black/20"
             : ""
         } z-10`}
@@ -142,17 +144,17 @@ export const Navbar = () => {
               ))}
             </div>
 
-            {!isStickyButtonVisible && !isFormVisible && (
-              <motion.a
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                href="#contact-form"
-                onClick={scrollToForm}
-                className="min-w-[120px] md:w-auto font-montserrat px-4 md:px-6 py-2 bg-chiefblue text-white rounded-lg hover:bg-opacity-90 transition-all duration-200 text-center"
-              >
-                Try ChiefOS
-              </motion.a>
-            )}
+            <motion.a
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+              href="#contact-form"
+              onClick={scrollToForm}
+              className={`min-w-[120px] md:w-auto font-montserrat px-4 md:px-6 py-2 bg-chiefblue text-white rounded-lg hover:bg-opacity-90 transition-all duration-200 text-center ${
+                !isStickyButtonVisible && !isFormVisible ? "" : "opacity-0"
+              }`}
+            >
+              Try ChiefOS
+            </motion.a>
 
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -174,7 +176,7 @@ export const Navbar = () => {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.2 }}
-              className="md:hidden bg-chiefblue mt-4 rounded-lg"
+              className="md:hidden mt-4 rounded-lg"
             >
               <div className="py-4 space-y-4 px-4">
                 {menuItems.map((item) => (

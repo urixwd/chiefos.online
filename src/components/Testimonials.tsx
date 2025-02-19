@@ -16,12 +16,6 @@ interface Testimonial {
 }
 
 const testimonials: Testimonial[] = [
-  /*
-  Ariel L.	"First time I ended my week and discussed my next holiday, rather than the damages I accidentally made or bits I wasn't even aware of."
-Alex B.	""My family and I enjoyed our first day together, without me having to disappear for hours and leave them at the café."
-Ethan R. 	“This service gives you tons of confidence, like you're sitting with me on the boat.
-Anna M.	"It's like having a co-skipper right next to you, making sure no costly mistakes take place during your holiday."
-  */
   {
     id: 1,
     name: "Ariel L.",
@@ -30,21 +24,27 @@ Anna M.	"It's like having a co-skipper right next to you, making sure no costly 
   },
   {
     id: 2,
-    name: "Alex B",
+    name: "Ethan R.",
     quote:
-      "This service gives you tons of confidence, like you're sitting with me on the yacht. There's no doubt that any skipper who charters a yacht would love to have you by his side.",
+      "This service gives you tons of confidence, like you're sitting with me on the yacht.",
   },
   {
     id: 3,
-    name: "Ethan R.",
-    quote:
-      "This service gives you tons of confidence, like you're sitting with me on the yacht. There's no doubt that any skipper who charters a yacht would love to have you by his side.",
-  },
-  {
-    id: 4,
     name: "Anna M.",
     quote:
       "It's like having a co-skipper right next to you, making sure no costly mistakes take place during your holiday.",
+  },
+  {
+    id: 4,
+    name: "Alex S.",
+    quote:
+      "By sharing information with my family, I allowed them to experience sailing from the skipper's perspective as well.",
+  },
+  {
+    id: 5,
+    name: "Vlada T.",
+    quote:
+      "My family and I enjoyed our first day together, without me having to disappear for hours and leave them at the café.",
   },
   // {
   //   id: 1,

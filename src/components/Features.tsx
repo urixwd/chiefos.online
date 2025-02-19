@@ -38,7 +38,7 @@ export const Features = () => {
                    S 200 50, 250 80
                    C 300 120, 340 180, 370 150
                    C 400 120, 440 80, 470 100
-                   S 540 150, 530 140"
+                   S 520 220, 510 213"
                 stroke="#31356E"
                 strokeWidth="3"
                 fill="none"
@@ -49,11 +49,11 @@ export const Features = () => {
               {/* Check-In */}
               <circle cx="40" cy="150" r="6" fill="#31356E" />
               <text
-                x="50"
+                x="40"
                 y="130"
                 textAnchor="middle"
                 fontFamily="Arial"
-                fontSize="24"
+                fontSize="16"
                 fill="#31356E"
               >
                 Check-In
@@ -62,11 +62,11 @@ export const Features = () => {
               {/* Briefing */}
               <circle cx="140" cy="250" r="6" fill="#31356E" />
               <text
-                x="140"
+                x="170"
                 y="280"
                 textAnchor="middle"
                 fontFamily="Arial"
-                fontSize="24"
+                fontSize="16"
                 fill="#31356E"
               >
                 Briefing
@@ -79,7 +79,7 @@ export const Features = () => {
                 y="60"
                 textAnchor="middle"
                 fontFamily="Arial"
-                fontSize="24"
+                fontSize="16"
                 fill="#31356E"
               >
                 Safety
@@ -92,7 +92,7 @@ export const Features = () => {
                 y="180"
                 textAnchor="middle"
                 fontFamily="Arial"
-                fontSize="24"
+                fontSize="16"
                 fill="#31356E"
               >
                 Boat Operation
@@ -105,20 +105,20 @@ export const Features = () => {
                 y="80"
                 textAnchor="middle"
                 fontFamily="Arial"
-                fontSize="24"
+                fontSize="16"
                 fill="#31356E"
               >
                 Troubleshooting
               </text>
 
               {/* Check-Out */}
-              <circle cx="530" cy="140" r="6" fill="#31356E" />
+              <circle cx="510" cy="213" r="6" fill="#31356E" />
               <text
-                x="530"
-                y="170"
+                x="510"
+                y="243"
                 textAnchor="middle"
                 fontFamily="Arial"
-                fontSize="24"
+                fontSize="16"
                 fill="#31356E"
               >
                 Check-Out

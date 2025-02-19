@@ -115,6 +115,15 @@ export const Navbar = () => {
             <motion.a
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
+              href="#"
+              className="hidden md:block font-montserrat px-4 py-2 text-white hover:text-gray-200 transition-all duration-200"
+            >
+              Login
+            </motion.a>
+
+            <motion.a
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 400, damping: 10 }}
               href="#contact-form"
               onClick={scrollToForm}
               className={`min-w-[120px] md:w-auto font-montserrat px-4 md:px-6 py-2 bg-chiefblue text-white rounded-lg hover:bg-opacity-90 transition-all duration-200 text-center ${

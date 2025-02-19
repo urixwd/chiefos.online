@@ -1,3 +1,4 @@
+
 import { motion, useScroll, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
@@ -16,15 +17,13 @@ export const Navbar = () => {
   const [hasScrolled, setHasScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isHeroVisible, setIsHeroVisible] = useState(true);
+  const [isFormVisible, setIsFormVisible] = useState(false);
+  const [isStickyButtonVisible, setIsStickyButtonVisible] = useState(false);
   const isMobile = useIsMobile();
 
   const scrollToForm = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-
-    // Close menu first to avoid any interference
     setIsMenuOpen(false);
-
-    // Small delay to ensure menu is closed
     setTimeout(() => {
       const element = document.getElementById("contact-form");
       if (element) {
@@ -58,15 +57,39 @@ export const Navbar = () => {
       { threshold: 0.1 }
     );
 
+    const formObserver = new IntersectionObserver(
+      ([entry]) => {
+        setIsFormVisible(entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
+
+    const stickyButtonObserver = new IntersectionObserver(
+      ([entry]) => {
+        // Check if the sticky button should be visible (when hero is not visible and form is not visible)
+        setIsStickyButtonVisible(!entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
+
     const heroElement = document.getElementById("hero-section");
+    const formElement = document.getElementById("contact-form");
 
     if (heroElement) {
       heroObserver.observe(heroElement);
+      stickyButtonObserver.observe(heroElement);
+    }
+    if (formElement) {
+      formObserver.observe(formElement);
     }
 
     return () => {
       if (heroElement) {
         heroObserver.unobserve(heroElement);
+        stickyButtonObserver.unobserve(heroElement);
+      }
+      if (formElement) {
+        formObserver.unobserve(formElement);
       }
     };
   }, []);
@@ -121,15 +144,18 @@ export const Navbar = () => {
               ))}
             </div>
 
-            <motion.a
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 400, damping: 10 }}
-              href="#contact-form"
-              onClick={scrollToForm}
-              className="min-w-[120px] md:w-auto font-montserrat px-4 md:px-6 py-2 bg-chiefblue text-white rounded-lg hover:bg-opacity-90 transition-all duration-200 text-center"
-            >
-              Try ChiefOS
-            </motion.a>
+            {/* Only show Try ChiefOS button when sticky button is not visible */}
+            {!isStickyButtonVisible && !isFormVisible && (
+              <motion.a
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                href="#contact-form"
+                onClick={scrollToForm}
+                className="min-w-[120px] md:w-auto font-montserrat px-4 md:px-6 py-2 bg-chiefblue text-white rounded-lg hover:bg-opacity-90 transition-all duration-200 text-center"
+              >
+                Try ChiefOS
+              </motion.a>
+            )}
 
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}

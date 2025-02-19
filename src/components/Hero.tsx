@@ -83,10 +83,7 @@ export const Hero = () => {
  on creating value for your guests,
 and nothing else!*/}
             The AI powered chief mate that lets you{" "}
-            <span className="font-semibold">
-              focus
-              <br /> on creating value{" "}
-            </span>
+            <span className="font-semibold">focus on creating value </span>
             for your guests,
             <br />
             <span className="font-semibold">and nothing else!</span>

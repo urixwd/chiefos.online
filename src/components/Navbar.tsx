@@ -115,7 +115,8 @@ export const Navbar = () => {
             <motion.a
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
-              href="#"
+              href="#contact-form"
+              onClick={scrollToForm}
               className="hidden md:block font-montserrat px-4 py-2 text-white hover:text-gray-200 transition-all duration-200"
             >
               Login
@@ -148,7 +149,10 @@ export const Navbar = () => {
 
         <MobileMenu
           isOpen={isMenuOpen}
-          items={menuItems}
+          items={[
+            { label: "Login", href: "#contact-form" },
+            ...menuItems
+          ]}
           onItemClick={scrollToForm}
         />
       </div>

@@ -18,7 +18,7 @@ const Index = () => {
         <Stage 
           key={section.id} 
           section={section}
-          isReversed={index % 2 === 0}
+          isReversed={index % 2 !== 0}
         />
       ))}
       <Testimonials />

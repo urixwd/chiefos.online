@@ -7,6 +7,7 @@ import { Features } from "../components/Features";
 import { Testimonials } from "../components/Testimonials";
 import { Stage } from "../components/Stage";
 import { stageSections } from "../types/stage";
+import InfoSection from "../components/InfoSection";
 
 const Index = () => {
   return (
@@ -25,6 +26,7 @@ const Index = () => {
       <section id="contact-form" className="py-16 px-6 bg-gray-50">
         <ContactForm />
       </section>
+      <InfoSection />
       <Footer />
     </main>
   );

@@ -143,7 +143,7 @@ export const Features = () => {
                   className="w-full h-auto object-contain max-h-[60vh] cursor-pointer hover:scale-105 transition-transform duration-200"
                 />
               </DialogTrigger>
-              <DialogContent className="max-w-[90vw] max-h-[90vh] p-0 bg-transparent border-none" onInteractOutside={() => {}}>
+              <DialogContent className="max-w-[90vw] max-h-[90vh] p-0 bg-transparent border-none">
                 <div className="flex flex-col items-center gap-4">
                   <img
                     src="https://f003.backblazeb2.com/file/chiefos-website/screenshots/screenshot-1.png"

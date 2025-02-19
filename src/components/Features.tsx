@@ -7,6 +7,101 @@ import {
 } from "@/components/ui/dialog";
 import { X } from "lucide-react";
 
+const MobileSVG = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 380 570"
+    className="w-full max-w-[200px] mx-auto block sm:hidden"
+  >
+    {/* Curved path connecting all points */}
+    <path
+      d="M 150 40
+         C 250 40, 320 90, 250 140
+         S 50 200, 80 250
+         C 120 300, 180 340, 150 370
+         C 120 400, 80 440, 100 470
+         S 220 520, 213 510"
+      stroke="#31356E"
+      strokeWidth="3"
+      fill="none"
+      strokeDasharray="8,8"
+    />
+    {/* Points and labels */}
+    {/* Check-In */}
+    <circle cx="150" cy="40" r="6" fill="#31356E" />
+    <text
+      x="150"
+      y="20"
+      textAnchor="middle"
+      fontFamily="Arial"
+      fontSize="20"
+      fill="#31356E"
+    >
+      Check-In
+    </text>
+    {/* Briefing */}
+    <circle cx="250" cy="140" r="6" fill="#31356E" />
+    <text
+      x="280"
+      y="170"
+      textAnchor="middle"
+      fontFamily="Arial"
+      fontSize="20"
+      fill="#31356E"
+    >
+      Briefing
+    </text>
+    {/* Safety */}
+    <circle cx="80" cy="250" r="6" fill="#31356E" />
+    <text
+      x="98"
+      y="257"
+      textAnchor="start"
+      fontFamily="Arial"
+      fontSize="20"
+      fill="#31356E"
+    >
+      Safety
+    </text>
+    {/* Boat Operation */}
+    <circle cx="150" cy="370" r="6" fill="#31356E" />
+    <text
+      x="170"
+      y="378"
+      textAnchor="start"
+      fontFamily="Arial"
+      fontSize="20"
+      fill="#31356E"
+    >
+      Boat Operation
+    </text>
+    {/* Troubleshooting */}
+    <circle cx="100" cy="470" r="6" fill="#31356E" />
+    <text
+      x="120"
+      y="475"
+      textAnchor="start"
+      fontFamily="Arial"
+      fontSize="20"
+      fill="#31356E"
+    >
+      Troubleshooting
+    </text>
+    {/* Check-Out */}
+    <circle cx="213" cy="510" r="6" fill="#31356E" />
+    <text
+      x="213"
+      y="540"
+      textAnchor="middle"
+      fontFamily="Arial"
+      fontSize="20"
+      fill="#31356E"
+    >
+      Check-Out
+    </text>
+  </svg>
+);
+
 export const Features = () => {
   return (
     <section className="py-8 sm:py-12 px-4 bg-white flex items-center">
@@ -25,11 +120,16 @@ export const Features = () => {
               the way
             </h2>
 
-            {/* SVG diagram - adjusted size for mobile */}
+            {/* Mobile SVG diagram */}
+            <div className="block sm:hidden">
+              <MobileSVG />
+            </div>
+
+            {/* SVG diagram - adjusted size for larger screens */}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 570 380"
-              className="w-full max-w-[200px] sm:max-w-lg md:max-w-xl lg:max-w-2xl mx-auto"
+              className="hidden sm:block w-full max-w-[200px] sm:max-w-lg md:max-w-xl lg:max-w-2xl mx-auto"
             >
               {/* Curved path connecting all points */}
               <path

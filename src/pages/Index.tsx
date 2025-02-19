@@ -1,4 +1,3 @@
-
 import { Navbar } from "../components/Navbar";
 import { Hero } from "../components/Hero";
 import { Footer } from "../components/Footer";
@@ -8,6 +7,7 @@ import { Testimonials } from "../components/Testimonials";
 import { Stage } from "../components/Stage";
 import { stageSections } from "../types/stage";
 import InfoSection from "../components/InfoSection";
+import DesktopPromoSection from "../components/DesktopPromoSection";
 
 const Index = () => {
   return (
@@ -16,8 +16,8 @@ const Index = () => {
       <Hero />
       <Features />
       {stageSections.map((section, index) => (
-        <Stage 
-          key={section.id} 
+        <Stage
+          key={section.id}
           section={section}
           isReversed={index % 2 === 0}
         />
@@ -27,10 +27,10 @@ const Index = () => {
         <ContactForm />
       </section>
       <InfoSection />
+      <DesktopPromoSection />
       <Footer />
     </main>
   );
 };
 
 export default Index;
-

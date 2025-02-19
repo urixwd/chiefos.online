@@ -86,6 +86,22 @@ export const Footer = () => {
           © {new Date().getFullYear()} Chief.OS. All rights reserved.
         </p>
       </div>
+      {/* add foooter with two linke - Terms & Conditions	Privacy & Security - that look like links but don't do anything. */}
+      <div className="max-w-7xl mx-auto text-center text-xs text-gray-400">
+        <a
+          href="javascript:void(0)"
+          className="text-gray-400 hover:text-white underline"
+        >
+          Terms and Conditions
+        </a>
+        <span>&nbsp;</span>
+        <a
+          href="javascript:void(0)"
+          className="text-gray-400 hover:text-white underline"
+        >
+          Privacy Policy
+        </a>
+      </div>
     </footer>
   );
 };

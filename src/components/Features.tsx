@@ -1,4 +1,11 @@
+
 import { motion } from "framer-motion";
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { X } from "lucide-react";
 
 export const Features = () => {
   return (
@@ -127,11 +134,27 @@ export const Features = () => {
             viewport={{ once: true }}
             className="pl-2 md:pl-8"
           >
-            <img
-              src="https://f003.backblazeb2.com/file/chiefos-website/screenshots/screenshot-1.png"
-              alt="Chief.OS Screenshot"
-              className="w-full h-auto object-contain max-h-[60vh]"
-            />
+            <Dialog>
+              <DialogTrigger asChild>
+                <img
+                  src="https://f003.backblazeb2.com/file/chiefos-website/screenshots/screenshot-1.png"
+                  alt="Chief.OS Screenshot"
+                  className="w-full h-auto object-contain max-h-[60vh] cursor-pointer hover:scale-105 transition-transform duration-200"
+                />
+              </DialogTrigger>
+              <DialogContent className="max-w-[90vw] max-h-[90vh] p-0 bg-transparent border-none">
+                <div className="relative">
+                  <img
+                    src="https://f003.backblazeb2.com/file/chiefos-website/screenshots/screenshot-1.png"
+                    alt="Chief.OS Screenshot"
+                    className="w-full h-auto object-contain max-h-[85vh]"
+                  />
+                  <button className="absolute top-4 right-4 p-2 rounded-full bg-white/90 hover:bg-white transition-colors">
+                    <X className="w-6 h-6" />
+                  </button>
+                </div>
+              </DialogContent>
+            </Dialog>
           </motion.div>
         </div>
       </div>

@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import {
   Carousel,
@@ -54,14 +53,14 @@ export const Testimonials = () => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
-    align: 'start',
-    containScroll: false,
+    align: "center",
+    containScroll: "trimSnaps",
     dragFree: false,
   });
 
   useEffect(() => {
     if (emblaApi) {
-      emblaApi.on('select', () => {
+      emblaApi.on("select", () => {
         setSelectedIndex(emblaApi.selectedScrollSnap());
       });
     }
@@ -88,12 +87,12 @@ export const Testimonials = () => {
 
         <div className="max-w-5xl mx-auto">
           <div className="relative w-full overflow-hidden">
-            <div ref={emblaRef} className="overflow-hidden">
-              <div className="flex -ml-4 touch-pan-y">
+            <div ref={emblaRef} className="overflow-hidden px-4 md:px-12">
+              <div className="flex touch-pan-y">
                 {testimonials.map((testimonial) => (
-                  <div 
-                    key={testimonial.id} 
-                    className="pl-4 min-w-0 flex-[0_0_90%] md:flex-[0_0_70%] lg:flex-[0_0_60%]"
+                  <div
+                    key={testimonial.id}
+                    className="flex-[0_0_100%] md:flex-[0_0_80%] lg:flex-[0_0_70%] px-4"
                   >
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
@@ -128,7 +127,10 @@ export const Testimonials = () => {
                               {testimonial.role.split("\n").map((line, i) => (
                                 <span key={i}>
                                   {line}
-                                  {i < testimonial.role.split("\n").length - 1 && <br />}
+                                  {i <
+                                    testimonial.role.split("\n").length - 1 && (
+                                    <br />
+                                  )}
                                 </span>
                               ))}
                             </p>
@@ -140,9 +142,9 @@ export const Testimonials = () => {
                 ))}
               </div>
             </div>
-            
+
             {/* Dot Navigation */}
-            <div className="flex justify-center gap-2 mt-8">
+            <div className="flex justify-center gap-2 mt-8 py-2">
               {testimonials.map((_, index) => (
                 <button
                   key={index}

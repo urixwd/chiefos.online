@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -27,9 +28,12 @@ const formSchema = z.object({
       message: "Invalid email format",
     })
     .optional(),
-  whatsapp: z.string().refine((value) => !value || isValidPhoneNumber(value), {
-    message: "Invalid phone number",
-  }),
+  whatsapp: z
+    .string()
+    .min(1, "WhatsApp number is required")
+    .refine((value) => isValidPhoneNumber(value), {
+      message: "Invalid phone number",
+    }),
 });
 
 type FormValues = z.infer<typeof formSchema>;

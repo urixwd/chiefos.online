@@ -64,7 +64,7 @@ export const Stage = ({ section, isReversed = false }: StageProps) => {
                   className="w-full h-auto object-contain max-h-[60vh] cursor-pointer hover:scale-105 transition-transform duration-200"
                 />
               </DialogTrigger>
-              <DialogContent className="max-w-[90vw] max-h-[90vh] p-0 bg-transparent border-none">
+              <DialogContent className="max-w-[90vw] max-h-[90vh] p-0 bg-transparent border-none" onInteractOutside={() => {}}>
                 <div className="flex flex-col items-center gap-4">
                   <img 
                     src={section.imageUrl} 

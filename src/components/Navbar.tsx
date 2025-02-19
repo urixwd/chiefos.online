@@ -1,11 +1,10 @@
-
 import { motion, useScroll, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { useIsMobile } from "../hooks/use-mobile";
 
+const loginItem = [{ label: "Login", href: "#contact-form" }];
 const menuItems = [
-  { label: "Login", href: "#contact-form" },
   { label: "Guides & Tutorials", href: "#contact-form" },
   { label: "Help Center", href: "#contact-form" },
   { label: "Blog", href: "#contact-form" },
@@ -114,21 +113,20 @@ export const Navbar = () => {
       />
       <div className="max-w-7xl mx-auto px-6 py-4 relative z-20">
         <div className="flex justify-between items-center">
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            transition={{ type: "spring", stiffness: 400, damping: 10 }}
-            className="w-[30%] max-w-[200px]"
-          >
-            <a href="/" className="block">
-              <img
-                src="https://chiefos-website.s3.eu-central-003.backblazeb2.com/logo-light.png"
-                alt="Chief.OS Logo"
-                className="w-full h-auto"
-              />
-            </a>
-          </motion.div>
-
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-8">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+              className="w-[30%] max-w-[200px]"
+            >
+              <a href="/" className="block">
+                <img
+                  src="https://chiefos-website.s3.eu-central-003.backblazeb2.com/logo-light.png"
+                  alt="Chief.OS Logo"
+                  className="w-full h-auto"
+                />
+              </a>
+            </motion.div>
             <div className="hidden md:flex items-center gap-6">
               {menuItems.map((item) => (
                 <motion.a
@@ -143,7 +141,23 @@ export const Navbar = () => {
                 </motion.a>
               ))}
             </div>
+          </div>
 
+          <div className="flex items-center gap-4">
+            <div className="hidden md:flex items-center gap-6">
+              {/* { label: "Login", href: "#contact-form" }, */}
+
+              <motion.a
+                key={"Login"}
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                href={"#contact-form"}
+                onClick={scrollToForm}
+                className="font-montserrat text-white hover:text-gray-200 transition-colors duration-200"
+              >
+                Login
+              </motion.a>
+            </div>
             {/* Only show Try ChiefOS button when sticky button is not visible */}
             {!isStickyButtonVisible && !isFormVisible && (
               <motion.a
@@ -180,7 +194,7 @@ export const Navbar = () => {
               className="md:hidden"
             >
               <div className="py-4 space-y-4">
-                {menuItems.map((item) => (
+                {[...loginItem, ...menuItems].map((item) => (
                   <motion.a
                     key={item.label}
                     initial={{ opacity: 0, x: -20 }}

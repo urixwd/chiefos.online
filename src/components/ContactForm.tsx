@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -92,14 +91,16 @@ export const ContactForm = () => {
 
   const openWhatsApp = () => {
     const formData = form.getValues();
-    const messageLines = ["Hi! I'm interested in learning more about Chief.OS\n"];
-    
+    const messageLines = [
+      "Hi! I'm interested in learning more about Chief.OS\n",
+    ];
+
     if (formData.name) messageLines.push(`Name: ${formData.name}`);
     if (formData.email) messageLines.push(`Email: ${formData.email}`);
     if (formData.whatsapp) messageLines.push(`WhatsApp: ${formData.whatsapp}`);
-    
-    const message = encodeURIComponent(messageLines.join('\n'));
-    window.open(`https://wa.me/972545854406?text=${message}`, "_blank");
+
+    const message = encodeURIComponent(messageLines.join("\n"));
+    window.open(`https://wa.me/34624139891?text=${message}`, "_blank");
   };
 
   return (

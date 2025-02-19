@@ -4,6 +4,7 @@ import {
   Dialog,
   DialogContent,
   DialogTrigger,
+  DialogClose,
 } from "@/components/ui/dialog";
 import { X } from "lucide-react";
 
@@ -149,9 +150,9 @@ export const Features = () => {
                     alt="Chief.OS Screenshot"
                     className="w-full h-auto object-contain max-h-[85vh]"
                   />
-                  <button className="p-2 rounded-full bg-white/90 hover:bg-white transition-colors">
+                  <DialogClose className="p-2 rounded-full bg-white/90 hover:bg-white transition-colors">
                     <X className="w-6 h-6" />
-                  </button>
+                  </DialogClose>
                 </div>
               </DialogContent>
             </Dialog>

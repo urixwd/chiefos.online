@@ -1,46 +1,12 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { useIsMobile } from "../hooks/use-mobile";
+import { useSectionVisibility } from "../hooks/use-section-visibility";
 
 export const Hero = () => {
-  const [isHeroVisible, setIsHeroVisible] = useState(true);
-  const [isFormVisible, setIsFormVisible] = useState(false);
+  const isHeroVisible = useSectionVisibility("hero-section");
+  const isFormVisible = useSectionVisibility("contact-form");
   const isMobile = useIsMobile();
-
-  useEffect(() => {
-    const heroObserver = new IntersectionObserver(
-      ([entry]) => {
-        setIsHeroVisible(entry.isIntersecting);
-      },
-      { threshold: 0.1 }
-    );
-
-    const formObserver = new IntersectionObserver(
-      ([entry]) => {
-        setIsFormVisible(entry.isIntersecting);
-      },
-      { threshold: 0.1 }
-    );
-
-    const heroElement = document.getElementById("hero-section");
-    const formElement = document.getElementById("contact-form");
-
-    if (heroElement) {
-      heroObserver.observe(heroElement);
-    }
-    if (formElement) {
-      formObserver.observe(formElement);
-    }
-
-    return () => {
-      if (heroElement) {
-        heroObserver.unobserve(heroElement);
-      }
-      if (formElement) {
-        formObserver.unobserve(formElement);
-      }
-    };
-  }, []);
 
   const scrollToForm = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();

@@ -1,11 +1,11 @@
-
 import { motion, useScroll } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { useIsMobile } from "../hooks/use-mobile";
 import { NavbarLogo } from "./navbar/NavbarLogo";
 import { NavbarMenuItems } from "./navbar/NavbarMenuItems";
 import { MobileMenu } from "./navbar/MobileMenu";
+import { useSectionVisibility } from "../hooks/use-section-visibility";
 
 const menuItems = [
   { label: "Guides & Tutorials", href: "#contact-form" },
@@ -17,9 +17,8 @@ const menuItems = [
 export const Navbar = () => {
   const { scrollY } = useScroll();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isHeroVisible, setIsHeroVisible] = useState(true);
-  const [isFormVisible, setIsFormVisible] = useState(false);
-  const [isStickyButtonVisible, setIsStickyButtonVisible] = useState(false);
+  const isHeroVisible = useSectionVisibility("hero-section");
+  const isFormVisible = useSectionVisibility("contact-form");
   const isMobile = useIsMobile();
 
   const scrollToForm = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -30,7 +29,8 @@ export const Navbar = () => {
       if (element) {
         const headerOffset = 100;
         const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        const offsetPosition =
+          elementPosition + window.pageYOffset - headerOffset;
 
         window.scrollTo({
           top: offsetPosition,
@@ -39,50 +39,6 @@ export const Navbar = () => {
       }
     }, 100);
   };
-
-  useEffect(() => {
-    const heroObserver = new IntersectionObserver(
-      ([entry]) => {
-        setIsHeroVisible(entry.isIntersecting);
-      },
-      { threshold: 0.1 }
-    );
-
-    const formObserver = new IntersectionObserver(
-      ([entry]) => {
-        setIsFormVisible(entry.isIntersecting);
-      },
-      { threshold: 0.1 }
-    );
-
-    const stickyButtonObserver = new IntersectionObserver(
-      ([entry]) => {
-        setIsStickyButtonVisible(!entry.isIntersecting);
-      },
-      { threshold: 0.1 }
-    );
-
-    const heroElement = document.getElementById("hero-section");
-    const formElement = document.getElementById("contact-form");
-
-    if (heroElement) {
-      heroObserver.observe(heroElement);
-      stickyButtonObserver.observe(heroElement);
-    }
-    if (formElement) {
-      formObserver.observe(formElement);
-    }
-
-    return () => {
-      if (heroElement) {
-        heroObserver.unobserve(heroElement);
-        stickyButtonObserver.unobserve(heroElement);
-      }
-      if (formElement) {
-        formObserver.unobserve(formElement);
-      }
-    };
-  }, []);
 
   return (
     <motion.nav
@@ -128,7 +84,7 @@ export const Navbar = () => {
               href="#contact-form"
               onClick={scrollToForm}
               className={`whitespace-nowrap min-w-[120px] md:w-auto font-montserrat px-4 md:px-6 py-2 bg-chiefblue text-white rounded-lg hover:bg-opacity-90 transition-all duration-200 text-center ${
-                !isStickyButtonVisible && !isFormVisible ? "" : "opacity-0"
+                !isFormVisible ? "" : "opacity-0"
               }`}
             >
               Try ChiefOS
@@ -149,10 +105,7 @@ export const Navbar = () => {
 
         <MobileMenu
           isOpen={isMenuOpen}
-          items={[
-            { label: "Login", href: "#contact-form" },
-            ...menuItems
-          ]}
+          items={[{ label: "Login", href: "#contact-form" }, ...menuItems]}
           onItemClick={scrollToForm}
         />
       </div>

@@ -11,7 +11,7 @@ export const stageSections: StageSection[] = [
     id: "stage-1",
     title:
       "Ensures a flawless experience from pre-embarkation to five-star reviews",
-    boldText: "Check-Cut",
+    boldText: "Check-Out",
     imageUrl:
       "https://f003.backblazeb2.com/file/chiefos-website/screenshots/screenshot-1.png",
   },

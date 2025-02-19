@@ -1,8 +1,9 @@
+
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { MessageSquare } from "lucide-react";
+import { MessageSquare, WhatsApp } from "lucide-react";
 import { isValidPhoneNumber } from "react-phone-number-input";
 import {
   Form,
@@ -87,8 +88,9 @@ export const ContactForm = () => {
   }, [whatsappNumber]);
 
   const openWhatsApp = () => {
+    const formData = form.getValues();
     const message = encodeURIComponent(
-      "Hi! I'm interested in learning more about Chief.OS"
+      `Hi! I'm interested in learning more about Chief.OS\n\nName: ${formData.name || "Not provided"}\nEmail: ${formData.email || "Not provided"}\nWhatsApp: ${formData.whatsapp || "Not provided"}`
     );
     window.open(`https://wa.me/972545854406?text=${message}`, "_blank");
   };
@@ -99,27 +101,6 @@ export const ContactForm = () => {
         Want to make your guests' experience unforgettable?
       </h2>
       <div className="max-w-md mx-auto p-6">
-        <div className="mb-8 hidden">
-          <Button
-            onClick={openWhatsApp}
-            className="w-full flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700"
-          >
-            <MessageSquare className="w-5 h-5" />
-            Contact via WhatsApp
-          </Button>
-        </div>
-
-        <div className="relative mb-8 hidden">
-          <div className="absolute inset-0 flex items-center">
-            <div className="w-full border-t border-gray-300"></div>
-          </div>
-          <div className="relative flex justify-center text-sm">
-            <span className="px-2 bg-gray-50 text-gray-500">
-              Or fill the form
-            </span>
-          </div>
-        </div>
-
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             <FormField
@@ -198,6 +179,17 @@ export const ContactForm = () => {
             </Button>
           </form>
         </Form>
+
+        <div className="mt-6 text-center">
+          <p className="text-sm text-gray-600 mb-2">Prefer via WhatsApp?</p>
+          <Button
+            onClick={openWhatsApp}
+            className="bg-[#25D366] hover:bg-[#25D366]/90 text-white gap-2"
+          >
+            <WhatsApp className="w-5 h-5" />
+            WhatsApp ChiefOS
+          </Button>
+        </div>
       </div>
     </>
   );

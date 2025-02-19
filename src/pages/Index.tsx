@@ -7,7 +7,7 @@ import { Testimonials } from "../components/Testimonials";
 import { Stage } from "../components/Stage";
 import { stageSections } from "../types/stage";
 import InfoSection from "../components/InfoSection";
-import DesktopPromoSection from "../components/DesktopPromoSection";
+import PromoSection from "../components/PromoSection";
 
 const Index = () => {
   return (
@@ -27,7 +27,7 @@ const Index = () => {
         <ContactForm />
       </section>
       <InfoSection />
-      <DesktopPromoSection />
+      <PromoSection />
       <Footer />
     </main>
   );

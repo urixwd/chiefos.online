@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import React from "react";
 
-const DesktopPromoSection = () => {
+const PromoSection = () => {
   const scrollToForm = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     const element = document.getElementById("contact-form");
@@ -11,7 +11,7 @@ const DesktopPromoSection = () => {
   };
 
   return (
-    <section className="hidden md:flex flex-col justify-center items-center bg-gray-50 py-16">
+    <section className="flex flex-col justify-center items-center bg-gray-50 py-16">
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -31,4 +31,4 @@ const DesktopPromoSection = () => {
   );
 };
 
-export default DesktopPromoSection;
+export default PromoSection;

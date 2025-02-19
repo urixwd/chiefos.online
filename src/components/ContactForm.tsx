@@ -105,7 +105,7 @@ export const ContactForm = () => {
 
   return (
     <>
-      <h2 className="text-2xl font-semibold text-[#31356E] mb-6 text-center">
+      <h2 className="text-2xl font-semibold text-[#31356E] mb-6 text-center font-montserrat">
         Want to make your guests' experience unforgettable?
       </h2>
       <div className="max-w-md mx-auto p-6">
@@ -116,7 +116,9 @@ export const ContactForm = () => {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-chiefpurple">Name *</FormLabel>
+                  <FormLabel className="text-chiefpurple font-montserrat">
+                    Name *
+                  </FormLabel>
                   <FormControl>
                     <Input placeholder="Your name" {...field} />
                   </FormControl>
@@ -130,7 +132,7 @@ export const ContactForm = () => {
               name="whatsapp"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-chiefpurple">
+                  <FormLabel className="text-chiefpurple font-montserrat">
                     WhatsApp Number *
                   </FormLabel>
                   <FormControl>
@@ -161,7 +163,7 @@ export const ContactForm = () => {
                   name="email"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-chiefpurple">
+                      <FormLabel className="text-chiefpurple font-montserrat">
                         Work Email
                       </FormLabel>
                       <FormControl>

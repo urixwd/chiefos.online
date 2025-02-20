@@ -4,6 +4,7 @@ export interface StageSection {
   boldText?: string;
   paragraph?: string;
   imageUrl: string;
+  imageBigUrl?: string;
 }
 
 export const stageSections: StageSection[] = [
@@ -14,6 +15,8 @@ export const stageSections: StageSection[] = [
     boldText: "Check-Out",
     imageUrl:
       "https://f003.backblazeb2.com/file/chiefos-website/screenshots/screenshot-1.png",
+    imageBigUrl:
+      "https://f003.backblazeb2.com/file/chiefos-website/screenshots/screenshot-1-big.png",
   },
   {
     id: "stage-2",
@@ -22,6 +25,8 @@ export const stageSections: StageSection[] = [
     boldText: "Troubleshooting",
     imageUrl:
       "https://f003.backblazeb2.com/file/chiefos-website/screenshots/screenshot-2.png",
+    imageBigUrl:
+      "https://f003.backblazeb2.com/file/chiefos-website/screenshots/screenshot-2-big.png",
   },
   {
     id: "stage-3",
@@ -30,6 +35,8 @@ export const stageSections: StageSection[] = [
     boldText: "Boat Operation",
     imageUrl:
       "https://f003.backblazeb2.com/file/chiefos-website/screenshots/screenshot-3.png",
+    imageBigUrl:
+      "https://f003.backblazeb2.com/file/chiefos-website/screenshots/screenshot-3-big.png",
   },
   {
     id: "stage-4",
@@ -38,6 +45,8 @@ export const stageSections: StageSection[] = [
     boldText: "Briefing",
     imageUrl:
       "https://f003.backblazeb2.com/file/chiefos-website/screenshots/screenshot-4.png",
+    imageBigUrl:
+      "https://f003.backblazeb2.com/file/chiefos-website/screenshots/screenshot-4-big.png",
   },
   {
     id: "stage-5",
@@ -45,5 +54,7 @@ export const stageSections: StageSection[] = [
     boldText: "Check-In",
     imageUrl:
       "https://f003.backblazeb2.com/file/chiefos-website/screenshots/screenshot-5.png",
+    imageBigUrl:
+      "https://f003.backblazeb2.com/file/chiefos-website/screenshots/screenshot-5-big.png",
   },
 ];

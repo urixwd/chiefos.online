@@ -1,5 +1,5 @@
-
 import { motion } from "framer-motion";
+import { useState } from "react";
 import { StageSection } from "../types/stage";
 import { X } from "lucide-react";
 import {
@@ -15,6 +15,8 @@ interface StageProps {
 }
 
 export const Stage = ({ section, isReversed = false }: StageProps) => {
+  const [isBigImageLoaded, setIsBigImageLoaded] = useState(false);
+
   return (
     <section className="py-12 sm:py-16 px-4 flex items-center">
       <div className="max-w-7xl mx-auto w-full">
@@ -66,10 +68,13 @@ export const Stage = ({ section, isReversed = false }: StageProps) => {
               </DialogTrigger>
               <DialogContent className="max-w-[90vw] max-h-[90vh] p-0 bg-transparent border-none">
                 <div className="flex flex-col items-center gap-4">
-                  <img 
-                    src={section.imageUrl} 
-                    alt="Stage Screenshot" 
+                  <img
+                    src={
+                      isBigImageLoaded ? section.imageBigUrl : section.imageUrl
+                    }
+                    alt="Stage Screenshot"
                     className="w-full h-auto object-contain max-h-[85vh]"
+                    onLoad={() => setIsBigImageLoaded(true)}
                   />
                   <DialogClose className="p-2 rounded-full bg-white/90 hover:bg-white transition-colors">
                     <X className="w-6 h-6" />

@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -103,6 +104,8 @@ const MobileSVG = () => (
 );
 
 export const Features = () => {
+  const [isBigImageLoaded, setIsBigImageLoaded] = useState(false);
+
   return (
     <section className="py-8 sm:py-12 px-4 bg-white flex items-center">
       <div className="max-w-7xl mx-auto w-full">
@@ -245,9 +248,14 @@ export const Features = () => {
               <DialogContent className="max-w-[90vw] max-h-[90vh] p-0 bg-transparent border-none">
                 <div className="flex flex-col items-center gap-4">
                   <img
-                    src="https://f003.backblazeb2.com/file/chiefos-website/screenshots/every-step.png"
+                    src={
+                      isBigImageLoaded
+                        ? "https://f003.backblazeb2.com/file/chiefos-website/screenshots/every-step-big.png"
+                        : "https://f003.backblazeb2.com/file/chiefos-website/screenshots/every-step.png"
+                    }
                     alt="Chief.OS Screenshot"
                     className="w-full h-auto object-contain max-h-[85vh]"
+                    onLoad={() => setIsBigImageLoaded(true)}
                   />
                   <DialogClose className="p-2 rounded-full bg-white/90 hover:bg-white transition-colors">
                     <X className="w-6 h-6" />

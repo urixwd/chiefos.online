@@ -84,7 +84,7 @@ export const Navbar = () => {
               href="#contact-form"
               onClick={scrollToForm}
               className={`whitespace-nowrap min-w-[120px] md:w-auto font-montserrat px-4 md:px-6 py-2 bg-chiefblue text-white rounded-lg hover:bg-opacity-90 transition-all duration-200 text-center ${
-                !isFormVisible ? "" : "opacity-0"
+                isHeroVisible ? "" : "opacity-0"
               }`}
             >
               Try ChiefOS

@@ -35,7 +35,7 @@ export const Hero = () => {
           >
             Your Yacht Charter Operations,
             <br />
-            On AutoPilot
+            On Autopilot
           </motion.h1>
 
           <motion.p

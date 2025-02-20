@@ -6,6 +6,16 @@ import { useSectionVisibility } from "../hooks/use-section-visibility";
 export const Hero = () => {
   const isHeroVisible = useSectionVisibility("hero-section");
   const isFormVisible = useSectionVisibility("contact-form");
+  const isInfoVisible = useSectionVisibility("info-section");
+  const isPromoVisible = useSectionVisibility("promo-section");
+  const isFooterVisible = useSectionVisibility("footer");
+  const showStickyButton =
+    (!isHeroVisible &&
+      !isFormVisible &&
+      !isInfoVisible &&
+      !isPromoVisible &&
+      !isFooterVisible) ||
+    (isInfoVisible && !isPromoVisible);
   const isMobile = useIsMobile();
 
   const scrollToForm = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -77,13 +87,9 @@ and nothing else!*/}
       {/* Sticky Button */}
       <motion.div
         initial={{ opacity: 0 }}
-        animate={{ opacity: !isHeroVisible && !isFormVisible ? 1 : 0 }}
+        animate={{ opacity: showStickyButton ? 1 : 0 }}
         className={`fixed bottom-6 z-50 transition-opacity duration-300 ${
           isMobile ? "left-0 right-0 px-6" : "right-6"
-        } ${
-          !isHeroVisible && !isFormVisible
-            ? "pointer-events-auto"
-            : "pointer-events-none"
         }`}
       >
         <motion.button

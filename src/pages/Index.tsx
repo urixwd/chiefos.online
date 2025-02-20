@@ -26,9 +26,9 @@ const Index = () => {
       <section id="contact-form" className="py-16 px-6 bg-gray-50">
         <ContactForm />
       </section>
-      <InfoSection />
-      <PromoSection />
-      <Footer />
+      <InfoSection sectionId="info-section" />
+      <PromoSection sectionId="promo-section" />
+      <Footer sectionId="footer" />
     </main>
   );
 };

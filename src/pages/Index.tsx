@@ -8,12 +8,14 @@ import { Stage } from "../components/Stage";
 import { stageSections } from "../types/stage";
 import InfoSection from "../components/InfoSection";
 import PromoSection from "../components/PromoSection";
+import { TrustedBy } from "../components/TrustedBy";
 
 const Index = () => {
   return (
     <main className="relative">
       <Navbar />
       <Hero />
+      <TrustedBy />
       <Features />
       {stageSections.map((section, index) => (
         <Stage

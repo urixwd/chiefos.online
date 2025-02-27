@@ -13,10 +13,10 @@ export const LanguageIcon = (props: SVGProps<SVGSVGElement>) => (
     strokeLinejoin="round"
     {...props}
   >
-    <path d="m5 8 6 6" />
-    <path d="m4 14 6-6 2-3" />
-    <path d="M2 5h12" />
-    <path d="M7 2h1" />
+    {/* Omega symbol (Ω) - taller version */}
+    <path d="M4 10h2.5c-1.2-1.4-2-3.2-2-5C4.5 2.5 6.5 1 9.5 1s5 1.5 5 4c0 1.8-0.8 3.6-2 5H15" />
+
+    {/* Letter A at bottom */}
     <path d="m22 22-5-10-5 10" />
     <path d="M14 18h6" />
   </svg>

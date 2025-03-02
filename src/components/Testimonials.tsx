@@ -90,7 +90,10 @@ export const Testimonials = () => {
           <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-[#F1F0FB] to-transparent pointer-events-none z-10"></div>
 
           <div className="relative w-full overflow-hidden">
-            <div ref={emblaRef} className="overflow-hidden px-4 md:px-12">
+            <div
+              ref={emblaRef}
+              className="font-montserrat overflow-hidden px-4 md:px-12"
+            >
               <div className="flex touch-pan-y">
                 {testimonials.map((testimonial) => (
                   <div
@@ -122,7 +125,7 @@ export const Testimonials = () => {
                         </p>
 
                         <div>
-                          <h3 className="font-montserrat font-semibold text-[#31356E] text-lg">
+                          <h3 className="font-semibold text-[#31356E] text-lg">
                             {testimonial.name}
                           </h3>
                           {testimonial.role && (

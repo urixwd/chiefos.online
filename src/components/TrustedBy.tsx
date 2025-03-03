@@ -7,6 +7,12 @@ const logos = [
     alt: "Yacht-Pool",
     href: "https://yacht-pool.com",
   },
+  {
+    imgUrl:
+      "https://f003.backblazeb2.com/file/chiefos-website/logos/sealogy-logo.png",
+    alt: "Sealogy",
+    href: "https://www.sealogy.com/charter-insurance/?partner=05.782",
+  },
 ];
 
 export const TrustedBy = () => {
@@ -27,7 +33,7 @@ export const TrustedBy = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="flex flex-col md:flex-row md:w-1/2 mx-auto gap-8 md:justify-evenly items-center"
+          className="flex justify-center gap-8 items-center"
         >
           {logos.map((logo, index) => (
             <a href={logo.href} target="_blank" key={index}>
@@ -37,6 +43,7 @@ export const TrustedBy = () => {
                 className="object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
                 style={{
                   height: "5rem",
+                  width: "12rem",
                 }}
               />
             </a>

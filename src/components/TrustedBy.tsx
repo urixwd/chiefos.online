@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 const logos = [
   {
     imgUrl:
-      "https://yacht-pool.com/wp-content/uploads/2023/11/Yacht-Pool-International-1.png",
+      "https://f003.backblazeb2.com/file/chiefos-website/logos/yachtpool-logo.png",
     alt: "Yacht-Pool",
     href: "https://yacht-pool.com",
   },

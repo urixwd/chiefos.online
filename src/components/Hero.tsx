@@ -41,11 +41,13 @@ export const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="font-montserrat font-bold text-4xl md:text-6xl leading-tight"
+            className="font-montserrat font-bold max-w-6xl text-4xl md:text-6xl leading-tight"
           >
-            Your Yacht Charter Operations,
+            {/* Your Yacht Charter Operations,
             <br />
-            On Autopilot
+            On Autopilot */}
+            ChiefOS is the only AI mate that navigates with your guests every
+            step of the way
           </motion.h1>
 
           <motion.p
@@ -54,11 +56,13 @@ export const Hero = () => {
             transition={{ delay: 0.4, duration: 0.6 }}
             className="font-montserrat text-lg md:text-xl text-gray-300 max-w-2xl mx-auto"
           >
-            The AI powered chief mate that lets you{" "}
+            The AI-powered chief mate that keeps you focused on creating
+            exceptional guest experiences—and nothing else!
+            {/* The AI powered chief mate that lets you{" "}
             <span className="font-semibold">focus on creating value </span>
             for your guests,
             <br />
-            <span className="font-semibold">and nothing else!</span>
+            <span className="font-semibold">and nothing else!</span> */}
           </motion.p>
         </div>
 

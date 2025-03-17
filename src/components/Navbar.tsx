@@ -50,7 +50,7 @@ export const Navbar = () => {
           ? "bg-transparent"
           : isMobile
           ? "bg-chiefblue shadow-lg"
-          : "bg-[url('https://chiefos-website.s3.eu-central-003.backblazeb2.com/background.jpg')] bg-auto shadow-lg"
+          : "bg-chiefblue bg-auto shadow-lg"
       }`}
     >
       <div

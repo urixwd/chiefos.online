@@ -103,6 +103,107 @@ const MobileSVG = () => (
   </svg>
 );
 
+const DesktopSVG = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 570 380"
+    className="w-full max-w-[200px] sm:max-w-lg md:max-w-xl lg:max-w-2xl mx-auto"
+  >
+    {/* Curved path connecting all points */}
+    <path
+      d="M 40 150
+       C 40 250, 90 320, 140 250
+       S 200 50, 250 80
+       C 300 120, 340 180, 370 150
+       C 400 120, 440 80, 470 100
+       S 520 220, 510 213"
+      stroke="#31356E"
+      strokeWidth="3"
+      fill="none"
+      strokeDasharray="8,8"
+    />
+
+    {/* Points and labels */}
+    {/* Check-In */}
+    <circle cx="40" cy="150" r="6" fill="#31356E" />
+    <text
+      x="40"
+      y="130"
+      textAnchor="middle"
+      fontFamily="Arial"
+      fontSize="16"
+      fill="#31356E"
+    >
+      Check-In
+    </text>
+
+    {/* Briefing */}
+    <circle cx="140" cy="250" r="6" fill="#31356E" />
+    <text
+      x="170"
+      y="280"
+      textAnchor="middle"
+      fontFamily="Arial"
+      fontSize="16"
+      fill="#31356E"
+    >
+      Briefing
+    </text>
+
+    {/* Safety */}
+    <circle cx="250" cy="80" r="6" fill="#31356E" />
+    <text
+      x="250"
+      y="60"
+      textAnchor="middle"
+      fontFamily="Arial"
+      fontSize="16"
+      fill="#31356E"
+    >
+      Safety
+    </text>
+
+    {/* Boat Operation */}
+    <circle cx="370" cy="150" r="6" fill="#31356E" />
+    <text
+      x="370"
+      y="180"
+      textAnchor="middle"
+      fontFamily="Arial"
+      fontSize="16"
+      fill="#31356E"
+    >
+      Boat Operation
+    </text>
+
+    {/* Troubleshooting */}
+    <circle cx="470" cy="100" r="6" fill="#31356E" />
+    <text
+      x="470"
+      y="80"
+      textAnchor="middle"
+      fontFamily="Arial"
+      fontSize="16"
+      fill="#31356E"
+    >
+      Troubleshooting
+    </text>
+
+    {/* Check-Out */}
+    <circle cx="510" cy="213" r="6" fill="#31356E" />
+    <text
+      x="510"
+      y="243"
+      textAnchor="middle"
+      fontFamily="Arial"
+      fontSize="16"
+      fill="#31356E"
+    >
+      Check-Out
+    </text>
+  </svg>
+);
+
 export const Features = () => {
   const [isBigImageLoaded, setIsBigImageLoaded] = useState(false);
 
@@ -129,104 +230,9 @@ export const Features = () => {
             </div>
 
             {/* SVG diagram - adjusted size for larger screens */}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 570 380"
-              className="hidden sm:block w-full max-w-[200px] sm:max-w-lg md:max-w-xl lg:max-w-2xl mx-auto"
-            >
-              {/* Curved path connecting all points */}
-              <path
-                d="M 40 150
-                   C 40 250, 90 320, 140 250
-                   S 200 50, 250 80
-                   C 300 120, 340 180, 370 150
-                   C 400 120, 440 80, 470 100
-                   S 520 220, 510 213"
-                stroke="#31356E"
-                strokeWidth="3"
-                fill="none"
-                strokeDasharray="8,8"
-              />
-
-              {/* Points and labels */}
-              {/* Check-In */}
-              <circle cx="40" cy="150" r="6" fill="#31356E" />
-              <text
-                x="40"
-                y="130"
-                textAnchor="middle"
-                fontFamily="Arial"
-                fontSize="16"
-                fill="#31356E"
-              >
-                Check-In
-              </text>
-
-              {/* Briefing */}
-              <circle cx="140" cy="250" r="6" fill="#31356E" />
-              <text
-                x="170"
-                y="280"
-                textAnchor="middle"
-                fontFamily="Arial"
-                fontSize="16"
-                fill="#31356E"
-              >
-                Briefing
-              </text>
-
-              {/* Safety */}
-              <circle cx="250" cy="80" r="6" fill="#31356E" />
-              <text
-                x="250"
-                y="60"
-                textAnchor="middle"
-                fontFamily="Arial"
-                fontSize="16"
-                fill="#31356E"
-              >
-                Safety
-              </text>
-
-              {/* Boat Operation */}
-              <circle cx="370" cy="150" r="6" fill="#31356E" />
-              <text
-                x="370"
-                y="180"
-                textAnchor="middle"
-                fontFamily="Arial"
-                fontSize="16"
-                fill="#31356E"
-              >
-                Boat Operation
-              </text>
-
-              {/* Troubleshooting */}
-              <circle cx="470" cy="100" r="6" fill="#31356E" />
-              <text
-                x="470"
-                y="80"
-                textAnchor="middle"
-                fontFamily="Arial"
-                fontSize="16"
-                fill="#31356E"
-              >
-                Troubleshooting
-              </text>
-
-              {/* Check-Out */}
-              <circle cx="510" cy="213" r="6" fill="#31356E" />
-              <text
-                x="510"
-                y="243"
-                textAnchor="middle"
-                fontFamily="Arial"
-                fontSize="16"
-                fill="#31356E"
-              >
-                Check-Out
-              </text>
-            </svg>
+            <div className="hidden sm:block">
+              <DesktopSVG />
+            </div>
           </motion.div>
 
           {/* Right Column */}

@@ -90,7 +90,7 @@ export const Hero = () => {
             whileTap={{ scale: 0.95 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
             onClick={scrollToForm}
-            className="w-full md:w-auto font-montserrat bg-chiefnavy text-white px-8 py-4 rounded-lg text-xl md:text-2xl font-semibold hover:bg-opacity-90 transition-all duration-200"
+            className="w-full md:w-auto font-montserrat bg-white text-chiefnavy px-8 py-4 rounded-lg text-xl md:text-2xl font-semibold hover:bg-opacity-90 transition-all duration-200"
           >
             Get ChiefOS for Free!
           </motion.button>
@@ -110,7 +110,7 @@ export const Hero = () => {
           whileTap={{ scale: 0.95 }}
           transition={{ type: "spring", stiffness: 400, damping: 10 }}
           onClick={scrollToForm}
-          className={`font-montserrat bg-chiefnavy text-white px-8 py-4 rounded-lg text-xl md:text-2xl font-semibold hover:bg-opacity-90 transition-all duration-200 shadow-lg ${
+          className={`font-montserrat bg-chiefblue text-white px-8 py-4 rounded-lg text-xl md:text-2xl font-semibold hover:bg-opacity-90 transition-all duration-200 shadow-lg ${
             isMobile ? "w-full" : "w-auto"
           }`}
         >

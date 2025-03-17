@@ -80,7 +80,7 @@ export const Testimonials = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-3xl md:text-4xl font-montserrat font-light text-[#31356E] mb-12 text-center"
+          className="text-3xl md:text-4xl font-montserrat font-light text-chiefnavy mb-12 text-center"
         >
           And the guests who already used it?
         </motion.h2>
@@ -120,16 +120,16 @@ export const Testimonials = () => {
                       )}
 
                       <div className="flex-1 text-center">
-                        <p className="text-lg md:text-xl text-[#31356E] font-light mb-6 leading-relaxed">
+                        <p className="text-lg md:text-xl text-chiefnavy font-light mb-6 leading-relaxed">
                           "{testimonial.quote}"
                         </p>
 
                         <div>
-                          <h3 className="font-semibold text-[#31356E] text-lg">
+                          <h3 className="font-semibold text-chiefnavy text-lg">
                             {testimonial.name}
                           </h3>
                           {testimonial.role && (
-                            <p className="text-[#31356E]/80">
+                            <p className="text-chiefnavy/80">
                               {testimonial.role.split("\n").map((line, i) => (
                                 <span key={i}>
                                   {line}
@@ -161,8 +161,8 @@ export const Testimonials = () => {
                   className={cn(
                     "w-2.5 h-2.5 rounded-full transition-all duration-300",
                     index === selectedIndex
-                      ? "bg-[#31356E] scale-125"
-                      : "bg-[#31356E]/30 hover:bg-[#31356E]/50"
+                      ? "bg-chiefnavy scale-125"
+                      : "bg-chiefnavy/30 hover:bg-chiefnavy/50"
                   )}
                   aria-label={`Go to slide ${index + 1}`}
                 />

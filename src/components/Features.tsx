@@ -219,7 +219,7 @@ export const Features = () => {
             viewport={{ once: true }}
             className="space-y-4"
           >
-            <h2 className="font-montserrat text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light leading-tight text-[#31356E]">
+            <h2 className="font-montserrat text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light leading-tight text-chiefnavy">
               ChiefOS is the only AI mate that navigates with your guests every
               step of the way
             </h2>

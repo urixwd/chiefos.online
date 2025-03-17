@@ -24,7 +24,7 @@ export const TrustedBy = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-2xl font-montserrat font-light text-[#31356E] mb-12 text-center"
+          className="text-2xl font-montserrat font-light text-chiefnavy mb-12 text-center"
         >
           Trusted by
         </motion.h3>

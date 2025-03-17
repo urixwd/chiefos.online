@@ -6,7 +6,7 @@ import SupportIcon from "../components/icons/SupportIcon";
 const InfoSection = ({ sectionId }: { sectionId: string }) => {
   return (
     <section
-      className="py-8 px-6 text-[#31356E] bg-white text-2xl"
+      className="py-8 px-6 text-chiefnavy bg-white text-2xl"
       id={sectionId}
     >
       <div className="flex flex-col md:flex-row justify-around items-center space-y-8 md:space-y-0 md:space-x-8">

@@ -20,7 +20,7 @@ const PromoSection = ({ sectionId }: { sectionId: string }) => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="text-3xl md:text-4xl font-montserrat font-light text-[#31356E] mb-12 text-center"
+        className="text-3xl md:text-4xl font-montserrat font-light text-chiefnavy mb-12 text-center"
       >
         You are one click away from a great guest experience
       </motion.h2>

@@ -105,7 +105,7 @@ export const ContactForm = () => {
 
   return (
     <>
-      <h2 className="text-2xl font-semibold text-[#31356E] mb-6 text-center font-montserrat">
+      <h2 className="text-2xl font-semibold text-chiefnavy mb-6 text-center font-montserrat">
         Want to make your guests' experience unforgettable?
       </h2>
       <div className="max-w-md mx-auto p-6">
@@ -116,7 +116,7 @@ export const ContactForm = () => {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-chiefpurple font-montserrat">
+                  <FormLabel className="text-chiefnavy font-montserrat">
                     Name *
                   </FormLabel>
                   <FormControl>
@@ -132,7 +132,7 @@ export const ContactForm = () => {
               name="whatsapp"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-chiefpurple font-montserrat">
+                  <FormLabel className="text-chiefnavy font-montserrat">
                     WhatsApp Number *
                   </FormLabel>
                   <FormControl>
@@ -163,7 +163,7 @@ export const ContactForm = () => {
                   name="email"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-chiefpurple font-montserrat">
+                      <FormLabel className="text-chiefnavy font-montserrat">
                         Work Email
                       </FormLabel>
                       <FormControl>
@@ -182,7 +182,7 @@ export const ContactForm = () => {
 
             <Button
               type="submit"
-              className="w-full bg-chiefpurple hover:bg-chiefpurple/90"
+              className="w-full bg-chiefnavy hover:bg-chiefnavy/90"
               disabled={isSubmitting}
             >
               {isSubmitting ? "Sending..." : "See ChiefOS in action"}

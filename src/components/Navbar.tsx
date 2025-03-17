@@ -56,7 +56,7 @@ export const Navbar = () => {
       <div
         className={`absolute inset-0 ${
           (!isHeroVisible || isMenuOpen) && !isMobile
-            ? "bg-gradient-to-br from-chiefpurple/20 to-black/20"
+            ? "bg-gradient-to-br from-chiefnavy/20 to-black/20"
             : ""
         } z-10`}
       />
@@ -83,7 +83,7 @@ export const Navbar = () => {
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
               href="#contact-form"
               onClick={scrollToForm}
-              className={`whitespace-nowrap min-w-[120px] md:w-auto font-montserrat px-4 md:px-6 py-2 bg-chiefblue text-white rounded-lg hover:bg-opacity-90 transition-all duration-200 text-center ${
+              className={`whitespace-nowrap min-w-[120px] md:w-auto font-montserrat px-4 md:px-6 py-2 bg-chiefnavy text-white rounded-lg hover:bg-opacity-90 transition-all duration-200 text-center ${
                 isHeroVisible ? "" : "opacity-0"
               }`}
             >

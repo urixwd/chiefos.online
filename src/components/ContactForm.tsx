@@ -194,7 +194,7 @@ export const ContactForm = () => {
           <p className="text-sm text-gray-600 mb-2">Prefer via WhatsApp?</p>
           <Button
             onClick={openWhatsApp}
-            className="w-full bg-[#25D366] hover:bg-[#25D366]/90 text-white gap-2"
+            className="w-full bg-[#3EB66A] hover:bg-[#37C66B]/90 text-white gap-2"
           >
             <WhatsAppIcon className="w-5 h-5" />
             WhatsApp ChiefOS

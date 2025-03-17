@@ -55,12 +55,10 @@ export const Hero = () => {
             className="font-montserrat text-lg md:text-xl text-gray-300 max-w-2xl mx-auto"
           >
             The AI-powered chief mate that keeps you focused on creating
-            exceptional guest experiences—and nothing else!
-            {/* The AI powered chief mate that lets you{" "}
-            <span className="font-semibold">focus on creating value </span>
-            for your guests,
-            <br />
-            <span className="font-semibold">and nothing else!</span> */}
+            <span className="font-semibold">
+              &nbsp;exceptional guest experiences
+            </span>{" "}
+            — and nothing else!
           </motion.p>
         </div>
 

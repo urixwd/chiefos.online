@@ -7,12 +7,12 @@ const logos = [
     alt: "Yacht-Pool",
     href: "https://yacht-pool.com",
   },
-  {
-    imgUrl:
-      "https://f003.backblazeb2.com/file/chiefos-website/logos/sealogy-logo.png",
-    alt: "Sealogy",
-    href: "https://www.sealogy.com/charter-insurance/?partner=05.782",
-  },
+  //{
+  //imgUrl:
+  //"https://f003.backblazeb2.com/file/chiefos-website/logos/sealogy-logo.png",
+  //alt: "Sealogy",
+  //href: "https://www.sealogy.com/charter-insurance/?partner=05.782",
+  //},
 ];
 
 export const TrustedBy = () => {

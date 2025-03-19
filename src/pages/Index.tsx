@@ -15,7 +15,7 @@ const Index = () => {
     <main className="relative">
       <Navbar />
       <Hero />
-      {/* <TrustedBy /> */}
+      <TrustedBy />
       <Features />
       {stageSections.map((section, index) => (
         <Stage

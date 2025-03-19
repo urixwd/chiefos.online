@@ -40,7 +40,7 @@ export const TrustedBy = () => {
               <img
                 src={logo.imgUrl}
                 alt={logo.alt}
-                className="object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+                className="object-contain filter grayscale-0 hover:grayscale transition-all duration-300"
                 style={{
                   height: "5rem",
                   width: "12rem",

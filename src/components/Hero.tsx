@@ -33,26 +33,9 @@ export const Hero = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="min-h-screen flex items-center justify-center relative text-white px-4"
+        className="min-h-screen flex items-center justify-center bg-[url('https://f003.backblazeb2.com/file/chiefos-app/waves-background.png')] bg-cover bg-center bg-no-repeat relative text-white px-4"
       >
-        <video
-          className="absolute inset-0 w-full h-full object-cover"
-          autoPlay
-          loop
-          muted
-          playsInline
-        >
-          <source
-            src="https://f003.backblazeb2.com/file/chiefos-app/chat-background.webm"
-            type="video/webm"
-          />
-          <source
-            src="https://f003.backblazeb2.com/file/chiefos-app/chat-background.mp4"
-            type="video/mp4"
-          />
-          Your browser does not support the video tag.
-        </video>
-        <div className="absolute inset-0 bg-gradient-to-br from-chiefnavy/20 to-black/20" />
+        <div className="absolute inset-0 bg-gradient-to-br from-chiefpurple/20 to-black/20" />
         <div className="text-center space-y-8 relative z-10">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}

@@ -2,12 +2,13 @@ import { motion } from "framer-motion";
 import React from "react";
 
 const PromoSection = ({ sectionId }: { sectionId: string }) => {
-  const scrollToForm = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const mainCtaHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    const element = document.getElementById("contact-form");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
+    window.location.href = "https://app.chiefos.online";
+    // const element = document.getElementById("contact-form");
+    // if (element) {
+    //   element.scrollIntoView({ behavior: "smooth", block: "start" });
+    // }
   };
 
   return (
@@ -25,7 +26,7 @@ const PromoSection = ({ sectionId }: { sectionId: string }) => {
         You are one click away from a great guest experience
       </motion.h2>
       <button
-        onClick={scrollToForm}
+        onClick={mainCtaHandler}
         className="font-montserrat bg-chiefblue text-white px-8 py-4 rounded-lg text-xl md:text-2xl font-semibold hover:bg-opacity-90 transition-all duration-200"
       >
         Get ChiefOS for Free!

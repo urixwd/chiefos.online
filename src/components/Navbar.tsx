@@ -21,24 +21,23 @@ export const Navbar = () => {
   const isFormVisible = useSectionVisibility("contact-form");
   const isMobile = useIsMobile();
 
-  const mainCtaHandler = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const scrollToForm = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    window.location.href = "https://app.chiefos.online";
-    // setIsMenuOpen(false);
-    // setTimeout(() => {
-    //   const element = document.getElementById("contact-form");
-    //   if (element) {
-    //     const headerOffset = 100;
-    //     const elementPosition = element.getBoundingClientRect().top;
-    //     const offsetPosition =
-    //       elementPosition + window.pageYOffset - headerOffset;
+    setIsMenuOpen(false);
+    setTimeout(() => {
+      const element = document.getElementById("contact-form");
+      if (element) {
+        const headerOffset = 100;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition =
+          elementPosition + window.pageYOffset - headerOffset;
 
-    //     window.scrollTo({
-    //       top: offsetPosition,
-    //       behavior: "smooth",
-    //     });
-    //   }
-    // }, 100);
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        });
+      }
+    }, 100);
   };
 
   return (
@@ -65,7 +64,7 @@ export const Navbar = () => {
         <div className="flex items-center">
           <div className="flex items-center gap-12">
             <NavbarLogo />
-            <NavbarMenuItems items={menuItems} onItemClick={mainCtaHandler} />
+            <NavbarMenuItems items={menuItems} onItemClick={scrollToForm} />
           </div>
 
           <div className="flex items-center gap-4 ml-auto">
@@ -73,7 +72,7 @@ export const Navbar = () => {
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
               href="#contact-form"
-              onClick={mainCtaHandler}
+              onClick={scrollToForm}
               className="hidden md:block font-montserrat px-4 py-2 text-white hover:text-gray-200 transition-all duration-200"
             >
               Login
@@ -83,7 +82,7 @@ export const Navbar = () => {
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
               href="#contact-form"
-              onClick={mainCtaHandler}
+              onClick={scrollToForm}
               className={`whitespace-nowrap min-w-[120px] md:w-auto font-montserrat px-4 md:px-6 py-2 bg-white text-chiefnavy rounded-lg hover:bg-opacity-90 transition-all duration-200 text-center ${
                 isHeroVisible ? "" : "opacity-0"
               }`}
@@ -107,7 +106,7 @@ export const Navbar = () => {
         <MobileMenu
           isOpen={isMenuOpen}
           items={[{ label: "Login", href: "#contact-form" }, ...menuItems]}
-          onItemClick={mainCtaHandler}
+          onItemClick={scrollToForm}
         />
       </div>
     </motion.nav>

@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 import { useIsMobile } from "../hooks/use-mobile";
 import { useSectionVisibility } from "../hooks/use-section-visibility";
 
@@ -17,13 +18,12 @@ export const Hero = () => {
     (isInfoVisible && !isPromoVisible);
   const isMobile = useIsMobile();
 
-  const mainCtaHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const scrollToForm = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    // const element = document.getElementById("contact-form");
-    // if (element) {
-    //   element.scrollIntoView({ behavior: "smooth", block: "start" });
-    // }
-    window.location.href = "https://app.chiefos.online";
+    const element = document.getElementById("contact-form");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   };
 
   return (
@@ -72,7 +72,7 @@ export const Hero = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
-            onClick={mainCtaHandler}
+            onClick={scrollToForm}
             className="w-full md:w-auto font-montserrat bg-white text-chiefnavy px-8 py-4 rounded-lg text-xl md:text-2xl font-semibold hover:bg-opacity-90 transition-all duration-200"
           >
             Get ChiefOS for Free!
@@ -92,7 +92,7 @@ export const Hero = () => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           transition={{ type: "spring", stiffness: 400, damping: 10 }}
-          onClick={mainCtaHandler}
+          onClick={scrollToForm}
           className={`font-montserrat bg-chiefblue text-white px-8 py-4 rounded-lg text-xl md:text-2xl font-semibold hover:bg-opacity-90 transition-all duration-200 shadow-lg ${
             isMobile ? "w-full" : "w-auto"
           }`}

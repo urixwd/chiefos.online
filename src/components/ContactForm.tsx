@@ -71,6 +71,9 @@ export const ContactForm = () => {
             "Thank you for contacting us. We'll get back to you soon.",
         });
         form.reset();
+        setTimeout(() => {
+          window.location.href = "https://app.chiefos.online";
+        }, 2000);
       } else {
         throw new Error("Something went wrong");
       }

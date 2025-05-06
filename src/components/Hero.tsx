@@ -56,7 +56,7 @@ export const Hero = () => {
           >
             The AI-powered chief mate that keeps you focused on creating
             <span className="font-semibold">
-              &nbsp;exceptional guest experiences
+              &nbsp;the best experiences for your guests
             </span>{" "}
             — and nothing else!
           </motion.p>

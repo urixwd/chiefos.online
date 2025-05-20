@@ -89,17 +89,30 @@ export const Footer = ({ sectionId }: { sectionId: string }) => {
       {/* add foooter with two linke - Terms & Conditions	Privacy & Security - that look like links but don't do anything. */}
       <div className="max-w-7xl mx-auto text-center text-xs text-gray-400">
         <a
-          href="javascript:void(0)"
+          href="/legal/terms.html"
+          target="_blank"
+          rel="noopener noreferrer"
           className="text-gray-400 hover:text-white underline"
         >
           Terms and Conditions
         </a>
         <span>&nbsp;</span>
         <a
-          href="javascript:void(0)"
+          href="/legal/privacy.html"
+          target="_blank"
+          rel="noopener noreferrer"
           className="text-gray-400 hover:text-white underline"
         >
           Privacy Policy
+        </a>
+        <span>&nbsp;</span>
+        <a
+          href="/legal/imprint.html"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-gray-400 hover:text-white underline"
+        >
+          Imprint
         </a>
       </div>
     </footer>

@@ -9,6 +9,7 @@ import { stageSections } from "../types/stage";
 import InfoSection from "../components/InfoSection";
 import PromoSection from "../components/PromoSection";
 import { TrustedBy } from "../components/TrustedBy";
+import { CookieBanner } from "../components/CookieBanner";
 
 const Index = () => {
   return (
@@ -31,6 +32,7 @@ const Index = () => {
       <InfoSection sectionId="info-section" />
       <PromoSection sectionId="promo-section" />
       <Footer sectionId="footer" />
+      <CookieBanner />
     </main>
   );
 };

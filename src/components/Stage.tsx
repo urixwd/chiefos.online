@@ -31,7 +31,7 @@ export const Stage = ({ section, isReversed = false }: StageProps) => {
               isReversed ? "order-last" : "order-first"
             }`}
           >
-            <h2 className="font-montserrat text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light leading-tight text-chiefnavy">
+            <h2 className="font-gilroy text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light leading-tight text-chiefnavy">
               {section.title.split("\n").map((line, i) => (
                 <span key={i}>
                   {line}

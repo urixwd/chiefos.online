@@ -27,7 +27,7 @@ export const MobileMenu = ({ isOpen, items, onItemClick }: MobileMenuProps) => {
                 exit={{ opacity: 0, x: -20 }}
                 href={item.href}
                 onClick={onItemClick}
-                className="block font-montserrat text-white hover:text-gray-200 transition-colors duration-200"
+                className="block font-gilroy text-white hover:text-gray-200 transition-colors duration-200"
               >
                 {item.label}
               </motion.a>

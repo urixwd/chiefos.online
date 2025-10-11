@@ -80,7 +80,7 @@ export const Testimonials = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-3xl md:text-4xl font-montserrat font-light text-chiefnavy mb-12 text-center"
+          className="text-3xl md:text-4xl font-gilroy font-light text-chiefnavy mb-12 text-center"
         >
           And the guests who already used it?
         </motion.h2>
@@ -92,7 +92,7 @@ export const Testimonials = () => {
           <div className="relative w-full overflow-hidden">
             <div
               ref={emblaRef}
-              className="font-montserrat overflow-hidden px-4 md:px-12"
+              className="font-gilroy overflow-hidden px-4 md:px-12"
             >
               <div className="flex touch-pan-y">
                 {testimonials.map((testimonial) => (

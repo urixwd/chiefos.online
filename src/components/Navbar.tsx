@@ -73,7 +73,7 @@ export const Navbar = () => {
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
               href="#contact-form"
               onClick={scrollToForm}
-              className="hidden md:block font-montserrat px-4 py-2 text-white hover:text-gray-200 transition-all duration-200"
+              className="hidden md:block font-gilroy px-4 py-2 text-white hover:text-gray-200 transition-all duration-200"
             >
               Login
             </motion.a>
@@ -83,7 +83,7 @@ export const Navbar = () => {
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
               href="#contact-form"
               onClick={scrollToForm}
-              className={`whitespace-nowrap min-w-[120px] md:w-auto font-montserrat px-4 md:px-6 py-2 bg-white text-chiefnavy rounded-lg hover:bg-opacity-90 transition-all duration-200 text-center ${
+              className={`whitespace-nowrap min-w-[120px] md:w-auto font-gilroy px-4 md:px-6 py-2 bg-chiefyellow text-chiefnavy rounded-lg hover:bg-opacity-90 transition-all duration-200 text-center ${
                 isHeroVisible ? "" : "opacity-0"
               }`}
             >

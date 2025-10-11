@@ -16,7 +16,7 @@ export const NavbarMenuItems = ({ items, onItemClick }: NavbarMenuItemsProps) =>
           transition={{ type: "spring", stiffness: 400, damping: 10 }}
           href={item.href}
           onClick={onItemClick}
-          className="font-montserrat text-white hover:text-gray-200 transition-colors duration-200"
+          className="font-gilroy text-white hover:text-gray-200 transition-colors duration-200"
         >
           {item.label}
         </motion.a>

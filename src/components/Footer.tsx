@@ -37,7 +37,7 @@ export const Footer = ({ sectionId }: { sectionId: string }) => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="space-y-4"
         >
-          <h3 className="font-montserrat font-semibold text-lg">
+          <h3 className="font-gilroy font-semibold text-lg">
             Key Features
           </h3>
           <ul className="space-y-2 text-gray-300 text-sm">
@@ -55,7 +55,7 @@ export const Footer = ({ sectionId }: { sectionId: string }) => {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="space-y-4"
         >
-          <h3 className="font-montserrat font-semibold text-lg">
+          <h3 className="font-gilroy font-semibold text-lg">
             See ChiefOS in action
           </h3>
           <div className="space-y-2">

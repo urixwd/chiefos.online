@@ -8,10 +8,11 @@ import { MobileMenu } from "./navbar/MobileMenu";
 import { useSectionVisibility } from "../hooks/use-section-visibility";
 
 const menuItems = [
-  { label: "Guides & Tutorials", href: "#contact-form" },
-  { label: "Help Center", href: "#contact-form" },
-  { label: "Blog", href: "#contact-form" },
-  { label: "Community", href: "#contact-form" },
+  // { label: "Guides & Tutorials", href: "#contact-form" },
+  // { label: "Help Center", href: "#contact-form" },
+  // { label: "Blog", href: "#contact-form" },
+  // { label: "Community", href: "#contact-form" },
+  { label: "Pricing", href: "#pricing" },
 ];
 
 export const Navbar = () => {

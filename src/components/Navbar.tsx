@@ -73,7 +73,11 @@ export const Navbar = () => {
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
               href="#contact-form"
-              onClick={scrollToForm}
+              onClick={() => {
+                // open in new tab: app.chiefos.online/https://app.chiefos.online/signin
+                window.open("https://app.chiefos.online/signin", "_blank");
+                // scrollToForm(e);
+              }}
               className="hidden md:block font-gilroy px-4 py-2 text-white hover:text-gray-200 transition-all duration-200"
             >
               Login
@@ -83,7 +87,11 @@ export const Navbar = () => {
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
               href="#contact-form"
-              onClick={scrollToForm}
+              onClick={() => {
+                // open in new tab: app.chiefos.online
+                window.open("https://app.chiefos.online", "_blank");
+                // scrollToForm(e);
+              }}
               className={`whitespace-nowrap min-w-[120px] md:w-auto font-gilroy px-4 md:px-6 py-2 bg-chiefyellow text-chiefnavy rounded-lg hover:bg-opacity-90 transition-all duration-200 text-center ${
                 isHeroVisible ? "" : "opacity-0"
               }`}

@@ -5,13 +5,13 @@ export const NavbarLogo = () => {
     <motion.div
       whileHover={{ scale: 1.05 }}
       transition={{ type: "spring", stiffness: 400, damping: 10 }}
-      className="w-[120px] md:w-[30%] md:max-w-[200px]"
+      className="w-[120px]"
     >
       <a href="/" className="block">
         <img
           src="https://f003.backblazeb2.com/file/chiefos-app/chiefos-logo/chiefos-logo-dark.png"
           alt="Chief.OS Logo"
-          className="max-h-10"
+          className="w-full h-auto"
         />
       </a>
     </motion.div>

@@ -74,7 +74,7 @@ export const Hero = () => {
             className="w-full md:w-auto font-gilroy bg-chiefyellow text-chiefnavy px-8 py-4 rounded-lg text-xl md:text-2xl font-semibold hover:bg-opacity-90 transition-all duration-200"
           >
             {/* static center btn */}
-            Get ChiefOS!
+            Get Started!
           </motion.button>
         </motion.div>
       </motion.div>
@@ -97,7 +97,7 @@ export const Hero = () => {
           }`}
         >
           {/* stickey bottom left btn */}
-          Get ChiefOS!
+          Get Started!
         </motion.button>
       </motion.div>
     </>

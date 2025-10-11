@@ -28,7 +28,7 @@ const PromoSection = ({ sectionId }: { sectionId: string }) => {
         onClick={scrollToForm}
         className="font-gilroy bg-chiefyellow text-chiefnavy px-8 py-4 rounded-lg text-xl md:text-2xl font-semibold hover:bg-opacity-90 transition-all duration-200"
       >
-        Get ChiefOS!
+        Get Started!
       </button>
     </section>
   );

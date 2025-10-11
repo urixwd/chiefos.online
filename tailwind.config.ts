@@ -19,8 +19,9 @@ export default {
     },
     extend: {
       colors: {
-        chiefblue: "#3F5B6B",
-        chiefnavy: "#153054",
+        chiefblue: "#091335", // Updated to new navy blue branding
+        chiefnavy: "#091335", // New navy blue branding
+        chiefyellow: "#F7A713", // New yellow branding
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

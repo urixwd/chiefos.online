@@ -19,7 +19,7 @@ export const Footer = ({ sectionId }: { sectionId: string }) => {
           className="space-y-4"
         >
           <img
-            src="https://chiefos-website.s3.eu-central-003.backblazeb2.com/logo-light.png"
+            src="https://f003.backblazeb2.com/file/chiefos-app/chiefos-logo/chiefos-logo-dark.png"
             alt="Chief.OS Logo"
             className="h-8"
           />

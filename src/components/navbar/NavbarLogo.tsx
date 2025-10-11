@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 
 export const NavbarLogo = () => {
@@ -10,9 +9,9 @@ export const NavbarLogo = () => {
     >
       <a href="/" className="block">
         <img
-          src="https://chiefos-website.s3.eu-central-003.backblazeb2.com/logo-light.png"
+          src="https://f003.backblazeb2.com/file/chiefos-app/chiefos-logo/chiefos-logo-dark.png"
           alt="Chief.OS Logo"
-          className="w-full h-auto"
+          className="max-h-10"
         />
       </a>
     </motion.div>

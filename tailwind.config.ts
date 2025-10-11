@@ -57,7 +57,8 @@ export default {
         },
       },
       fontFamily: {
-        montserrat: ["Montserrat", "sans-serif"],
+        gilroy: ["Gilroy", "sans-serif"],
+        sans: ["Gilroy", "sans-serif"],
       },
       keyframes: {
         "fade-in": {

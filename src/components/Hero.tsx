@@ -33,7 +33,7 @@ export const Hero = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="min-h-screen flex items-center justify-center bg-[url('https://f003.backblazeb2.com/file/chiefos-website/background3.jpeg')] bg-cover bg-center bg-no-repeat relative text-white px-4"
+        className="min-h-screen flex items-center justify-center bg-[url('https://f003.backblazeb2.com/file/chiefos-app/app-background.png')] bg-cover bg-center bg-no-repeat relative text-white px-4"
       >
         <div className="absolute inset-0 bg-gradient-to-br from-chiefpurple/20 to-black/20" />
         <div className="text-center space-y-8 relative z-10">
@@ -41,18 +41,16 @@ export const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="font-montserrat font-bold text-4xl md:text-6xl leading-tight"
+            className="font-gilroy font-bold text-4xl md:text-6xl leading-tight"
           >
-            Your Yacht Charter Operations,
-            <br />
-            On Autopilot
+            Your AI Chief Mate
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
-            className="font-montserrat text-lg md:text-xl text-white max-w-2xl mx-auto"
+            className="font-gilroy text-lg md:text-xl text-white max-w-2xl mx-auto"
           >
             The AI-powered chief mate that keeps you focused on creating
             <span className="font-semibold">

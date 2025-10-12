@@ -13,6 +13,7 @@ const menuItems = [
   // { label: "Blog", href: "#contact-form" },
   // { label: "Community", href: "#contact-form" },
   { label: "Pricing", href: "#pricing" },
+  { label: "FAQ", href: "#faq" },
 ];
 
 export const Navbar = () => {
@@ -22,11 +23,16 @@ export const Navbar = () => {
   const isFormVisible = useSectionVisibility("contact-form");
   const isMobile = useIsMobile();
 
-  const scrollToForm = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     setIsMenuOpen(false);
+
+    // Extract the ID from the href (e.g., "#faq" -> "faq")
+    const href = e.currentTarget.getAttribute("href");
+    const elementId = href?.replace("#", "") || "contact-form";
+
     setTimeout(() => {
-      const element = document.getElementById("contact-form");
+      const element = document.getElementById(elementId);
       if (element) {
         const headerOffset = 100;
         const elementPosition = element.getBoundingClientRect().top;
@@ -65,7 +71,7 @@ export const Navbar = () => {
         <div className="flex items-center">
           <div className="flex items-center gap-12">
             <NavbarLogo />
-            <NavbarMenuItems items={menuItems} onItemClick={scrollToForm} />
+            <NavbarMenuItems items={menuItems} onItemClick={scrollToSection} />
           </div>
 
           <div className="flex items-center gap-4 ml-auto">
@@ -115,7 +121,7 @@ export const Navbar = () => {
         <MobileMenu
           isOpen={isMenuOpen}
           items={[{ label: "Login", href: "#contact-form" }, ...menuItems]}
-          onItemClick={scrollToForm}
+          onItemClick={scrollToSection}
         />
       </div>
     </motion.nav>

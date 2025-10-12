@@ -12,6 +12,7 @@ import { TrustedBy } from "../components/TrustedBy";
 import { CookieBanner } from "../components/CookieBanner";
 import FAQ from "../components/FAQ";
 import { UseCases } from "../components/UseCases";
+import { Pricing } from "../components/Pricing";
 
 const Index = () => {
   return (
@@ -28,6 +29,7 @@ const Index = () => {
         />
       ))}
       <UseCases sectionId="use-cases" />
+      <Pricing sectionId="pricing" />
       <Testimonials />
       <section id="contact-form" className="py-16 px-6 bg-gray-50">
         <ContactForm />

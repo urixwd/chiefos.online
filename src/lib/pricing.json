@@ -1,0 +1,88 @@
+[
+  {
+    "name": "Insights",
+    "description": "Manage your entire charter journey with your guests and enjoy ChiefOS Knolege base",
+    "price": {
+      "value": 0,
+      "currency": "€",
+      "price_note": "FREE For 1st charter"
+    },
+    "key_features": [
+      "Confirmation email",
+      "Knolege base",
+      "Collect guest details",
+      "Documentation",
+      "Communication hub",
+      "Digital Check-ins",
+      "Yacht inspection tour",
+      "Review coordinations",
+      "Multi-language Support"
+    ],
+    "cta": {
+      "text": "TRY IT NOW",
+      "note": "No credit card required"
+    }
+  },
+  {
+    "name": "Actions",
+    "description": "Save time and money with ChiefOS support while tracking actions and documentations all in one single place.",
+    "price": {
+      "value": 18,
+      "currency": "€",
+      "price_note": "Per action"
+    },
+    "key_features": [
+      "Confirmation email",
+      "Knolege base",
+      "Collect guest details",
+      "Documentation",
+      "Communication hub",
+      "Digital Check-ins",
+      "Yacht inspection tour",
+      "Review coordinations",
+      "Multi-language Support"
+    ],
+    "cta": {
+      "text": "BOOK A DEMO"
+    }
+  },
+  {
+    "name": "Intelligence",
+    "description": "Get ChiefOS proactive notifications to ensure no costly mistakes ruin your guests sailing adventure.",
+    "price": {
+      "value": 180,
+      "currency": "€",
+      "price_note": "Per booking"
+    },
+    "key_features": [
+      "Everything in Actions+",
+      "24/7 AI-powered support",
+      "Real-time troubleshooting",
+      "Proactive damage prevention"
+    ],
+    "cta": {
+      "text": "BOOK A DEMO"
+    }
+  },
+  {
+    "name": "Embeded",
+    "description": "Have all ChiefOS capabilities for your guests + a conrol panel within a dedicated app completely tailored to your brand.",
+    "price": {
+      "value": 1800,
+      "currency": "€",
+      "price_note": "Per month billed annually + One time setup fee"
+    },
+    "key_features": [
+      "White labeled guest app",
+      "Tailored Onboarding",
+      "Control Panel",
+      "Reporting",
+      "Automations & Workflows",
+      "Integrations",
+      "Dedicated account manager"
+    ],
+    "cta": {
+      "text": "BOOK A DEMO"
+    }
+  }
+]

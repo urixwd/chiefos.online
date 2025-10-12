@@ -11,6 +11,7 @@ import PromoSection from "../components/PromoSection";
 import { TrustedBy } from "../components/TrustedBy";
 import { CookieBanner } from "../components/CookieBanner";
 import FAQ from "../components/FAQ";
+import { UseCases } from "../components/UseCases";
 
 const Index = () => {
   return (
@@ -26,6 +27,7 @@ const Index = () => {
           isReversed={index % 2 === 0}
         />
       ))}
+      <UseCases sectionId="use-cases" />
       <Testimonials />
       <section id="contact-form" className="py-16 px-6 bg-gray-50">
         <ContactForm />

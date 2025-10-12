@@ -12,6 +12,7 @@ const menuItems = [
   // { label: "Help Center", href: "#contact-form" },
   // { label: "Blog", href: "#contact-form" },
   // { label: "Community", href: "#contact-form" },
+  { label: "Use Cases", href: "#use-cases" },
   { label: "Pricing", href: "#pricing" },
   { label: "FAQ", href: "#faq" },
 ];

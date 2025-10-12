@@ -17,9 +17,14 @@ import { useToast } from "@/hooks/use-toast";
 import { PhoneInput } from "./ui/phone-input";
 import { motion } from "framer-motion";
 import { WhatsAppIcon } from "./icons/WhatsAppIcon";
+import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
+import { Label } from "./ui/label";
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
+  userType: z.enum(["skipper", "agent", "operator"], {
+    required_error: "Please select your role",
+  }),
   email: z
     .string()
     .transform((str) => str.trim())
@@ -40,13 +45,14 @@ type FormValues = z.infer<typeof formSchema>;
 export const ContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
-  const [whatsappNumber, setWhatsappNumber] = useState("");
+  const [userType, setUserType] = useState<string>("");
   const [showEmail, setShowEmail] = useState(false);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
+      userType: undefined,
       email: "",
       whatsapp: "",
     },
@@ -55,17 +61,14 @@ export const ContactForm = () => {
   const onSubmit = async (data: FormValues) => {
     setIsSubmitting(true);
     try {
-      const response = await fetch(
-        "https://api.chiefos.online/forms/f/WebsiteContact",
-        {
-          method: "POST",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        }
-      );
+      const response = await fetch("https://formspree.io/f/myzkdnbn", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
 
       if (response.ok) {
         toast({
@@ -92,8 +95,9 @@ export const ContactForm = () => {
   };
 
   useEffect(() => {
-    setShowEmail(whatsappNumber.length > 0);
-  }, [whatsappNumber]);
+    // Show email field based on user type selection
+    setShowEmail(userType !== "");
+  }, [userType]);
 
   const openWhatsApp = () => {
     const formData = form.getValues();
@@ -135,29 +139,56 @@ export const ContactForm = () => {
 
             <FormField
               control={form.control}
-              name="whatsapp"
+              name="userType"
               render={({ field }) => (
-                <FormItem>
+                <FormItem className="space-y-3">
                   <FormLabel className="text-chiefnavy font-gilroy">
-                    WhatsApp Number *
+                    I am a *
                   </FormLabel>
                   <FormControl>
-                    <PhoneInput
-                      defaultCountry="GR"
-                      placeholder="Enter your phone number"
-                      {...field}
-                      onChange={(value) => {
+                    <RadioGroup
+                      onValueChange={(value) => {
                         field.onChange(value);
-                        setWhatsappNumber(value || "");
+                        setUserType(value);
                       }}
-                    />
+                      value={field.value}
+                      className="flex flex-col space-y-2"
+                    >
+                      <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="skipper" id="skipper" />
+                        <Label
+                          htmlFor="skipper"
+                          className="text-sm font-normal cursor-pointer"
+                        >
+                          Skipper
+                        </Label>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="agent" id="agent" />
+                        <Label
+                          htmlFor="agent"
+                          className="text-sm font-normal cursor-pointer"
+                        >
+                          Agent
+                        </Label>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="operator" id="operator" />
+                        <Label
+                          htmlFor="operator"
+                          className="text-sm font-normal cursor-pointer"
+                        >
+                          Charter Company
+                        </Label>
+                      </div>
+                    </RadioGroup>
                   </FormControl>
                   <FormMessage className="text-gray-500" />
                 </FormItem>
               )}
             />
 
-            {showEmail && (
+            {showEmail && userType !== "skipper" && (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -170,7 +201,36 @@ export const ContactForm = () => {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="text-chiefnavy font-gilroy">
-                        Work Email
+                        Work Email *
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          type="email"
+                          placeholder="your@work-email.com"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage className="text-gray-500" />
+                    </FormItem>
+                  )}
+                />
+              </motion.div>
+            )}
+
+            {showEmail && userType === "skipper" && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 20 }}
+                transition={{ duration: 0.3 }}
+              >
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-chiefnavy font-gilroy">
+                        Email (Optional)
                       </FormLabel>
                       <FormControl>
                         <Input
@@ -185,6 +245,26 @@ export const ContactForm = () => {
                 />
               </motion.div>
             )}
+
+            <FormField
+              control={form.control}
+              name="whatsapp"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-chiefnavy font-gilroy">
+                    WhatsApp Number *
+                  </FormLabel>
+                  <FormControl>
+                    <PhoneInput
+                      defaultCountry="GR"
+                      placeholder="Enter your phone number"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage className="text-gray-500" />
+                </FormItem>
+              )}
+            />
 
             <Button
               type="submit"

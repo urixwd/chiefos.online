@@ -100,7 +100,7 @@ export const UseCases = ({ sectionId }: { sectionId: string }) => {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`font-gilroy px-6 py-2 text-base font-medium transition-all duration-300 border-b-2 ${
+              className={`font-gilroy px-4 md:px-6 py-2 text-sm md:text-base font-medium transition-all duration-300 border-b-2 ${
                 activeTab === tab.id
                   ? "border-chiefnavy text-chiefnavy"
                   : "border-transparent text-chiefnavy/50 hover:text-chiefnavy/70 hover:border-chiefnavy/30"

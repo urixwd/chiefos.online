@@ -10,6 +10,7 @@ import InfoSection from "../components/InfoSection";
 import PromoSection from "../components/PromoSection";
 import { TrustedBy } from "../components/TrustedBy";
 import { CookieBanner } from "../components/CookieBanner";
+import FAQ from "../components/FAQ";
 
 const Index = () => {
   return (
@@ -30,6 +31,7 @@ const Index = () => {
         <ContactForm />
       </section>
       <InfoSection sectionId="info-section" />
+      <FAQ sectionId="faq" />
       <PromoSection sectionId="promo-section" />
       <Footer sectionId="footer" />
       <CookieBanner />

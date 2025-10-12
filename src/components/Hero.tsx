@@ -9,10 +9,12 @@ export const Hero = () => {
   const isInfoVisible = useSectionVisibility("info-section");
   const isPromoVisible = useSectionVisibility("promo-section");
   const isFooterVisible = useSectionVisibility("footer");
+  const isPricingVisible = useSectionVisibility("pricing");
   const showStickyButton =
     (!isHeroVisible &&
       !isFormVisible &&
       !isInfoVisible &&
+      !isPricingVisible &&
       !isPromoVisible &&
       !isFooterVisible) ||
     (isInfoVisible && !isPromoVisible);

@@ -102,7 +102,7 @@ export const ContactForm = () => {
   const openWhatsApp = () => {
     const formData = form.getValues();
     const messageLines = [
-      "Hi! I'm interested in learning more about Chief.OS\n",
+      "Hi! I'm interested in learning more about ChiefOS\n",
     ];
 
     if (formData.name) messageLines.push(`Name: ${formData.name}`);

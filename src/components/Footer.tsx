@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 export const Footer = ({ sectionId }: { sectionId: string }) => {
   const openWhatsApp = () => {
     const message = encodeURIComponent(
-      "Hi! I'm interested in learning more about Chief.OS"
+      "Hi! I'm interested in learning more about ChiefOS"
     );
     window.open(`https://wa.me/972545854406?text=${message}`, "_blank");
   };

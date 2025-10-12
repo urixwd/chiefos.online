@@ -177,11 +177,11 @@ const PricingCard = ({ plan }: { plan: PricingPlan }) => {
   return (
     <div className="bg-white border border-chiefnavy/10 rounded-xl p-6 h-full flex flex-col shadow-[0_2px_8px_rgba(0,0,0,0.06)] hover:shadow-[0_4px_12px_rgba(0,0,0,0.08)] hover:border-chiefnavy/20 transition-all duration-300">
       {/* Header - Fixed height */}
-      <div className="mb-6 h-[120px]">
+      <div className="mb-6 h-[180px]">
         <h3 className="font-gilroy text-xl font-medium text-chiefnavy mb-2">
           {plan.name}
         </h3>
-        <p className="font-gilroy text-sm text-chiefnavy/70 leading-relaxed">
+        <p className="font-gilroy text-chiefnavy/70 leading-relaxed">
           {plan.description}
         </p>
       </div>

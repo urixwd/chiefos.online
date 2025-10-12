@@ -52,11 +52,11 @@ export const Hero = () => {
             transition={{ delay: 0.4, duration: 0.6 }}
             className="font-gilroy text-lg md:text-xl text-white max-w-2xl mx-auto"
           >
-            The AI-powered chief mate that keeps you focused on creating
-            <span className="font-semibold">
+            Turn your charter operations into a sea of opportunities
+            {/* <span className="font-semibold">
               &nbsp;the best experiences for your guests
             </span>{" "}
-            — and nothing else!
+            — and nothing else! */}
           </motion.p>
         </div>
 

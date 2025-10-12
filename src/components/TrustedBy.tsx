@@ -7,12 +7,21 @@ const logos = [
     alt: "Yacht-Pool",
     href: "https://yacht-pool.com",
   },
-  //{
-  //imgUrl:
-  //"https://f003.backblazeb2.com/file/chiefos-website/logos/sealogy-logo.png",
-  //alt: "Sealogy",
-  //href: "https://www.sealogy.com/charter-insurance/?partner=05.782",
-  //},
+  {
+    imgUrl:
+      "https://f003.backblazeb2.com/file/chiefos-website/logo-vernicos-blue-svg.svg",
+    alt: "Vernicos",
+  },
+  {
+    imgUrl:
+      "https://image.jimcdn.com/app/cms/image/transf/none/path/s68a124db22195a7c/image/i8f82a80371676060/version/1611214283/image.png",
+    alt: "Bax Yachting",
+  },
+  {
+    imgUrl:
+      "https://f003.backblazeb2.com/file/chiefos-website/graiver-logo.png",
+    alt: "Graiver",
+  },
 ];
 
 export const TrustedBy = () => {

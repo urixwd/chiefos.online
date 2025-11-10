@@ -15,6 +15,7 @@ import { UseCases } from "../components/UseCases";
 import { Pricing } from "../components/Pricing";
 import { SkipperCTA } from "../components/SkipperCTA";
 import { ServiceProviderSection } from "../components/ServiceProviderSection";
+import { ChiefOSImpact } from "../components/ChiefOSImpact";
 
 const Index = () => {
   return (

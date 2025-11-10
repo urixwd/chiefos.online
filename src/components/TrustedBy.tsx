@@ -12,11 +12,11 @@ const logos = [
       "https://f003.backblazeb2.com/file/chiefos-website/logo-vernicos-blue-svg.svg",
     alt: "Vernicos",
   },
-  {
-    imgUrl:
-      "https://image.jimcdn.com/app/cms/image/transf/none/path/s68a124db22195a7c/image/i8f82a80371676060/version/1611214283/image.png",
-    alt: "Bax Yachting",
-  },
+  // {
+  //   imgUrl:
+  //     "https://image.jimcdn.com/app/cms/image/transf/none/path/s68a124db22195a7c/image/i8f82a80371676060/version/1611214283/image.png",
+  //   alt: "Bax Yachting",
+  // },
   {
     imgUrl:
       "https://f003.backblazeb2.com/file/chiefos-website/graiver-logo.png",

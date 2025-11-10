@@ -70,8 +70,7 @@ export const Footer = ({ sectionId }: { sectionId: string }) => {
             </button>
           </div>
           <p className="text-sm text-gray-300 mt-4">
-            Start your free trial today and experience how Chief.OS can
-            transform your charter base operations.
+            Start today and maximize your guests experience well ahead embarkation.
           </p>
         </motion.div>
       </div>

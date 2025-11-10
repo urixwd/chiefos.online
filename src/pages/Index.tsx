@@ -13,6 +13,7 @@ import { CookieBanner } from "../components/CookieBanner";
 import FAQ from "../components/FAQ";
 import { UseCases } from "../components/UseCases";
 import { Pricing } from "../components/Pricing";
+import { SkipperCTA } from "../components/SkipperCTA";
 
 const Index = () => {
   return (
@@ -29,8 +30,9 @@ const Index = () => {
         />
       ))}
       <UseCases sectionId="use-cases" />
-      <Pricing sectionId="pricing" />
       <Testimonials />
+      <SkipperCTA sectionId="skipper-cta" />
+      <Pricing sectionId="pricing" />
       <section id="contact-form" className="py-16 px-6 bg-gray-50">
         <ContactForm />
       </section>

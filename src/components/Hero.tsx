@@ -66,8 +66,19 @@ export const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.6 }}
-          className="absolute bottom-20 left-0 right-0 z-10 px-6 md:px-0 flex justify-center"
+          className="absolute bottom-20 left-0 right-0 z-10 px-6 md:px-0 flex flex-col md:flex-row gap-4 justify-center items-center"
         >
+          <motion.a
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            href="https://ice25.expofp.com/?chiefos"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full md:w-auto font-gilroy bg-white text-chiefnavy px-8 py-4 rounded-lg text-xl md:text-2xl font-semibold hover:bg-opacity-90 transition-all duration-200 text-center"
+          >
+            Meet us on ICE 2025
+          </motion.a>
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}

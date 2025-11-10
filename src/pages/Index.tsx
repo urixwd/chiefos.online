@@ -14,6 +14,7 @@ import FAQ from "../components/FAQ";
 import { UseCases } from "../components/UseCases";
 import { Pricing } from "../components/Pricing";
 import { SkipperCTA } from "../components/SkipperCTA";
+import { ServiceProviderSection } from "../components/ServiceProviderSection";
 
 const Index = () => {
   return (
@@ -37,6 +38,7 @@ const Index = () => {
         <ContactForm />
       </section>
       <InfoSection sectionId="info-section" />
+      <ServiceProviderSection sectionId="service-provider-section" />
       <FAQ sectionId="faq" />
       <PromoSection sectionId="promo-section" />
       <Footer sectionId="footer" />

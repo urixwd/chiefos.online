@@ -77,7 +77,7 @@ export const Hero = () => {
             rel="noopener noreferrer"
             className="w-full md:w-auto font-gilroy bg-white text-chiefnavy px-8 py-4 rounded-lg text-xl md:text-2xl font-semibold hover:bg-opacity-90 transition-all duration-200 text-center"
           >
-            Meet us on ICE 2025
+            Meet us at ICE 2025
           </motion.a>
           <motion.button
             whileHover={{ scale: 1.05 }}

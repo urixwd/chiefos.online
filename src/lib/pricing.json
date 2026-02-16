@@ -23,25 +23,7 @@
     }
   },
   {
-    "name": "Intelligence",
-    "description": "Get ChiefOS proactive notifications to ensure no costly mistakes ruin your guests sailing adventure.",
-    "price": {
-      "value": 180,
-      "currency": "€",
-      "price_note": "Per booking"
-    },
-    "key_features": [
-      "Everything in Actions+",
-      "24/7 AI-powered support",
-      "Real-time troubleshooting",
-      "Proactive damage prevention"
-    ],
-    "cta": {
-      "text": "BOOK A DEMO"
-    }
-  },
-  {
-    "name": "Embeded",
+    "name": "Business",
     "description": "Have all ChiefOS capabilities for your guests + a conrol panel within a dedicated app completely tailored to your brand.",
     "price": {
       "value": 1800,
@@ -58,7 +40,7 @@
       "Dedicated account manager"
     ],
     "cta": {
-      "text": "BOOK A DEMO"
+      "text": "GET A QUOTE"
     }
   }
 ]

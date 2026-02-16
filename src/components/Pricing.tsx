@@ -266,7 +266,8 @@ const PricingCard = ({ plan, onRedeemClick }: { plan: PricingPlan; onRedeemClick
     // "Book a demo" button - scrolls to contact form
     else if (
       plan.cta.text.toLowerCase().includes("demo") ||
-      plan.cta.text.toLowerCase().includes("contact")
+      plan.cta.text.toLowerCase().includes("contact") ||
+      plan.cta.text.toLowerCase().includes("quote")
     ) {
       const element = document.getElementById("contact-form");
       if (element) {

@@ -1,8 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { isValidPhoneNumber } from "react-phone-number-input";
 import {
   Form,
   FormControl,
@@ -13,12 +12,13 @@ import {
 } from "./ui/form";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
+import { Checkbox } from "./ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
-import { PhoneInput } from "./ui/phone-input";
-import { motion } from "framer-motion";
-import { WhatsAppIcon } from "./icons/WhatsAppIcon";
 import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
 import { Label } from "./ui/label";
+import { WhatsAppIcon } from "./icons/WhatsAppIcon";
+import { motion, AnimatePresence } from "framer-motion";
+import { APP_URL } from "../constants/urls";
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -27,34 +27,37 @@ const formSchema = z.object({
   }),
   email: z
     .string()
-    .transform((str) => str.trim())
-    .refine((str) => str === "" || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(str), {
-      message: "Invalid email format",
-    })
-    .optional(),
-  whatsapp: z
-    .string()
-    .min(1, "WhatsApp number is required")
-    .refine((value) => isValidPhoneNumber(value), {
-      message: "Invalid phone number",
+    .min(1, "Email is required")
+    .email("Please enter a valid email address"),
+  acceptTerms: z.literal(true, {
+    errorMap: () => ({
+      message: "You must accept the Privacy Policy and Terms",
     }),
+  }),
+  acceptEmails: z.boolean(),
 });
 
 type FormValues = z.infer<typeof formSchema>;
 
+const stepAnimation = {
+  initial: { opacity: 0, y: 12 },
+  animate: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: -12 },
+  transition: { duration: 0.3 },
+};
+
 export const ContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [step, setStep] = useState(1);
   const { toast } = useToast();
-  const [userType, setUserType] = useState<string>("");
-  const [showEmail, setShowEmail] = useState(false);
-
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
       userType: undefined,
       email: "",
-      whatsapp: "",
+      acceptTerms: false as unknown as true,
+      acceptEmails: false,
     },
   });
 
@@ -72,13 +75,13 @@ export const ContactForm = () => {
 
       if (response.ok) {
         toast({
-          title: "Message sent!",
+          title: "You're in!",
           description:
-            "Thank you for contacting us. We'll get back to you soon.",
+            "Thank you for signing up. Redirecting you to ChiefOS...",
         });
         form.reset();
         setTimeout(() => {
-          window.location.href = "https://app.chiefos.online";
+          window.location.href = APP_URL;
         }, 2000);
       } else {
         throw new Error("Something went wrong");
@@ -94,10 +97,15 @@ export const ContactForm = () => {
     }
   };
 
-  useEffect(() => {
-    // Show email field based on user type selection
-    setShowEmail(userType !== "");
-  }, [userType]);
+  const goToStep2 = async () => {
+    const valid = await form.trigger("email");
+    if (valid) setStep(2);
+  };
+
+  const goToStep3 = async () => {
+    const valid = await form.trigger(["name", "userType"]);
+    if (valid) setStep(3);
+  };
 
   const openWhatsApp = () => {
     const formData = form.getValues();
@@ -107,7 +115,6 @@ export const ContactForm = () => {
 
     if (formData.name) messageLines.push(`Name: ${formData.name}`);
     if (formData.email) messageLines.push(`Email: ${formData.email}`);
-    if (formData.whatsapp) messageLines.push(`WhatsApp: ${formData.whatsapp}`);
 
     const message = encodeURIComponent(messageLines.join("\n"));
     window.open(`https://wa.me/34624139891?text=${message}`, "_blank");
@@ -118,161 +125,222 @@ export const ContactForm = () => {
       <h2 className="text-2xl font-semibold text-chiefnavy mb-6 text-center font-gilroy">
         Want to make your guests' experience unforgettable?
       </h2>
+
+      {/* Step indicator */}
+      <div className="flex justify-center gap-2 mb-6">
+        {[1, 2, 3].map((s) => (
+          <div
+            key={s}
+            className={`h-1.5 rounded-full transition-all duration-300 ${
+              s <= step ? "bg-chiefnavy w-8" : "bg-gray-300 w-4"
+            }`}
+          />
+        ))}
+      </div>
+
       <div className="max-w-md mx-auto p-6">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-            <FormField
-              control={form.control}
-              name="name"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-chiefnavy font-gilroy">
-                    Name *
-                  </FormLabel>
-                  <FormControl>
-                    <Input placeholder="Your name" {...field} />
-                  </FormControl>
-                  <FormMessage className="text-gray-500" />
-                </FormItem>
+            <AnimatePresence mode="wait">
+              {/* Step 1: Email */}
+              {step === 1 && (
+                <motion.div key="step1" {...stepAnimation} className="space-y-6">
+                  <FormField
+                    control={form.control}
+                    name="email"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-chiefnavy font-gilroy">
+                          Email *
+                        </FormLabel>
+                        <FormControl>
+                          <Input
+                            type="email"
+                            placeholder="your@email.com"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage className="text-gray-500" />
+                      </FormItem>
+                    )}
+                  />
+                  <Button
+                    type="button"
+                    onClick={goToStep2}
+                    className="w-full bg-chiefnavy hover:bg-chiefnavy/90"
+                  >
+                    Continue
+                  </Button>
+                </motion.div>
               )}
-            />
 
-            <FormField
-              control={form.control}
-              name="userType"
-              render={({ field }) => (
-                <FormItem className="space-y-3">
-                  <FormLabel className="text-chiefnavy font-gilroy">
-                    I am a *
-                  </FormLabel>
-                  <FormControl>
-                    <RadioGroup
-                      onValueChange={(value) => {
-                        field.onChange(value);
-                        setUserType(value);
-                      }}
-                      value={field.value}
-                      className="flex flex-col space-y-2"
+              {/* Step 2: Name + Role */}
+              {step === 2 && (
+                <motion.div key="step2" {...stepAnimation} className="space-y-6">
+                  <FormField
+                    control={form.control}
+                    name="name"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-chiefnavy font-gilroy">
+                          Name *
+                        </FormLabel>
+                        <FormControl>
+                          <Input placeholder="Your name" {...field} />
+                        </FormControl>
+                        <FormMessage className="text-gray-500" />
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={form.control}
+                    name="userType"
+                    render={({ field }) => (
+                      <FormItem className="space-y-3">
+                        <FormLabel className="text-chiefnavy font-gilroy">
+                          I am a *
+                        </FormLabel>
+                        <FormControl>
+                          <RadioGroup
+                            onValueChange={field.onChange}
+                            value={field.value}
+                            className="flex flex-col space-y-2"
+                          >
+                            <div className="flex items-center space-x-2">
+                              <RadioGroupItem value="skipper" id="skipper" />
+                              <Label
+                                htmlFor="skipper"
+                                className="text-sm font-normal cursor-pointer"
+                              >
+                                Skipper
+                              </Label>
+                            </div>
+                            <div className="flex items-center space-x-2">
+                              <RadioGroupItem value="agent" id="agent" />
+                              <Label
+                                htmlFor="agent"
+                                className="text-sm font-normal cursor-pointer"
+                              >
+                                Agent
+                              </Label>
+                            </div>
+                            <div className="flex items-center space-x-2">
+                              <RadioGroupItem value="operator" id="operator" />
+                              <Label
+                                htmlFor="operator"
+                                className="text-sm font-normal cursor-pointer"
+                              >
+                                Charter Company
+                              </Label>
+                            </div>
+                          </RadioGroup>
+                        </FormControl>
+                        <FormMessage className="text-gray-500" />
+                      </FormItem>
+                    )}
+                  />
+
+                  <div className="flex gap-3">
+                    <Button
+                      type="button"
+                      variant="outline"
+                      onClick={() => setStep(1)}
+                      className="flex-1"
                     >
-                      <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="skipper" id="skipper" />
-                        <Label
-                          htmlFor="skipper"
-                          className="text-sm font-normal cursor-pointer"
-                        >
-                          Skipper
-                        </Label>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="agent" id="agent" />
-                        <Label
-                          htmlFor="agent"
-                          className="text-sm font-normal cursor-pointer"
-                        >
-                          Agent
-                        </Label>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="operator" id="operator" />
-                        <Label
-                          htmlFor="operator"
-                          className="text-sm font-normal cursor-pointer"
-                        >
-                          Charter Company
-                        </Label>
-                      </div>
-                    </RadioGroup>
-                  </FormControl>
-                  <FormMessage className="text-gray-500" />
-                </FormItem>
+                      Back
+                    </Button>
+                    <Button
+                      type="button"
+                      onClick={goToStep3}
+                      className="flex-1 bg-chiefnavy hover:bg-chiefnavy/90"
+                    >
+                      Continue
+                    </Button>
+                  </div>
+                </motion.div>
               )}
-            />
 
-            {showEmail && userType !== "skipper" && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 20 }}
-                transition={{ duration: 0.3 }}
-              >
-                <FormField
-                  control={form.control}
-                  name="email"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="text-chiefnavy font-gilroy">
-                        Work Email *
-                      </FormLabel>
-                      <FormControl>
-                        <Input
-                          type="email"
-                          placeholder="your@work-email.com"
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage className="text-gray-500" />
-                    </FormItem>
-                  )}
-                />
-              </motion.div>
-            )}
+              {/* Step 3: Consents + Submit */}
+              {step === 3 && (
+                <motion.div key="step3" {...stepAnimation} className="space-y-6">
+                  <FormField
+                    control={form.control}
+                    name="acceptTerms"
+                    render={({ field }) => (
+                      <FormItem className="flex flex-row items-start space-x-3 space-y-0">
+                        <FormControl>
+                          <Checkbox
+                            checked={field.value}
+                            onCheckedChange={field.onChange}
+                          />
+                        </FormControl>
+                        <div className="space-y-1 leading-none">
+                          <FormLabel className="text-sm font-normal text-gray-700 cursor-pointer">
+                            I have read and accept the{" "}
+                            <a
+                              href="/legal/privacy.html"
+                              target="_blank"
+                              className="text-chiefnavy underline hover:opacity-80"
+                            >
+                              Privacy Policy
+                            </a>{" "}
+                            and{" "}
+                            <a
+                              href="/legal/terms.html"
+                              target="_blank"
+                              className="text-chiefnavy underline hover:opacity-80"
+                            >
+                              Terms of Service
+                            </a>
+                          </FormLabel>
+                          <FormMessage className="text-gray-500" />
+                        </div>
+                      </FormItem>
+                    )}
+                  />
 
-            {showEmail && userType === "skipper" && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 20 }}
-                transition={{ duration: 0.3 }}
-              >
-                <FormField
-                  control={form.control}
-                  name="email"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="text-chiefnavy font-gilroy">
-                        Email (Optional)
-                      </FormLabel>
-                      <FormControl>
-                        <Input
-                          type="email"
-                          placeholder="your@email.com"
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage className="text-gray-500" />
-                    </FormItem>
-                  )}
-                />
-              </motion.div>
-            )}
+                  <FormField
+                    control={form.control}
+                    name="acceptEmails"
+                    render={({ field }) => (
+                      <FormItem className="flex flex-row items-start space-x-3 space-y-0">
+                        <FormControl>
+                          <Checkbox
+                            checked={field.value}
+                            onCheckedChange={field.onChange}
+                          />
+                        </FormControl>
+                        <div className="space-y-1 leading-none">
+                          <FormLabel className="text-sm font-normal text-gray-700 cursor-pointer">
+                            I agree to receive updates and promotional emails
+                            from ChiefOS
+                          </FormLabel>
+                        </div>
+                      </FormItem>
+                    )}
+                  />
 
-            <FormField
-              control={form.control}
-              name="whatsapp"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-chiefnavy font-gilroy">
-                    WhatsApp Number *
-                  </FormLabel>
-                  <FormControl>
-                    <PhoneInput
-                      defaultCountry="GR"
-                      placeholder="Enter your phone number"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage className="text-gray-500" />
-                </FormItem>
+                  <div className="flex gap-3">
+                    <Button
+                      type="button"
+                      variant="outline"
+                      onClick={() => setStep(2)}
+                      className="flex-1"
+                    >
+                      Back
+                    </Button>
+                    <Button
+                      type="submit"
+                      className="flex-1 bg-chiefnavy hover:bg-chiefnavy/90"
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? "Sending..." : "Get Started"}
+                    </Button>
+                  </div>
+                </motion.div>
               )}
-            />
-
-            <Button
-              type="submit"
-              className="w-full bg-chiefnavy hover:bg-chiefnavy/90"
-              disabled={isSubmitting}
-            >
-              {isSubmitting ? "Sending..." : "See ChiefOS in action"}
-            </Button>
+            </AnimatePresence>
           </form>
         </Form>
 

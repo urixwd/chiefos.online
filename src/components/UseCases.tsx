@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { APP_SIGNIN_URL } from "@/constants/urls";
 
 type UserType = "agents" | "skippers" | "operators";
 
@@ -32,19 +33,9 @@ const useCaseContent: UseCaseContent = {
   ],
   skippers: [
     {
-      title: "Save Time & Effort",
+      title: "Skipper?",
       description:
-        "Say goodbye to repetitive tasks and focus on creating the best experiences for your guests.",
-    },
-    {
-      title: "Maximize Expertise",
-      description:
-        "Make the most of your experience and earn credits toward your next sailing adventure.",
-    },
-    {
-      title: "Better Experiences",
-      description:
-        "Create a guest experience that exceeds expectations and turns every sailing into a lifelong memory.",
+        "Join more than 700 skippers who have shared their experiences with our community and earned credits for their next sailing adventure.",
     },
   ],
   operators: [
@@ -113,31 +104,57 @@ export const UseCases = ({ sectionId }: { sectionId: string }) => {
 
         {/* Content */}
         <AnimatePresence mode="wait">
-          <motion.div
-            key={activeTab}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.4 }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12"
-          >
-            {useCaseContent[activeTab].map((useCase, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                className="text-left md:text-center space-y-4"
+          {activeTab === "skippers" ? (
+            <motion.div
+              key={activeTab}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.4 }}
+              className="flex flex-col items-center text-center max-w-2xl mx-auto space-y-6"
+            >
+              <h3 className="font-gilroy text-2xl font-medium text-chiefnavy/90">
+                {useCaseContent.skippers[0].title}
+              </h3>
+              <p className="font-gilroy text-base text-chiefnavy/80 leading-relaxed">
+                {useCaseContent.skippers[0].description}
+              </p>
+              <a
+                href={APP_SIGNIN_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block font-gilroy font-semibold px-8 py-4 bg-chiefnavy text-white rounded-lg hover:bg-chiefnavy/90 transition-all duration-200"
               >
-                <h3 className="font-gilroy text-xl font-medium text-chiefnavy/90">
-                  {useCase.title}
-                </h3>
-                <p className="font-gilroy text-base text-chiefnavy/80 leading-relaxed">
-                  {useCase.description}
-                </p>
-              </motion.div>
-            ))}
-          </motion.div>
+                Try now!
+              </a>
+            </motion.div>
+          ) : (
+            <motion.div
+              key={activeTab}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.4 }}
+              className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12"
+            >
+              {useCaseContent[activeTab].map((useCase, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                  className="text-left md:text-center space-y-4"
+                >
+                  <h3 className="font-gilroy text-xl font-medium text-chiefnavy/90">
+                    {useCase.title}
+                  </h3>
+                  <p className="font-gilroy text-base text-chiefnavy/80 leading-relaxed">
+                    {useCase.description}
+                  </p>
+                </motion.div>
+              ))}
+            </motion.div>
+          )}
         </AnimatePresence>
       </div>
     </section>

@@ -44,6 +44,7 @@ const Index = () => {
       <PrivacySecurity sectionId="privacy-security" />
       <FAQ sectionId="faq" />
       <PromoSection sectionId="promo-section" />
+      <ChiefOSImpact sectionId="chiefos-impact" />
       <Footer sectionId="footer" />
       <CookieBanner />
     </main>

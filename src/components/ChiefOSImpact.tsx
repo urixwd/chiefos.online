@@ -41,32 +41,35 @@ export const ChiefOSImpact = ({ sectionId }: ChiefOSImpactProps) => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
-          className="bg-white rounded-2xl shadow-lg p-8 md:p-12 space-y-6"
+          className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100"
         >
-          <p className="font-gilroy text-lg md:text-xl text-gray-700 leading-relaxed">
-            ChiefOS impact empowers each of us to use our strengths to support our community.
-          </p>
+          <div className="h-1.5 bg-gradient-to-r from-chiefnavy via-chiefyellow to-chiefnavy" />
+          <div className="p-8 md:p-12 space-y-6 border-l-4 border-chiefyellow">
+            <p className="font-gilroy text-lg md:text-xl text-gray-700 leading-relaxed">
+              ChiefOS impact empowers each of us to use our strengths to support our community.
+            </p>
 
-          <p className="font-gilroy text-lg md:text-xl text-gray-700 leading-relaxed">
-            Our pricing model ensures that any leftovers beyond our business effort costs are dedicated to a greater cause. This year, we are proud to support nonprofits like{" "}
-            <a
-              href="https://breakingwaves.co.il/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-semibold text-chiefnavy hover:text-chiefyellow transition-colors duration-200 underline"
-            >
-              Breaking Waves
-            </a>
-            , helping create positive change where it matters most.
-          </p>
+            <p className="font-gilroy text-lg md:text-xl text-gray-700 leading-relaxed">
+              Our pricing model ensures that any leftovers beyond our business effort costs are dedicated to a greater cause. This year, we are proud to support nonprofits like{" "}
+              <a
+                href="https://breakingwaves.co.il/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-chiefnavy hover:text-chiefyellow transition-colors duration-200 underline"
+              >
+                Breaking Waves
+              </a>
+              , helping create positive change where it matters most.
+            </p>
 
-          <p className="font-gilroy text-lg md:text-xl text-gray-700 leading-relaxed font-semibold">
-            As we grow, our impact grows!
-          </p>
+            <p className="font-gilroy text-lg md:text-xl text-chiefnavy leading-relaxed font-semibold">
+              As we grow, our impact grows!
+            </p>
 
-          <p className="font-gilroy text-lg md:text-xl text-gray-700 leading-relaxed">
-            Contact us to suggest any non-profits we can support in the future.
-          </p>
+            <p className="font-gilroy text-lg md:text-xl text-gray-700 leading-relaxed">
+              Contact us to suggest any non-profits we can support in the future.
+            </p>
+          </div>
         </motion.div>
       </div>
     </section>

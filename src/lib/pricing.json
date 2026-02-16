@@ -1,7 +1,7 @@
 [
 {
     "name": "Actions",
-    "description": "Save time and money with ChiefOS support while tracking actions and documentations all in one single place.",
+    "description": "Fill your email and get your first 18 EUR to manage your actions",
     "price": {
       "value": 18,
       "currency": "€",
@@ -19,7 +19,7 @@
       "Multi-language Support"
     ],
     "cta": {
-      "text": "BOOK A DEMO"
+      "text": "REDEEM PROMO CODE"
     }
   },
   {

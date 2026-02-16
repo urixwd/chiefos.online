@@ -23,6 +23,7 @@ interface PricingPlan {
 
 export const Pricing = ({ sectionId }: PricingProps) => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [showPromoModal, setShowPromoModal] = useState(false);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const plans: PricingPlan[] = pricingData;
 
@@ -66,7 +67,7 @@ export const Pricing = ({ sectionId }: PricingProps) => {
           viewport={{ once: true }}
           className="text-3xl md:text-4xl font-gilroy font-light text-chiefnavy mb-4 text-left md:text-center"
         >
-          Choose Your Plan
+          Book a demo
         </motion.h2>
 
         <motion.p
@@ -99,7 +100,7 @@ export const Pricing = ({ sectionId }: PricingProps) => {
                 className="flex-shrink-0 snap-start w-[80%] first:ml-0"
                 style={{ scrollSnapAlign: "start" }}
               >
-                <PricingCard plan={plan} />
+                <PricingCard plan={plan} onRedeemClick={() => setShowPromoModal(true)} />
               </motion.div>
             ))}
             <div className="flex-shrink-0 w-[20%]" />
@@ -134,23 +135,133 @@ export const Pricing = ({ sectionId }: PricingProps) => {
                 viewport={{ once: true }}
                 className="flex-shrink-0 w-[300px] lg:w-[calc(25%-18px)]"
               >
-                <PricingCard plan={plan} />
+                <PricingCard plan={plan} onRedeemClick={() => setShowPromoModal(true)} />
               </motion.div>
             ))}
           </div>
         </div>
       </div>
+
+      {showPromoModal && (
+        <PromoCodeModal onClose={() => setShowPromoModal(false)} />
+      )}
     </section>
   );
 };
 
-const PricingCard = ({ plan }: { plan: PricingPlan }) => {
+const PromoCodeModal = ({ onClose }: { onClose: () => void }) => {
+  const [email, setEmail] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError("");
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("https://formspree.io/f/myzkdnbn", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, _subject: "Promo Code Request" }),
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+      } else {
+        setError("Something went wrong. Please try again.");
+      }
+    } catch {
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4"
+      onClick={(e) => e.target === e.currentTarget && onClose()}
+    >
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.2 }}
+        className="bg-white rounded-xl p-8 max-w-md w-full shadow-xl"
+      >
+        {isSubmitted ? (
+          <div className="text-center">
+            <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg className="w-6 h-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <h3 className="font-gilroy text-xl font-medium text-chiefnavy mb-2">
+              You're in!
+            </h3>
+            <p className="font-gilroy text-chiefnavy/70 mb-6">
+              We've registered {email}. Our team will reach out to you shortly with your promo code.
+            </p>
+            <button
+              onClick={onClose}
+              className="font-gilroy px-6 py-2 bg-chiefyellow text-chiefnavy font-semibold rounded-lg hover:bg-chiefyellow/90 transition-all"
+            >
+              Close
+            </button>
+          </div>
+        ) : (
+          <>
+            <h3 className="font-gilroy text-xl font-medium text-chiefnavy mb-2">
+              Redeem Your Promo Code
+            </h3>
+            <p className="font-gilroy text-chiefnavy/70 mb-6">
+              Enter your email and we'll send you a promo code worth 18 EUR to manage your actions.
+            </p>
+            <form onSubmit={handleSubmit}>
+              <input
+                type="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="your@email.com"
+                className="w-full px-4 py-3 border border-chiefnavy/20 rounded-lg font-gilroy text-chiefnavy placeholder:text-chiefnavy/40 focus:outline-none focus:border-chiefnavy/40 transition-colors mb-4"
+              />
+              {error && (
+                <p className="font-gilroy text-sm text-red-500 mb-4">{error}</p>
+              )}
+              <div className="flex gap-3">
+                <button
+                  type="button"
+                  onClick={onClose}
+                  className="flex-1 font-gilroy px-6 py-3 border border-chiefnavy/20 text-chiefnavy/70 rounded-lg hover:bg-gray-50 transition-all"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="flex-1 font-gilroy px-6 py-3 bg-chiefyellow text-chiefnavy font-semibold rounded-lg hover:bg-chiefyellow/90 transition-all disabled:opacity-50"
+                >
+                  {isSubmitting ? "Sending..." : "Send Code"}
+                </button>
+              </div>
+            </form>
+          </>
+        )}
+      </motion.div>
+    </div>
+  );
+};
+
+const PricingCard = ({ plan, onRedeemClick }: { plan: PricingPlan; onRedeemClick: () => void }) => {
+  const isRedeemButton = plan.cta.text.toLowerCase().includes("redeem");
+
   const handleCTAClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
-    // "Try it" button - opens app.chiefos.online in new window
-    if (plan.cta.text.toLowerCase().includes("try")) {
-      window.open("https://app.chiefos.online/", "_blank");
+    if (isRedeemButton) {
+      onRedeemClick();
     }
     // "Book a demo" button - scrolls to contact form
     else if (
@@ -171,8 +282,6 @@ const PricingCard = ({ plan }: { plan: PricingPlan }) => {
       }
     }
   };
-
-  const isTryButton = plan.cta.text.toLowerCase().includes("try");
 
   return (
     <div className="bg-white border border-chiefnavy/10 rounded-xl p-6 h-full flex flex-col shadow-[0_2px_8px_rgba(0,0,0,0.06)] hover:shadow-[0_4px_12px_rgba(0,0,0,0.08)] hover:border-chiefnavy/20 transition-all duration-300">
@@ -233,7 +342,7 @@ const PricingCard = ({ plan }: { plan: PricingPlan }) => {
         <button
           onClick={handleCTAClick}
           className={`w-full font-gilroy px-6 py-3 text-chiefnavy font-semibold rounded-lg transition-all duration-300 ${
-            isTryButton
+            isRedeemButton
               ? "bg-gradient-to-r from-chiefyellow via-chiefyellow to-yellow-300 hover:from-chiefyellow/90 hover:via-chiefyellow/90 hover:to-yellow-300/90"
               : "bg-chiefyellow hover:bg-chiefyellow/90"
           }`}

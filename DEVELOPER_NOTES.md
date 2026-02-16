@@ -14,6 +14,12 @@
 - Two consent checkboxes: `acceptTerms` (required, uses `z.literal(true)`) and `acceptEmails` (optional boolean).
 - WhatsApp button pre-fills a message with form data and opens `wa.me/34624139891`.
 
+## Pricing (`Pricing.tsx`)
+
+- Two plans: **Actions** (promo code) and **Business** (get a quote).
+- Actions CTA opens a `PromoCodeModal` (email input) that also submits to the **same Formspree** endpoint as the contact form, with `_subject: "Promo Code Request"`.
+- Business CTA scrolls to the contact form.
+
 ## Sticky Button Visibility (Hero)
 
 - The sticky "Get Started" button uses `useSectionVisibility` hook (IntersectionObserver) to hide when certain sections are visible. The logic is intentionally complex — it hides near the form, pricing, promo, and footer to avoid overlapping CTAs.

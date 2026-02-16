@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { useIsMobile } from "../hooks/use-mobile";
 import { useSectionVisibility } from "../hooks/use-section-visibility";
+import { APP_SIGNIN_URL } from "../constants/urls";
 
 export const Hero = () => {
   const isHeroVisible = useSectionVisibility("hero-section");
@@ -20,12 +21,8 @@ export const Hero = () => {
     (isInfoVisible && !isPromoVisible);
   const isMobile = useIsMobile();
 
-  const scrollToForm = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    const element = document.getElementById("contact-form");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
+  const openApp = () => {
+    window.open(APP_SIGNIN_URL, "_blank");
   };
 
   return (
@@ -72,7 +69,7 @@ export const Hero = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
-            onClick={scrollToForm}
+            onClick={openApp}
             className="w-full md:w-auto font-gilroy bg-chiefyellow text-chiefnavy px-8 py-4 rounded-lg text-xl md:text-2xl font-semibold hover:bg-opacity-90 transition-all duration-200"
           >
             {/* static center btn */}
@@ -93,7 +90,7 @@ export const Hero = () => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           transition={{ type: "spring", stiffness: 400, damping: 10 }}
-          onClick={scrollToForm}
+          onClick={openApp}
           className={`font-gilroy bg-chiefyellow text-chiefnavy px-8 py-4 rounded-lg text-xl md:text-2xl font-semibold hover:bg-opacity-90 transition-all duration-200 shadow-lg ${
             isMobile ? "w-full" : "w-auto"
           }`}

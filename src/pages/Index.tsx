@@ -23,6 +23,8 @@ const Index = () => {
       <Navbar />
       <Hero />
       <TrustedBy />
+      <UseCases sectionId="use-cases" />
+      <Testimonials />
       <Features />
       {stageSections.map((section, index) => (
         <Stage
@@ -31,8 +33,6 @@ const Index = () => {
           isReversed={index % 2 === 0}
         />
       ))}
-      <UseCases sectionId="use-cases" />
-      <Testimonials />
       <SkipperCTA sectionId="skipper-cta" />
       <Pricing sectionId="pricing" />
       <section id="contact-form" className="py-16 px-6 bg-gray-50">

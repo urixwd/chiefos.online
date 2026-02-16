@@ -76,7 +76,7 @@ export const UseCases = ({ sectionId }: { sectionId: string }) => {
   ];
 
   return (
-    <section className="py-16 px-6 bg-white" id={sectionId}>
+    <section className="py-16 px-6 bg-gray-50" id={sectionId}>
       <div className="max-w-7xl mx-auto">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}

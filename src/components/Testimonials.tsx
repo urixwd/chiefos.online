@@ -73,7 +73,7 @@ export const Testimonials = () => {
   };
 
   return (
-    <section className="py-16 px-6 bg-[#F1F0FB]">
+    <section className="py-16 px-6 bg-blue-50">
       <div className="max-w-7xl mx-auto">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -87,7 +87,7 @@ export const Testimonials = () => {
 
         <div className="max-w-5xl mx-auto relative">
           {/* Left Gradient Overlay */}
-          <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-[#F1F0FB] to-transparent pointer-events-none z-10"></div>
+          <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-blue-50 to-transparent pointer-events-none z-10"></div>
 
           <div className="relative w-full overflow-hidden">
             <div
@@ -150,7 +150,7 @@ export const Testimonials = () => {
             </div>
 
             {/* Right Gradient Overlay */}
-            <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-[#F1F0FB] to-transparent pointer-events-none z-10"></div>
+            <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-blue-50 to-transparent pointer-events-none z-10"></div>
 
             {/* Dot Navigation */}
             <div className="flex justify-center gap-2 mt-8 py-2">

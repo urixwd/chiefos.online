@@ -220,8 +220,8 @@ export const Features = () => {
             className="space-y-4"
           >
             <h2 className="font-gilroy text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light leading-tight text-chiefnavy">
-              ChiefOS is the only AI mate that navigates with your guests every
-              step of the way
+              ChiefOS is the only AI mate that maximize your guests experience
+              every step of the way
             </h2>
 
             {/* Mobile SVG diagram */}

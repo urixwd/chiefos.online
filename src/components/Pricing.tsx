@@ -124,7 +124,7 @@ export const Pricing = ({ sectionId }: PricingProps) => {
 
         {/* Desktop/Tablet: Scrollable Layout */}
         <div className="hidden md:block">
-          <div className="flex overflow-x-auto gap-6 pb-4 scrollbar-hide">
+          <div className="flex overflow-x-auto gap-6 pb-4 scrollbar-hide justify-center">
             {plans.map((plan, index) => (
               <motion.div
                 key={plan.name}

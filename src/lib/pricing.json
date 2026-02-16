@@ -1,29 +1,5 @@
 [
-  {
-    "name": "Insights",
-    "description": "Manage your entire charter journey with your guests and enjoy ChiefOS Knolege base",
-    "price": {
-      "value": 0,
-      "currency": "€",
-      "price_note": "FREE For 1st charter"
-    },
-    "key_features": [
-      "Confirmation email",
-      "Knolege base",
-      "Collect guest details",
-      "Documentation",
-      "Communication hub",
-      "Digital Check-ins",
-      "Yacht inspection tour",
-      "Review coordinations",
-      "Multi-language Support"
-    ],
-    "cta": {
-      "text": "TRY IT NOW",
-      "note": "No credit card required"
-    }
-  },
-  {
+{
     "name": "Actions",
     "description": "Save time and money with ChiefOS support while tracking actions and documentations all in one single place.",
     "price": {

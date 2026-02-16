@@ -16,6 +16,7 @@ import { Pricing } from "../components/Pricing";
 import { SkipperCTA } from "../components/SkipperCTA";
 import { ServiceProviderSection } from "../components/ServiceProviderSection";
 import { ChiefOSImpact } from "../components/ChiefOSImpact";
+import { PrivacySecurity } from "../components/PrivacySecurity";
 
 const Index = () => {
   return (
@@ -40,6 +41,7 @@ const Index = () => {
       </section>
       <InfoSection sectionId="info-section" />
       <ServiceProviderSection sectionId="service-provider-section" />
+      <PrivacySecurity sectionId="privacy-security" />
       <FAQ sectionId="faq" />
       <PromoSection sectionId="promo-section" />
       <Footer sectionId="footer" />

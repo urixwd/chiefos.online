@@ -75,16 +75,6 @@ export const Testimonials = () => {
   return (
     <section className="py-16 px-6 bg-blue-50">
       <div className="max-w-7xl mx-auto">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-3xl md:text-4xl font-gilroy font-light text-chiefnavy mb-12 text-center"
-        >
-          And the guests who already used it?
-        </motion.h2>
-
         <div className="max-w-5xl mx-auto relative">
           {/* Left Gradient Overlay */}
           <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-blue-50 to-transparent pointer-events-none z-10"></div>

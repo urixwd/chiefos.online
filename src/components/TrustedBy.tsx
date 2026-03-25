@@ -9,8 +9,15 @@ const logos = [
   },
   {
     imgUrl:
+      "https://f003.backblazeb2.com/file/chiefos-website/logos/mg-logo.jpg",
+    alt: "MG Yachts",
+    href: "https://mgyachts.gr/",
+  },
+  {
+    imgUrl:
       "https://f003.backblazeb2.com/file/chiefos-website/logo-vernicos-blue-svg.svg",
     alt: "Vernicos",
+    href: "https://vernicosyachts.com/",
   },
   // {
   //   imgUrl:

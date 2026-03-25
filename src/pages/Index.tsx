@@ -17,6 +17,7 @@ import { SkipperCTA } from "../components/SkipperCTA";
 import { ServiceProviderSection } from "../components/ServiceProviderSection";
 import { ChiefOSImpact } from "../components/ChiefOSImpact";
 import { PrivacySecurity } from "../components/PrivacySecurity";
+import { VideoSection } from "../components/VideoSection";
 
 const Index = () => {
   return (
@@ -25,6 +26,7 @@ const Index = () => {
       <Hero />
       <TrustedBy />
       <UseCases sectionId="use-cases" />
+      <VideoSection sectionId="video-section" />
       <Testimonials />
       <Features />
       {stageSections.map((section, index) => (
